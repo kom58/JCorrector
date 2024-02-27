@@ -1,61 +1,46 @@
 package corrector;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Calendar;
 
 public class Inicio {
 
     private  JPanel panPrincipal;
-    private JLabel lblTitulo;
     private JTextField tflNombre;
     private JTextField tflContrasena;
     private JButton btnAceptar;
-    private JLabel lblVanG;
     private JLabel lblDia;
     private JLabel lblHora;
     private JLabel lblContrasena;
-    private int diaA, mesA, anoA;
-    private int horaA, minA;
+    private JLabel lblVersion;
 
 
     public Inicio() {
 
-        ponerFechaActual();
+        ponerFechaYHora();
 
-        btnAceptar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                lblContrasena.setVisible(true);
-                tflContrasena.setVisible(true);
-            }
-        });
+        btnAceptar.addActionListener(e -> {System.exit(0);});
     }
 
-    private void ponerFechaActual(){
+    private void ponerFechaYHora(){
 
-        String fechaActual, horaActual;
-        Calendar ahora = Calendar.getInstance();
-        diaA = ahora.get(Calendar.DAY_OF_MONTH);
-        mesA = ahora.get(Calendar.MONTH) + 1;
-        anoA = ahora.get(Calendar.YEAR);
-        horaA = ahora.get(Calendar.HOUR_OF_DAY);
-        minA = ahora.get(Calendar.MINUTE);
+        String fecha, hora;
+        MetodosLib mLib = new MetodosLib();
 
-        fechaActual = "Estamos a " + diaA + "." + mesA + "." + anoA;
-        lblDia.setText(fechaActual);
-        horaActual = "Son las " + horaA + ":" + minA;
-        lblHora.setText(horaActual);
+        fecha = "Estamos a " + mLib.fechaActual();
+        lblDia.setText(fecha);
+        hora = "Son las " + mLib.horaActual();
+        lblHora.setText(hora);
 
+        lblVersion.setText("Versión " + mLib.versionCrr());
     }
 
     public static void main(String[] args) {
-        javax.swing.JFrame frame = new javax.swing.JFrame("Inicio");
+        javax.swing.JFrame frame = new javax.swing.JFrame("Corrector");
         frame.setContentPane(new Inicio().panPrincipal);
         frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setSize(520,450);
+        frame.setSize(570,550);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
