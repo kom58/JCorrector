@@ -7,7 +7,14 @@ public class Configuracion {
     private JButton btnCerrar;
     private JButton btnGuardar;
     private JLabel lblDia;
+    private JLabel lblVersion;
+    private JButton button2;
+    private JButton button4;
+    private JButton button5;
+    private JButton button6;
+    private JButton button7;
     private JTextField textField1;
+    private JButton cambiarButton;
     private JTextField textField2;
     private JTextField textField3;
     private JTextField textField4;
@@ -15,14 +22,9 @@ public class Configuracion {
     private JTextField textField6;
     private JTextField textField7;
     private JTextField textField8;
-    private JLabel lblVersion;
-    private JButton btnCambiarPasw;
-    private JButton button1;
-    private JButton btnCrearInf;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
-    private JButton button5;
+    private JButton crearButton;
+    private JComboBox comboBox1;
+    private JCheckBox noCheckBox;
 
     public Configuracion() {
 
@@ -39,7 +41,7 @@ public class Configuracion {
         frame.setContentPane(new Configuracion().panPrincipal);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setSize(750,500);
+        frame.setSize(780,500);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
