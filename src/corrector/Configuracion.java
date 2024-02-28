@@ -36,7 +36,7 @@ public class Configuracion {
     }
 
 
-    public static void main(String[] args) {
+    public  void abrirConf() {
         JFrame frame = new JFrame("Configuracion");
         frame.setContentPane(new Configuracion().panPrincipal);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

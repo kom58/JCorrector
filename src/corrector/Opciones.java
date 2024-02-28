@@ -1,25 +1,24 @@
 package corrector;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Opciones {
 
     private JPanel panPrincipal;
-    private JButton configuraciónButton;
-    private JButton cerrarButton;
+    private JButton btnConfig;
+    private JButton btnCerrar;
     private JButton abrirInformeButton;
     private JButton modificarFichaActualButton;
     private JButton nuevaFichaButton;
 
 
     public Opciones() {
-        cerrarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
+        btnCerrar.addActionListener(e -> System.exit(0));
+        btnConfig.addActionListener(e -> {
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
+            frame.dispose();            // Cierra Opciones
+            Configuracion conf = new Configuracion();
+            conf.abrirConf();           // Abre Configuración
         });
     }
 
