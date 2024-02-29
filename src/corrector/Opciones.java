@@ -9,7 +9,7 @@ public class Opciones {
     private JButton btnCerrar;
     private JButton abrirInformeButton;
     private JButton modificarFichaActualButton;
-    private JButton nuevaFichaButton;
+    private JButton btnFichaNueva;
 
 
     public Opciones() {
@@ -24,6 +24,12 @@ public class Opciones {
             frame.dispose();            // Cierra Opciones
             Configuracion conf = new Configuracion();
             conf.abrirConf();           // Abre Configuración
+        });
+        btnFichaNueva.addActionListener(e -> {
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
+            frame.dispose();            // Cierra Opciones
+            Fichas1 f1 = new Fichas1();
+            f1.abrirFichas1();           // Abre Fichas1
         });
     }
 
