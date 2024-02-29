@@ -31,9 +31,9 @@ public class Fichas3 {
         });
         btnCancelar.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
-            frame.dispose();                // Cierra Fichas3
-            Correc crr = new Correc();
-            crr.abrirCorrec();              // Abre Correc
+            frame.dispose();                    // Cierra Fichas3
+            Opciones opc = new Opciones();
+            opc.abrirOpciones();                // Abre Opciones
         });
         btnGuardar.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
