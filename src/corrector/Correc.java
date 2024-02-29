@@ -20,7 +20,6 @@ public class Correc {
     private JButton button11;
     private JButton button12;
     private JButton btnOpciones;
-    private JButton button14;
     private JButton button15;
 
     public Correc() {

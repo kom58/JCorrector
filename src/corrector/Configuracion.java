@@ -32,7 +32,12 @@ public class Configuracion {
         lblDia.setText("Estamos a " + mLib.fechaActual());
         lblVersion.setText("Versión " + mLib.versionCrr());
 
-        btnCerrar.addActionListener(e -> System.exit(0));
+        btnCerrar.addActionListener(e ->  {
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
+            frame.dispose();                // Cierra Configuración
+            Opciones opc = new Opciones();
+            opc.abrirOpciones();           // Abre Opciones
+        });
     }
 
 

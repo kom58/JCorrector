@@ -13,7 +13,12 @@ public class Opciones {
 
 
     public Opciones() {
-        btnCerrar.addActionListener(e -> System.exit(0));
+        btnCerrar.addActionListener(e -> {
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
+            frame.dispose();            // Cierra Opciones
+            Correc crr = new Correc();
+            crr.abrirCorrec();           // Abre Corrector
+        });
         btnConfig.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
             frame.dispose();            // Cierra Opciones
