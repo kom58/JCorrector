@@ -4,48 +4,48 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Fichas1 {
+public class Fichas2 {
 
     private JPanel panPrincipal;
+    private JTextArea textArea1;
     private JButton btnCancelar;
+    private JButton btnAnterior;
     private JButton btnSiguiente;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JComboBox comboBox1;
-    private JComboBox comboBox2;
-    private JComboBox comboBox3;
-    private JComboBox comboBox4;
-    private JTextField textField4;
     private JButton button1;
     private JButton button2;
-    private JCheckBox fichaDeConsultaCheckBox;
+    private JTextField textField1;
+    private JRadioButton verdaderoFalsoRadioButton;
+    private JRadioButton aBCLRadioButton;
+    private JRadioButton síNoRadioButton;
+    private JRadioButton a12325RadioButton;
+    private JRadioButton textoLibreRadioButton;
+    private JRadioButton diferentesRespuestasPosiblesConsultarRadioButton;
+    private JRadioButton respuestaExactaAUnaRadioButton;
 
-    public Fichas1() {
+    public Fichas2() {
         btnCancelar.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
             frame.dispose();                // Cierra Fichas1
             Opciones opc = new Opciones();
             opc.abrirOpciones();           // Abre Opciones
         });
-        btnSiguiente.addActionListener(e -> {
+        btnAnterior.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
             frame.dispose();                // Cierra Fichas1
-            Fichas2 f2 = new Fichas2();
-            f2.abrirFichas2();           // Abre Opciones
+            Fichas1 f1 = new Fichas1();
+            f1.abrirFichas1();           // Abre Opciones
         });
     }
 
-    public void abrirFichas1() {
-        String tituloForm = "Asistente para la corrección de fichas: Paso 1 de 3 (FICHA)";
+    public  void abrirFichas2() {
+        String tituloForm = "Asistente para la corrección de fichas: Paso 2 de 3 (RESPUESTAS)";
         JFrame frame = new JFrame(tituloForm);
-        frame.setContentPane(new Fichas1().panPrincipal);
+        frame.setContentPane(new Fichas2().panPrincipal);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        //frame.setSize(780,500);
+        //frame.setSize(570,550);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
     }
-
 }
