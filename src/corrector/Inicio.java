@@ -1,6 +1,8 @@
 package corrector;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
 
 public class Inicio {
@@ -19,7 +21,17 @@ public class Inicio {
 
         ponerFechaYHora();
 
-        btnAceptar.addActionListener(e -> {System.exit(0);});
+
+        btnAceptar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
+                frame.dispose();            // Cierra Inicio
+                Correc crr = new Correc();
+                crr.abrirCorrec();           // Abre Correc
+            }
+        });
     }
 
     private void ponerFechaYHora(){

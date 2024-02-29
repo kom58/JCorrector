@@ -22,7 +22,7 @@ public class Opciones {
         });
     }
 
-    public static void main(String[] args) {
+    public  void abrirOpciones() {
         JFrame frame = new JFrame("Opciones");
         frame.setContentPane(new Opciones().panPrincipal);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
