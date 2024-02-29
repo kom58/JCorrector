@@ -25,15 +25,21 @@ public class Fichas2 {
     public Fichas2() {
         btnCancelar.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
-            frame.dispose();                // Cierra Fichas1
+            frame.dispose();                // Cierra Fichas2
             Opciones opc = new Opciones();
             opc.abrirOpciones();           // Abre Opciones
         });
         btnAnterior.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
-            frame.dispose();                // Cierra Fichas1
+            frame.dispose();                // Cierra Fichas2
             Fichas1 f1 = new Fichas1();
-            f1.abrirFichas1();           // Abre Opciones
+            f1.abrirFichas1();              // Abre Opciones
+        });
+        btnSiguiente.addActionListener(e -> {
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
+            frame.dispose();                // Cierra Fichas2
+            Fichas3 f3 = new Fichas3();
+            f3.abrirFichas3();              // Abre Fichas3
         });
     }
 
