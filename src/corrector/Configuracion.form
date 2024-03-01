@@ -157,7 +157,7 @@
               <text value="&lt;+&gt;"/>
             </properties>
           </component>
-          <component id="3df2a" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+          <component id="3df2a" class="javax.swing.JTextField" binding="tflInicial">
             <constraints>
               <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="-1" height="40"/>
@@ -165,7 +165,9 @@
                 <maximum-size width="-1" height="40"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <font size="14"/>
+            </properties>
           </component>
           <component id="1ad56" class="javax.swing.JButton" binding="cambiarButton" default-binding="true">
             <constraints>
@@ -179,7 +181,7 @@
               <text value="Cambiar"/>
             </properties>
           </component>
-          <component id="11eb4" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+          <component id="11eb4" class="javax.swing.JTextField" binding="tflPassw">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="250" height="40"/>
@@ -187,9 +189,11 @@
                 <maximum-size width="-1" height="40"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <font size="14"/>
+            </properties>
           </component>
-          <component id="60a2" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+          <component id="60a2" class="javax.swing.JTextField" binding="tflAdmin">
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="-1" height="40"/>
@@ -197,9 +201,11 @@
                 <maximum-size width="-1" height="40"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <font size="14"/>
+            </properties>
           </component>
-          <component id="19c07" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+          <component id="19c07" class="javax.swing.JTextField" binding="tflArranque">
             <constraints>
               <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="-1" height="40"/>
@@ -207,9 +213,11 @@
                 <maximum-size width="-1" height="40"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <font size="14"/>
+            </properties>
           </component>
-          <component id="c30ed" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+          <component id="c30ed" class="javax.swing.JTextField" binding="tflFondo">
             <constraints>
               <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="-1" height="40"/>
@@ -217,9 +225,11 @@
                 <maximum-size width="-1" height="40"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <font size="14"/>
+            </properties>
           </component>
-          <component id="b8191" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+          <component id="b8191" class="javax.swing.JTextField" binding="tflError">
             <constraints>
               <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="-1" height="40"/>
@@ -227,9 +237,11 @@
                 <maximum-size width="-1" height="40"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <font size="14"/>
+            </properties>
           </component>
-          <component id="773c2" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+          <component id="773c2" class="javax.swing.JTextField" binding="tflIdioma">
             <constraints>
               <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="-1" height="40"/>
@@ -237,9 +249,11 @@
                 <maximum-size width="-1" height="40"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <font size="14"/>
+            </properties>
           </component>
-          <component id="8b64f" class="javax.swing.JTextField" binding="textField8" default-binding="true">
+          <component id="8b64f" class="javax.swing.JTextField" binding="tflInforme">
             <constraints>
               <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="-1" height="40"/>
@@ -247,7 +261,9 @@
                 <maximum-size width="-1" height="40"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <font size="14"/>
+            </properties>
           </component>
           <component id="7d885" class="javax.swing.JButton" binding="crearButton" default-binding="true">
             <constraints>

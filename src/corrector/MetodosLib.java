@@ -104,4 +104,30 @@ public class MetodosLib {
         }
     }
 
+    public void guardarCrrIni () {
+
+        Datos dt = new Datos();
+        String tab = "";
+
+        try {
+            FileWriter f = new FileWriter("/Users/joseparra/IdeaProjects/JCorrector/Corrector/src/crr.ini");
+
+                tab = tab + "0000\n";
+                tab = tab + "Versión 0.0\n";
+                tab = tab +  dt.getAdministrador() + "\n";
+                tab = tab + dt.getContrasena() + "\n";
+                tab = tab + dt.getArchivoPortada() + "\n";
+                tab = tab + dt.getArchivoError() + "\n";
+                tab = tab + dt.getIdioma() + "\n";
+                tab = tab + dt.getInforme() + "\n";
+                tab = tab + dt.getFichaArranque() + "\n";
+                tab = tab + dt.getCarpetaFichas() + "\n";
+
+                f.write(tab);
+                f.close();
+        } catch (IOException e) {
+                e.printStackTrace();
+        }
+    }
+
 }
