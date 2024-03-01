@@ -99,12 +99,12 @@
             <properties/>
             <border type="bevel-lowered"/>
             <children>
-              <component id="a963" class="javax.swing.JLabel">
+              <component id="a963" class="javax.swing.JLabel" binding="lblUsuarioAct">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Pepe"/>
+                  <text value="Usuario"/>
                 </properties>
               </component>
             </children>
@@ -191,7 +191,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="87b40" class="javax.swing.JButton" binding="button9" default-binding="true">
+          <component id="87b40" class="javax.swing.JButton" binding="btnAyudaFch">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -236,7 +236,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="87efc" class="javax.swing.JButton" binding="button15" default-binding="true">
+          <component id="87efc" class="javax.swing.JButton" binding="btnInternet">
             <constraints>
               <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -245,7 +245,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="371d0" class="javax.swing.JButton" binding="button8" default-binding="true">
+          <component id="371d0" class="javax.swing.JButton" binding="btnContestar">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>

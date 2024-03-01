@@ -12,19 +12,48 @@ public class Inicio {
     private JLabel lblHora;
     private JLabel lblContrasena;
     private JLabel lblVersion;
+    private int intentos = 0;
 
 
     public Inicio() {
 
+        MetodosLib m = new MetodosLib();
+        m.leerCrrIni();
         ponerFechaYHora();
 
         btnAceptar.addActionListener(e -> {
 
-            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
-            frame.dispose();            // Cierra Inicio
-            Correc crr = new Correc();
-            crr.abrirCorrec();           // Abre Correc
+            intentos++;
+            MetodosLib mtL = new MetodosLib();
+            Datos dt = new Datos();
+            dt.setUsuarioActual(tflNombre.getText());       // Almacena usuario en Datos
+            if (mtL.esAdministrador(tflNombre.getText())) {
+                tflContrasena.setVisible(true);             // Es administrador
+                lblContrasena.setVisible(true);
+                dt.setEsAdmin(true);                        // Almacena esAdmin en Datos
+            } else {
+                dt.setEsAdmin(false);                       //No es Administrador
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
+                frame.dispose();                // Cierra Inicio
+                Correc crr = new Correc();
+                crr.abrirCorrec();              // Abre Correc
+            }
+
+            if (dt.getEsAdmin()) {
+                if (mtL.contrasenaAdmin(tflContrasena.getText())) {     // Contraseña correcta
+                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
+                    frame.dispose();            // Cierra Inicio
+                    Correc crr = new Correc();
+                    crr.abrirCorrec();           // Abre Correc
+                } else if (intentos > 3 ) {
+                    System.exit(0);        // Intento de entrada fraudulento
+                }
+            }
+
+
         });
+
+
     }
 
     private void ponerFechaYHora(){

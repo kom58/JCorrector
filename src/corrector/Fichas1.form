@@ -201,8 +201,8 @@
               <component id="c3a35" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
                 <constraints>
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="8" fill="3" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="40"/>
-                    <preferred-size width="-1" height="40"/>
+                    <minimum-size width="-1" height="30"/>
+                    <preferred-size width="-1" height="30"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -242,7 +242,7 @@
               <component id="cbbc3" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
                 <constraints>
                   <grid row="6" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="40"/>
+                    <minimum-size width="-1" height="30"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -262,7 +262,7 @@
               <component id="1dd7b" class="javax.swing.JComboBox" binding="comboBox3" default-binding="true">
                 <constraints>
                   <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="40"/>
+                    <minimum-size width="-1" height="30"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -277,7 +277,7 @@
               <component id="7c0ea" class="javax.swing.JComboBox" binding="comboBox4" default-binding="true">
                 <constraints>
                   <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="40"/>
+                    <minimum-size width="-1" height="30"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -306,8 +306,8 @@
               <component id="f3dd5" class="javax.swing.JButton" binding="button1" default-binding="true">
                 <constraints>
                   <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="40"/>
-                    <maximum-size width="40" height="40"/>
+                    <minimum-size width="55" height="30"/>
+                    <maximum-size width="-1" height="30"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -317,8 +317,8 @@
               <component id="9c24e" class="javax.swing.JButton" binding="button2" default-binding="true">
                 <constraints>
                   <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="-1" height="40"/>
-                    <maximum-size width="40" height="40"/>
+                    <minimum-size width="50" height="30"/>
+                    <maximum-size width="-1" height="30"/>
                   </grid>
                 </constraints>
                 <properties>

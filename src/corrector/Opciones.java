@@ -10,9 +10,28 @@ public class Opciones {
     private JButton abrirInformeButton;
     private JButton modificarFichaActualButton;
     private JButton btnFichaNueva;
+    private JLabel lblAdmin;
+    private JLabel lblPassw;
+    private JLabel lblFondo;
+    private JLabel lblError;
+    private JLabel lblIdioma;
+    private JLabel lblInforme;
+    private JLabel lblArranque;
+    private JLabel lblCarpeta;
 
 
     public Opciones() {
+
+        Datos dt = new Datos();
+        lblAdmin.setText(dt.getAdministrador());
+        lblPassw.setText(dt.getContrasena());
+        lblFondo.setText(dt.getArchivoPortada());
+        lblError.setText(dt.getArchivoError());
+        lblIdioma.setText(dt.getIdioma());
+        lblInforme.setText(dt.getInforme());
+        lblArranque.setText(dt.getFichaArranque());
+        lblCarpeta.setText(dt.getCarpetaFichas());
+
         btnCerrar.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
             frame.dispose();            // Cierra Opciones
@@ -38,7 +57,7 @@ public class Opciones {
         frame.setContentPane(new Opciones().panPrincipal);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setSize(600,400);
+        //frame.setSize(600,400);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);

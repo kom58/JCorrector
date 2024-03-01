@@ -117,7 +117,7 @@
                 <properties>
                   <font size="16"/>
                   <text value="Contraseña"/>
-                  <visible value="true"/>
+                  <visible value="false"/>
                 </properties>
               </component>
               <component id="85938" class="javax.swing.JTextField" binding="tflNombre">
@@ -138,7 +138,7 @@
                 </constraints>
                 <properties>
                   <font size="16"/>
-                  <visible value="true"/>
+                  <visible value="false"/>
                 </properties>
               </component>
             </children>
