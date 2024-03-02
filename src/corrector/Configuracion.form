@@ -366,11 +366,11 @@
             <children>
               <component id="c30f8" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="16"/>
-                  <text value="Al solucionar la ficha"/>
+                  <text value="Al solucionar la ficha:"/>
                 </properties>
               </component>
               <component id="7acf9" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
@@ -403,16 +403,16 @@
                 </constraints>
                 <properties>
                   <font size="16"/>
-                  <text value="Inicio anónimo: "/>
+                  <text value="Permitir inicio anónimo: "/>
                 </properties>
               </component>
-              <component id="c78b1" class="javax.swing.JCheckBox" binding="noCheckBox" default-binding="true">
+              <component id="c78b1" class="javax.swing.JCheckBox" binding="síCheckBox" default-binding="true">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font size="16"/>
-                  <text value="No"/>
+                  <text value="Sí"/>
                 </properties>
               </component>
             </children>

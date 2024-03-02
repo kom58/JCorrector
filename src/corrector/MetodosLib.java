@@ -61,7 +61,13 @@ public class MetodosLib {
 
     public void leerCrrIni() {
 
-        String rutaFichero = "/Users/joseparra/IdeaProjects/JCorrector/Corrector/src/crr.ini";
+        File d = null;                              // Comprueba y crea directorios
+        String directorio ="/Users/Shared/JCorrector";
+        d = new File(directorio);
+        if (!d.exists()) d.mkdirs();                // Si no existe lo crea
+        String ruta = d.getAbsolutePath();          // Ruta raíz
+        String rutaFichero = ruta + "/crr.ini";
+
         Datos dt = new Datos();
 
         try (BufferedReader buff = new BufferedReader(new FileReader(rutaFichero))) {
@@ -106,15 +112,22 @@ public class MetodosLib {
 
     public void guardarCrrIni () {
 
+        File d = null;                              // Comprueba y crea directorios
+        String directorio ="/Users/Shared/JCorrector";
+        d = new File(directorio);
+        if (!d.exists()) d.mkdirs();                // Si no existe lo crea
+        String ruta = d.getAbsolutePath();          // Ruta raíz
+        String rutaFichero = ruta + "/crr.ini";
+
         Datos dt = new Datos();
         String tab = "";
 
         try {
-            FileWriter f = new FileWriter("/Users/joseparra/IdeaProjects/JCorrector/Corrector/src/crr.ini");
+            FileWriter f = new FileWriter(rutaFichero);
 
                 tab = tab + "0000\n";
                 tab = tab + "Versión 0.0\n";
-                tab = tab +  dt.getAdministrador() + "\n";
+                tab = tab + dt.getAdministrador() + "\n";
                 tab = tab + dt.getContrasena() + "\n";
                 tab = tab + dt.getArchivoPortada() + "\n";
                 tab = tab + dt.getArchivoError() + "\n";
@@ -125,6 +138,7 @@ public class MetodosLib {
 
                 f.write(tab);
                 f.close();
+
         } catch (IOException e) {
                 e.printStackTrace();
         }

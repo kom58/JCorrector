@@ -20,11 +20,15 @@ public class Correc {
     private JButton btnOpciones;
     private JButton btnInternet;
     private JLabel lblUsuarioAct;
+    private JLabel lblFecha;
+    private JLabel lblHora;
+    private JLabel lblTiempo;
 
     public Correc() {
 
         Datos dt = new Datos();
         lblUsuarioAct.setText(dt.getUsuarioActual());
+        ponerFechaYHora();
 
         if (dt.getEsAdmin()) {
             btnOpciones.setVisible(true);
@@ -48,12 +52,23 @@ public class Correc {
         });
     }
 
+    public void ponerFechaYHora(){
+
+        String fecha, hora;
+        MetodosLib mLib = new MetodosLib();
+
+        fecha = mLib.fechaActual();
+        lblFecha.setText(fecha);
+        hora = mLib.horaActual();
+        lblHora.setText(hora);
+    }
+
     public void abrirCorrec() {
         JFrame frame = new JFrame("Corrector");
         frame.setContentPane(new Correc().panPrincipal);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setSize(630, 180);
+        //frame.setSize(630, 180);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);

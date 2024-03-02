@@ -26,7 +26,7 @@ public class Configuracion {
     private JTextField tflInforme;
     private JButton crearButton;
     private JComboBox comboBox1;
-    private JCheckBox noCheckBox;
+    private JCheckBox síCheckBox;
 
     public Configuracion() {
 
