@@ -9,7 +9,7 @@ public class MetodosLib {
 
 
     public String versionCrr() {
-        return "0.0.2";
+        return "0.0.3";
     }
 
     public String fechaActual() {
@@ -59,13 +59,21 @@ public class MetodosLib {
         return correcta;
     }
 
+    public String directorioMWL (){
+
+        File d = null;                                      // Comprueba y crea directorios
+
+        String directorio = "/Users/Shared/JCorrector";     // En Mac
+        d = new File(directorio);
+        if (!d.exists()) d.mkdirs();                        // Si no existe lo crea
+        String ruta = d.getAbsolutePath();                  // Ruta raíz
+
+        return ruta;
+    }
+
     public void leerCrrIni() {
 
-        File d = null;                              // Comprueba y crea directorios
-        String directorio ="/Users/Shared/JCorrector";
-        d = new File(directorio);
-        if (!d.exists()) d.mkdirs();                // Si no existe lo crea
-        String ruta = d.getAbsolutePath();          // Ruta raíz
+        String ruta = directorioMWL();                      // Comprueba directorio Mac Win Lin
         String rutaFichero = ruta + "/crr.ini";
 
         Datos dt = new Datos();
@@ -112,11 +120,7 @@ public class MetodosLib {
 
     public void guardarCrrIni () {
 
-        File d = null;                              // Comprueba y crea directorios
-        String directorio ="/Users/Shared/JCorrector";
-        d = new File(directorio);
-        if (!d.exists()) d.mkdirs();                // Si no existe lo crea
-        String ruta = d.getAbsolutePath();          // Ruta raíz
+        String ruta = directorioMWL();                              // Comprueba directorio Mac Win Lin
         String rutaFichero = ruta + "/crr.ini";
 
         Datos dt = new Datos();
