@@ -31,6 +31,7 @@ public class Correc {
         Datos dt = new Datos();
         lblUsuarioAct.setText(dt.getUsuarioActual());
         ponerFechaYHora();
+        abrirFichaArranque();
 
         if (dt.getEsAdmin()) {
             btnOpciones.setVisible(true);
@@ -58,8 +59,14 @@ public class Correc {
 
                 MetodosLib m = new MetodosLib();
                 Datos dt = new Datos();
-                String  abrir = dt.getArchivoPortada();
-                m.abrirHTML("/med/" + abrir);
+
+                dt.setFichaActiva("/Gotico1/index.html");               // !!!!!!!!! Temporal
+
+                if  (!dt.getFichaActiva().isEmpty()) {
+                    String abrir = dt.getCarpetaFichas();
+                    abrir = abrir + dt.getFichaActiva();
+                    m.abrirHTML(abrir);
+                }
             }
         });
     }
@@ -75,13 +82,25 @@ public class Correc {
         lblHora.setText(hora);
     }
 
+    public void abrirFichaArranque(){
+
+        MetodosLib m = new MetodosLib();
+        Datos dt = new Datos();
+
+        if  (!dt.getFichaArranque().isEmpty()) {
+            String abrir = dt.getCarpetaFichas();
+            abrir = abrir + dt.getFichaArranque();
+            m.abrirHTML(abrir);
+        }
+    }
+
     public void abrirCorrec() {
         JFrame frame = new JFrame("Corrector");
         frame.setContentPane(new Correc().panPrincipal);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         //frame.setSize(630, 180);
-        frame.setLocationRelativeTo(null);
+        //frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
     }

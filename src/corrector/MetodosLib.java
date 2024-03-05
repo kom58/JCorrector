@@ -1,10 +1,11 @@
 package corrector;
 
+import javax.swing.JFrame;
 import java.awt.*;
 import java.util.Calendar;
 import java.io.*;
 import java.awt.event.KeyEvent;     // En Mac
-import java.awt.Window;             // En Windows
+//import java.awt.Window;             // En Windows
 
 public class MetodosLib {
     private int diaA, mesA, anoA;
@@ -67,14 +68,14 @@ public class MetodosLib {
         File d = null;                                      // Comprueba y crea directorios
         String ruta = "";
 
-        if (sist == "mac") {
+        if (sist.equals("mac")) {
             String directorio = "/Users/Shared/JCorrector";     // En Mac
             d = new File(directorio);
             if (!d.exists()) d.mkdirs();                        // Si no existe lo crea
             ruta = d.getAbsolutePath();                         // Ruta raíz
         }
 
-        if (sist == "win") {
+        if (sist.equals("win")) {
             String directorio = "C:/Users/Public/JCorrector";     // En Windows
             d = new File(directorio);
             if (!d.exists()) d.mkdirs();                        // Si no existe lo crea
@@ -174,7 +175,7 @@ public class MetodosLib {
             // Especifica la ruta de la página HTML
             File htmlFile = new File(rutaFichero);
 
-            if (sistema == "mac") {                                                     // Mac
+            if (sistema.equals("mac")) {                                                     // Mac
 
                 // Abre la página HTML en el navegador predeterminado
                 Desktop.getDesktop().browse(htmlFile.toURI());
@@ -187,9 +188,34 @@ public class MetodosLib {
                 robot.keyRelease(KeyEvent.VK_META); // Libera la tecla Command (⌘)
             }
 
-            if (sistema == "win") {                                                     // Windows
+            if (sistema.equals("win")) {                                                     // Windows
 
-                // Declara la variable activeWindow y obtener ventana activa
+                // Abre la página HTML en el navegador predeterminado
+                Desktop.getDesktop().browse(htmlFile.toURI());
+
+                // Crea un marco en blanco para asegurarte de que tu aplicación tenga un foco para volver
+                JFrame frame = new JFrame();
+                frame.setUndecorated(true); // Sin decoraciones
+                frame.setSize(1, 1); // Tamaño mínimo
+                frame.setLocationRelativeTo(null); // Centrado en la pantalla
+                frame.setAlwaysOnTop(true); // Mantener en primer plano
+                frame.setVisible(true);
+
+                // Simula una pulsación de tecla para devolver el foco al formulario Java
+                Robot robot = new Robot();
+                robot.keyPress(KeyEvent.VK_ALT); // Simula presionar la tecla ALT
+                robot.keyPress(KeyEvent.VK_TAB); // Simula presionar la tecla TAB
+                robot.keyRelease(KeyEvent.VK_TAB); // Libera la tecla TAB
+                robot.keyRelease(KeyEvent.VK_ALT); // Libera la tecla ALT
+
+                // Espera un momento para que el cambio de foco se complete
+                Thread.sleep(500);
+
+                // Cierra el marco
+                frame.dispose();
+
+
+              /*  // Declara la variable activeWindow y obtener ventana activa
                 Window activeWindow = null;
                 if (sistema == "win") {
                     activeWindow = javax.swing.FocusManager.getCurrentManager().getActiveWindow();
@@ -202,10 +228,15 @@ public class MetodosLib {
                 if (activeWindow != null) {
                     activeWindow.toFront();
                 }
+               */
+
             }
         }
-        catch (IOException e) {e.printStackTrace(); }
-        catch (AWTException e) {throw new RuntimeException(e); }
+        //catch (IOException e) {e.printStackTrace(); }
+        //catch (AWTException e) {throw new RuntimeException(e); }
+        catch (IOException | InterruptedException | java.awt.AWTException e) {
+            e.printStackTrace();
+        }
 
     }
 

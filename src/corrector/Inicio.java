@@ -35,6 +35,7 @@ public class Inicio {
                 dt.setEsAdmin(false);                       //No es Administrador
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
                 frame.dispose();                // Cierra Inicio
+                abrirLaPortada();               // Abre la Portada
                 Correc crr = new Correc();
                 crr.abrirCorrec();              // Abre Correc
             }
@@ -43,6 +44,7 @@ public class Inicio {
                 if (mtL.contrasenaAdmin(tflContrasena.getText())) {     // Contraseña correcta
                     JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
                     frame.dispose();            // Cierra Inicio
+                    abrirLaPortada();           // Abre la Portada
                     Correc crr = new Correc();
                     crr.abrirCorrec();           // Abre Correc
                 } else if (intentos > 3 ) {
@@ -50,9 +52,7 @@ public class Inicio {
                 }
             }
 
-
         });
-
 
     }
 
@@ -67,6 +67,13 @@ public class Inicio {
         lblHora.setText(hora);
 
         lblVersion.setText("Versión " + mLib.versionCrr());
+    }
+
+    public void abrirLaPortada (){
+        MetodosLib m = new MetodosLib();
+        Datos dt = new Datos();
+        String  abrir = dt.getArchivoPortada();
+        m.abrirHTML("/med/" + abrir);
     }
 
     public static void main(String[] args) {
