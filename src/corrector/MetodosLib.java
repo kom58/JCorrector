@@ -1,7 +1,10 @@
 package corrector;
 
+import java.awt.*;
 import java.util.Calendar;
 import java.io.*;
+import java.awt.event.KeyEvent;     // En Mac
+import java.awt.Window;             // En Windows
 
 public class MetodosLib {
     private int diaA, mesA, anoA;
@@ -59,21 +62,32 @@ public class MetodosLib {
         return correcta;
     }
 
-    public String directorioMWL (){
+    public String directorioMWL (String sist){
 
         File d = null;                                      // Comprueba y crea directorios
+        String ruta = "";
 
-        String directorio = "/Users/Shared/JCorrector";     // En Mac
-        d = new File(directorio);
-        if (!d.exists()) d.mkdirs();                        // Si no existe lo crea
-        String ruta = d.getAbsolutePath();                  // Ruta raíz
+        if (sist == "mac") {
+            String directorio = "/Users/Shared/JCorrector";     // En Mac
+            d = new File(directorio);
+            if (!d.exists()) d.mkdirs();                        // Si no existe lo crea
+            ruta = d.getAbsolutePath();                         // Ruta raíz
+        }
+
+        if (sist == "win") {
+            String directorio = "C:/Users/Public/JCorrector";     // En Windows
+            d = new File(directorio);
+            if (!d.exists()) d.mkdirs();                        // Si no existe lo crea
+            ruta = d.getAbsolutePath();                         // Ruta raíz
+        }
 
         return ruta;
     }
 
     public void leerCrrIni() {
 
-        String ruta = directorioMWL();                      // Comprueba directorio Mac Win Lin
+        String sistema = detectarSistemaOperativo();                // Detecta Sistema Operativo
+        String ruta = directorioMWL(sistema);                       // Comprueba directorio Mac Win Otro
         String rutaFichero = ruta + "/crr.ini";
 
         Datos dt = new Datos();
@@ -120,7 +134,8 @@ public class MetodosLib {
 
     public void guardarCrrIni () {
 
-        String ruta = directorioMWL();                              // Comprueba directorio Mac Win Lin
+        String sistema = detectarSistemaOperativo();                        // Detecta Sistema Operativo
+        String ruta = directorioMWL(sistema);                              // Comprueba directorio Mac Win Lin
         String rutaFichero = ruta + "/crr.ini";
 
         Datos dt = new Datos();
@@ -147,5 +162,70 @@ public class MetodosLib {
                 e.printStackTrace();
         }
     }
+
+    public void abrirHTML (String archHtml) {
+
+        String sistema = detectarSistemaOperativo();        // Detecta Sistema Operativo
+        String ruta = directorioMWL(sistema);               // Comprueba directorio Mac Win Lin
+        String rutaFichero = ruta + archHtml;               // Ruta de la página HTML
+        //String rutaError = ruta + "med/Error.htm";        // Ruta de página Error
+
+        try {
+            // Especifica la ruta de la página HTML
+            File htmlFile = new File(rutaFichero);
+
+            if (sistema == "mac") {                                                     // Mac
+
+                // Abre la página HTML en el navegador predeterminado
+                Desktop.getDesktop().browse(htmlFile.toURI());
+
+                // Simula una pulsación de tecla para devolver el foco al formulario Java
+                Robot robot = new Robot();
+                robot.keyPress(KeyEvent.VK_META); // Simula presionar la tecla Command (⌘)
+                robot.keyPress(KeyEvent.VK_TAB); // Simula presionar la tecla TAB
+                robot.keyRelease(KeyEvent.VK_TAB); // Libera la tecla TAB
+                robot.keyRelease(KeyEvent.VK_META); // Libera la tecla Command (⌘)
+            }
+
+            if (sistema == "win") {                                                     // Windows
+
+                // Declara la variable activeWindow y obtener ventana activa
+                Window activeWindow = null;
+                if (sistema == "win") {
+                    activeWindow = javax.swing.FocusManager.getCurrentManager().getActiveWindow();
+                }
+
+                // Abre la página HTML en el navegador predeterminado
+                Desktop.getDesktop().browse(htmlFile.toURI());
+
+                // Intenta devolver el foco al formulario Java
+                if (activeWindow != null) {
+                    activeWindow.toFront();
+                }
+            }
+        }
+        catch (IOException e) {e.printStackTrace(); }
+        catch (AWTException e) {throw new RuntimeException(e); }
+
+    }
+
+    public String detectarSistemaOperativo (){
+
+        String sistema ="";
+        String sistemaOperativo = System.getProperty("os.name").toLowerCase();
+
+        if (sistemaOperativo.contains("win")) {
+                sistema = "win";
+        } else if (sistemaOperativo.contains("mac")) {
+                sistema = "mac";
+        } else {
+                sistema = "otro";
+        }
+
+        return sistema;
+
+    }
+
+
 
 }

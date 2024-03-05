@@ -1,11 +1,13 @@
 package corrector;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Correc {
 
     private JPanel panPrincipal;
-    private JButton button1;
+    private JButton btnAbrirFicha;
     private JButton btnSalir;
     private JButton button3;
     private JButton button4;
@@ -49,6 +51,16 @@ public class Correc {
             frame.dispose();                // Cierra Correc
             Opciones opc = new Opciones();
             opc.abrirOpciones();           // Abre Configuración
+        });
+        btnAbrirFicha.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                MetodosLib m = new MetodosLib();
+                Datos dt = new Datos();
+                String  abrir = dt.getArchivoPortada();
+                m.abrirHTML("/med/" + abrir);
+            }
         });
     }
 
