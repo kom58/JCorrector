@@ -73,7 +73,7 @@ public class Inicio {
         MetodosLib m = new MetodosLib();
         Datos dt = new Datos();
         String  abrir = dt.getArchivoPortada();
-        m.abrirHTML("/med/" + abrir);
+        m.abrirHTML("/med/" + abrir, false);
     }
 
     public static void main(String[] args) {

@@ -60,12 +60,17 @@ public class Correc {
                 MetodosLib m = new MetodosLib();
                 Datos dt = new Datos();
 
-                dt.setFichaActiva("/Gotico1/index.html");               // !!!!!!!!! Temporal
+                String fichaSeleccionada;
+
+                fichaSeleccionada = m.seleccionarArchivo();
+                dt.setFichaActiva(fichaSeleccionada);
+
+                //dt.setFichaActiva("/Gotico1/index.html");               // !!!!!!!!! Temporal
 
                 if  (!dt.getFichaActiva().isEmpty()) {
-                    String abrir = dt.getCarpetaFichas();
-                    abrir = abrir + dt.getFichaActiva();
-                    m.abrirHTML(abrir);
+                    //String abrir = dt.getCarpetaFichas();
+                    //abrir = abrir + dt.getFichaActiva();
+                    m.abrirHTML(fichaSeleccionada, true);
                 }
             }
         });
@@ -90,7 +95,7 @@ public class Correc {
         if  (!dt.getFichaArranque().isEmpty()) {
             String abrir = dt.getCarpetaFichas();
             abrir = abrir + dt.getFichaArranque();
-            m.abrirHTML(abrir);
+            m.abrirHTML(abrir, false);
         }
     }
 

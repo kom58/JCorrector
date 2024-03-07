@@ -25,8 +25,8 @@ public class Configuracion {
     private JTextField tflIdioma;
     private JTextField tflInforme;
     private JButton crearButton;
-    private JComboBox comboBox1;
-    private JCheckBox síCheckBox;
+    private JComboBox cbxAlSolucionar;
+    private JCheckBox chbInicioAnonim;
 
     public Configuracion() {
 
@@ -39,6 +39,8 @@ public class Configuracion {
         tflError.setText(dt.getArchivoError());
         tflIdioma.setText(dt.getIdioma());
         tflInforme.setText(dt.getInforme());
+        cbxAlSolucionar.setSelectedItem(dt.getAlSolucionarFicha());
+        chbInicioAnonim.setSelected(dt.getInicioAnonimo());
 
         MetodosLib mLib = new MetodosLib();
         lblDia.setText("Estamos a " + mLib.fechaActual());
@@ -63,6 +65,8 @@ public class Configuracion {
                 dt.setInforme(tflInforme.getText());
                 dt.setFichaArranque(tflArranque.getText());
                 dt.setCarpetaFichas(tflInicial.getText());
+                dt.setAlSolucionarFicha((String) cbxAlSolucionar.getSelectedItem());
+                dt.setInicioAnonimo(chbInicioAnonim.isSelected());
 
                 MetodosLib m = new MetodosLib();
                 m.guardarCrrIni();

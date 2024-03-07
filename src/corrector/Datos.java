@@ -12,6 +12,8 @@ public class Datos {
     private static String informe;
     private static String fichaArranque;
     private static String carpetaFichas;
+    private static String alSolucionarFicha;
+    private static boolean inicioAnonimo;
 
 
     public void setUsuarioActual(String usuario){ usuarioActual = usuario;}
@@ -25,6 +27,8 @@ public class Datos {
     public void setInforme(String inf) { informe = inf;}
     public void setFichaArranque(String arr) { fichaArranque = arr;}
     public void setCarpetaFichas(String carp) { carpetaFichas = carp;}
+    public void setAlSolucionarFicha(String alSolucFch) { alSolucionarFicha = alSolucFch;}
+    public void setInicioAnonimo(boolean iniAnonim) { inicioAnonimo = iniAnonim;}
 
     public String getUsuarioActual() { return usuarioActual;}
     public boolean getEsAdmin() { return esAdmin;}
@@ -37,5 +41,7 @@ public class Datos {
     public String getInforme() { return informe;}
     public String getFichaArranque() { return fichaArranque;}
     public String getCarpetaFichas() { return carpetaFichas;}
+    public String getAlSolucionarFicha() { return alSolucionarFicha;}
+    public boolean getInicioAnonimo() {return inicioAnonimo;}
 
 }

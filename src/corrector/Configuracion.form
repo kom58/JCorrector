@@ -373,7 +373,7 @@
                   <text value="Al solucionar la ficha:"/>
                 </properties>
               </component>
-              <component id="7acf9" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+              <component id="7acf9" class="javax.swing.JComboBox" binding="cbxAlSolucionar">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -406,7 +406,7 @@
                   <text value="Permitir inicio anónimo: "/>
                 </properties>
               </component>
-              <component id="c78b1" class="javax.swing.JCheckBox" binding="síCheckBox" default-binding="true">
+              <component id="c78b1" class="javax.swing.JCheckBox" binding="chbInicioAnonim">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>

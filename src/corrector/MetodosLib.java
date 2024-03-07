@@ -1,6 +1,7 @@
 package corrector;
 
-import javax.swing.JFrame;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.util.Calendar;
 import java.io.*;
@@ -13,7 +14,7 @@ public class MetodosLib {
 
 
     public String versionCrr() {
-        return "0.0.3";
+        return "0.0.4";
     }
 
     public String fechaActual() {
@@ -124,6 +125,12 @@ public class MetodosLib {
                     case 10:
                         dt.setCarpetaFichas(linea);                 // CarpetaFichas
                         break;
+                    case 11:
+                        dt.setAlSolucionarFicha(linea);             // AlSolucionarFicha
+                        break;
+                    case 12:
+                        dt.setInicioAnonimo(Boolean.parseBoolean(linea));   // Inicio anónimo
+                        break;
                 }
             }
         } catch (FileNotFoundException ex) {
@@ -155,6 +162,8 @@ public class MetodosLib {
                 tab = tab + dt.getInforme() + "\n";
                 tab = tab + dt.getFichaArranque() + "\n";
                 tab = tab + dt.getCarpetaFichas() + "\n";
+                tab = tab + dt.getAlSolucionarFicha() + "\n";
+                tab = tab + dt.getInicioAnonimo() + "\n";
 
                 f.write(tab);
                 f.close();
@@ -164,12 +173,18 @@ public class MetodosLib {
         }
     }
 
-    public void abrirHTML (String archHtml) {
+    public void abrirHTML (String archHtml, boolean conDir) {
 
-        String sistema = detectarSistemaOperativo();        // Detecta Sistema Operativo
-        String ruta = directorioMWL(sistema);               // Comprueba directorio Mac Win Lin
-        String rutaFichero = ruta + archHtml;               // Ruta de la página HTML
-        //String rutaError = ruta + "med/Error.htm";        // Ruta de página Error
+        String rutaFichero;
+        String sistema = detectarSistemaOperativo();            // Detecta Sistema Operativo
+
+        if (conDir) {
+            rutaFichero = archHtml;                             // Ruta completa de la HTML
+        } else{
+            String ruta = directorioMWL(sistema);               // Comprueba directorio Mac Win Lin
+            rutaFichero = ruta + archHtml;                      // Ruta de la página HTML
+            //String rutaError = ruta + "med/Error.htm";        // Ruta de página Error
+        }
 
         try {
             // Especifica la ruta de la página HTML
@@ -242,7 +257,7 @@ public class MetodosLib {
 
     public String detectarSistemaOperativo (){
 
-        String sistema ="";
+        String sistema;
         String sistemaOperativo = System.getProperty("os.name").toLowerCase();
 
         if (sistemaOperativo.contains("win")) {
@@ -257,6 +272,37 @@ public class MetodosLib {
 
     }
 
+    public String seleccionarArchivo(){
+
+        String archivoSeleccionado;
+
+        JFrame frame = new JFrame("File Chooser Example");
+
+        // Directorio inicial
+        File initialDirectory = new File("/Users/Shared/JCorrector/Fichas");
+
+        JFileChooser fileChooser = new JFileChooser(initialDirectory);
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos html", "html");
+        fileChooser.setFileFilter(filter);
+
+        int returnValue = fileChooser.showOpenDialog(frame);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            archivoSeleccionado = selectedFile.getAbsolutePath();
+            //System.out.println("Archivo seleccionado: " + selectedFile.getAbsolutePath());
+        } else {
+            archivoSeleccionado = "";
+            //System.out.println("No se seleccionó ningún archivo.");
+        }
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setSize(300, 200);
+        //frame.setVisible(true);
+
+        return archivoSeleccionado;
+
+    }
 
 
 }
