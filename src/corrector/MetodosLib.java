@@ -421,7 +421,50 @@ public class MetodosLib {
 
     }
 
-    public void escribirFichaCrr() { }
+    public void escribirFichaCrr() {
+
+
+        String sistema = detectarSistemaOperativo();                        // Detecta Sistema Operativo
+        String ruta = directorioMWL(sistema);                              // Comprueba directorio Mac Win Lin
+        Datos dt = new Datos();
+        String rutaFichero = ruta + dt.getCarpetaFichas() + dt.getCarpetaFch() + "/" + dt.getNombreFch() + ".crr";
+
+        String tab = "";
+
+        try {
+            FileWriter f = new FileWriter(rutaFichero);
+
+            tab = tab + (int)(Math.random() * 8999 + 1000) + "\n";
+            tab = tab + "Versión 0.0\n";
+            tab = tab + dt.getNombreFch() + "\n";
+            tab = tab + dt.getArchivoInicialFch() + "\n";
+            tab = tab + dt.getArchivoAyudaFch() + "\n";
+            tab = tab + dt.getNumeroPreguntasFch() + "\n";
+            tab = tab + dt.getEsDeConsultaFch() + "\n";
+            tab = tab + dt.getNivelFch() + "\n";
+            tab = tab + dt.getCursoFch() + "\n";
+            tab = tab + dt.getAreaFch() + "\n";
+            tab = tab + dt.getTemaFch() + "\n";
+            tab = tab + dt.getComandosFch() + "\n";
+            tab = tab + dt.getTipoFch() + "\n";
+            tab = tab + dt.getRespuestaPreguntaFch() + "\n";
+            tab = tab + dt.getComandosInicioFch() + "\n";
+            tab = tab + dt.getActivarCalcFch() + "\n";
+            tab = tab + dt.getActivarBlocFch() + "\n";
+            tab = tab + dt.getActivarAyudaCrrFch() + "\n";
+            tab = tab + dt.getActivarCronoFch() + "\n";
+            tab = tab + dt.getTipoCorreccionFch() + "\n";
+            tab = tab + dt.getEnvioEmailFch() + "\n";
+            tab = tab + dt.getEnvioInformeFch() + "\n";
+            tab = tab + "[Fin]\n";
+
+            f.write(tab);
+            f.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public String encripLin (String lin, String clav) {
 

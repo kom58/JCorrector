@@ -1,26 +1,24 @@
 package corrector;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Fichas2 {
 
     private JPanel panPrincipal;
-    private JTextArea textArea1;
+    private JTextArea tarRespuesta;
     private JButton btnCancelar;
     private JButton btnAnterior;
     private JButton btnSiguiente;
-    private JButton button1;
-    private JButton button2;
-    private JTextField textField1;
-    private JRadioButton verdaderoFalsoRadioButton;
-    private JRadioButton aBCLRadioButton;
-    private JRadioButton síNoRadioButton;
-    private JRadioButton a12325RadioButton;
-    private JRadioButton textoLibreRadioButton;
-    private JRadioButton diferentesRespuestasPosiblesConsultarRadioButton;
-    private JRadioButton respuestaExactaAUnaRadioButton;
+    private JButton btnPregSiguiente;
+    private JButton btnPregAnterior;
+    private JTextField tflComandos;
+    private JRadioButton rbtVF;
+    private JRadioButton rbtABC;
+    private JRadioButton rbtSN;
+    private JRadioButton rbt123;
+    private JRadioButton rbtTxtLibre;
+    private JRadioButton rbtDifResp;
+    private JRadioButton rbtRespExacta;
 
     public Fichas2() {
         btnCancelar.addActionListener(e -> {

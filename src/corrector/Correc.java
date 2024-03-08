@@ -66,14 +66,11 @@ public class Correc {
 
                 m.leerFichaCrr(fichaSeleccionada);                      // +++++++++++++++++++++++++++
 
-                //dt.setFichaActiva(fichaSeleccionada);
                 dt.setFichaActiva(dt.getArchivoInicialFch());
 
                 String carpFchasyFichaAct = dt.getCarpetaFichas() + dt.getFichaActiva();
 
                 if  (!dt.getFichaActiva().isEmpty()) {
-                    //String abrir = dt.getCarpetaFichas();
-                    //abrir = abrir + dt.getFichaActiva();
                     m.abrirHTML(carpFchasyFichaAct, false);
                 }
             }

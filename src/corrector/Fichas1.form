@@ -165,7 +165,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="2c294" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+              <component id="2c294" class="javax.swing.JTextField" binding="tflNombre">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <minimum-size width="-1" height="30"/>
@@ -176,7 +176,7 @@
                   <font size="14"/>
                 </properties>
               </component>
-              <component id="dc17a" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+              <component id="dc17a" class="javax.swing.JTextField" binding="tflArchInicial">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <minimum-size width="-1" height="30"/>
@@ -187,7 +187,7 @@
                   <font size="14"/>
                 </properties>
               </component>
-              <component id="45811" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+              <component id="45811" class="javax.swing.JTextField" binding="tflArchAyuda">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <minimum-size width="-1" height="30"/>
@@ -198,7 +198,7 @@
                   <font size="14"/>
                 </properties>
               </component>
-              <component id="c3a35" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+              <component id="c3a35" class="javax.swing.JComboBox" binding="cbxNumPreg">
                 <constraints>
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="8" fill="3" indent="0" use-parent-layout="false">
                     <minimum-size width="-1" height="30"/>
@@ -239,7 +239,7 @@
                   </model>
                 </properties>
               </component>
-              <component id="cbbc3" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+              <component id="cbbc3" class="javax.swing.JComboBox" binding="cbxArea">
                 <constraints>
                   <grid row="6" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <minimum-size width="-1" height="30"/>
@@ -259,7 +259,7 @@
                   </model>
                 </properties>
               </component>
-              <component id="1dd7b" class="javax.swing.JComboBox" binding="comboBox3" default-binding="true">
+              <component id="1dd7b" class="javax.swing.JComboBox" binding="cbxNivel">
                 <constraints>
                   <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <minimum-size width="-1" height="30"/>
@@ -274,7 +274,7 @@
                   </model>
                 </properties>
               </component>
-              <component id="7c0ea" class="javax.swing.JComboBox" binding="comboBox4" default-binding="true">
+              <component id="7c0ea" class="javax.swing.JComboBox" binding="cbxCurso">
                 <constraints>
                   <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <minimum-size width="-1" height="30"/>
@@ -292,7 +292,7 @@
                   </model>
                 </properties>
               </component>
-              <component id="2a593" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+              <component id="2a593" class="javax.swing.JTextField" binding="tflTema">
                 <constraints>
                   <grid row="7" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <minimum-size width="-1" height="30"/>
@@ -303,7 +303,7 @@
                   <font size="14"/>
                 </properties>
               </component>
-              <component id="f3dd5" class="javax.swing.JButton" binding="button1" default-binding="true">
+              <component id="f3dd5" class="javax.swing.JButton" binding="btnArchInicial">
                 <constraints>
                   <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="30"/>
@@ -314,7 +314,7 @@
                   <text value="&lt;+&gt;"/>
                 </properties>
               </component>
-              <component id="9c24e" class="javax.swing.JButton" binding="button2" default-binding="true">
+              <component id="9c24e" class="javax.swing.JButton" binding="btnArchAyuda">
                 <constraints>
                   <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="50" height="30"/>
@@ -334,7 +334,7 @@
                   <text value="(Opcional)"/>
                 </properties>
               </component>
-              <component id="5b1b8" class="javax.swing.JCheckBox" binding="fichaDeConsultaCheckBox" default-binding="true">
+              <component id="5b1b8" class="javax.swing.JCheckBox" binding="cbxEsFchConsulta">
                 <constraints>
                   <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>

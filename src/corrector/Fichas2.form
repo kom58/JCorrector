@@ -73,7 +73,7 @@
                   <text value="1 / 10"/>
                 </properties>
               </component>
-              <component id="827b0" class="javax.swing.JButton" binding="button1" default-binding="true">
+              <component id="827b0" class="javax.swing.JButton" binding="btnPregSiguiente">
                 <constraints>
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -82,7 +82,7 @@
                   <text value=""/>
                 </properties>
               </component>
-              <component id="1f2f1" class="javax.swing.JButton" binding="button2" default-binding="true">
+              <component id="1f2f1" class="javax.swing.JButton" binding="btnPregAnterior">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -171,7 +171,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="4f0af" class="javax.swing.JTextArea" binding="textArea1" default-binding="true">
+              <component id="4f0af" class="javax.swing.JTextArea" binding="tarRespuesta">
                 <constraints/>
                 <properties>
                   <font size="14"/>
@@ -190,7 +190,7 @@
         <properties/>
         <border type="etched"/>
         <children>
-          <component id="328ce" class="javax.swing.JRadioButton" binding="verdaderoFalsoRadioButton" default-binding="true">
+          <component id="328ce" class="javax.swing.JRadioButton" binding="rbtVF">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -198,7 +198,7 @@
               <text value="Verdadero / Falso"/>
             </properties>
           </component>
-          <component id="bf1d3" class="javax.swing.JRadioButton" binding="aBCLRadioButton" default-binding="true">
+          <component id="bf1d3" class="javax.swing.JRadioButton" binding="rbtABC">
             <constraints>
               <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -206,7 +206,7 @@
               <text value="A,B,C, ... L (Máximo 12 Opc)"/>
             </properties>
           </component>
-          <component id="3e5a5" class="javax.swing.JRadioButton" binding="síNoRadioButton" default-binding="true">
+          <component id="3e5a5" class="javax.swing.JRadioButton" binding="rbtSN">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -214,7 +214,7 @@
               <text value="Sí / No"/>
             </properties>
           </component>
-          <component id="cf15e" class="javax.swing.JRadioButton" binding="a12325RadioButton" default-binding="true">
+          <component id="cf15e" class="javax.swing.JRadioButton" binding="rbt123">
             <constraints>
               <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -222,7 +222,7 @@
               <text value="1, 2, 3, ... 25"/>
             </properties>
           </component>
-          <component id="82c63" class="javax.swing.JRadioButton" binding="textoLibreRadioButton" default-binding="true">
+          <component id="82c63" class="javax.swing.JRadioButton" binding="rbtTxtLibre">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -230,7 +230,7 @@
               <text value="Texto libre:"/>
             </properties>
           </component>
-          <component id="6ce24" class="javax.swing.JRadioButton" binding="respuestaExactaAUnaRadioButton" default-binding="true">
+          <component id="6ce24" class="javax.swing.JRadioButton" binding="rbtRespExacta">
             <constraints>
               <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -238,7 +238,7 @@
               <text value="Respuesta exacta a una de las propuestas: r1 | r2 | r3 | ..."/>
             </properties>
           </component>
-          <component id="ddfa4" class="javax.swing.JRadioButton" binding="diferentesRespuestasPosiblesConsultarRadioButton" default-binding="true">
+          <component id="ddfa4" class="javax.swing.JRadioButton" binding="rbtDifResp">
             <constraints>
               <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -272,7 +272,7 @@
               <text value="Comandos: "/>
             </properties>
           </component>
-          <component id="de770" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+          <component id="de770" class="javax.swing.JTextField" binding="tflComandos">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="-1" height="30"/>

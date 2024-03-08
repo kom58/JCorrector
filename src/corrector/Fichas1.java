@@ -7,17 +7,17 @@ public class Fichas1 {
     private JPanel panPrincipal;
     private JButton btnCancelar;
     private JButton btnSiguiente;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JComboBox comboBox1;
-    private JComboBox comboBox2;
-    private JComboBox comboBox3;
-    private JComboBox comboBox4;
-    private JTextField textField4;
-    private JButton button1;
-    private JButton button2;
-    private JCheckBox fichaDeConsultaCheckBox;
+    private JTextField tflNombre;
+    private JTextField tflArchInicial;
+    private JTextField tflArchAyuda;
+    private JComboBox cbxNumPreg;
+    private JComboBox cbxArea;
+    private JComboBox cbxNivel;
+    private JComboBox cbxCurso;
+    private JTextField tflTema;
+    private JButton btnArchInicial;
+    private JButton btnArchAyuda;
+    private JCheckBox cbxEsFchConsulta;
 
     public Fichas1() {
         btnCancelar.addActionListener(e -> {

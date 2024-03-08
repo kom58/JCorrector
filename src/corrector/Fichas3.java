@@ -1,6 +1,8 @@
 package corrector;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Fichas3 {
 
@@ -38,6 +40,13 @@ public class Fichas3 {
             frame.dispose();                // Cierra Fichas3
             Correc crr = new Correc();
             crr.abrirCorrec();              // Abre Correc
+        });
+        btnGuardar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MetodosLib m = new MetodosLib();
+                m.escribirFichaCrr();
+            }
         });
     }
 

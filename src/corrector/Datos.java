@@ -18,6 +18,7 @@ public class Datos {
                                                 // Datos Ficha
     private static String nombreFch;
     private static String archivoInicialFch;
+    private static String carpetaFch;
     private static String archivoAyudaFch;
     private static int numeroPreguntasFch;
     private static boolean esDeConsultaFch;
@@ -54,7 +55,11 @@ public class Datos {
     public void setInicioAnonimo(boolean iniAnonim) { inicioAnonimo = iniAnonim;}
 
     public void setNombreFch(String nomF) { nombreFch = nomF;}
-    public void setArchivoInicioFch(String archIniF) { archivoInicialFch = archIniF;}
+    public void setArchivoInicioFch(String archIniF) { archivoInicialFch = archIniF;
+        // Encontrar el índice de la última ocurrencia de "/"
+        int lastIndex = archIniF.lastIndexOf("/");
+        // Extraer la parte izquierda del string
+        carpetaFch = archIniF.substring(0, lastIndex);}
     public void setArchivoAyudaFch(String archAyuF) { archivoAyudaFch = archAyuF;}
     public void setNumeroPreguntasFch(int nPrF) { numeroPreguntasFch = nPrF;}
     public void setEsDeConsultaFch(boolean consF) { esDeConsultaFch = consF;}
@@ -90,6 +95,7 @@ public class Datos {
 
     public String getNombreFch() { return nombreFch;}
     public String getArchivoInicialFch() { return archivoInicialFch;}
+    public String getCarpetaFch() { return carpetaFch;}
     public String getArchivoAyudaFch() { return archivoAyudaFch;}
     public int getNumeroPreguntasFch() { return numeroPreguntasFch;}
     public boolean getEsDeConsultaFch() { return esDeConsultaFch;}
