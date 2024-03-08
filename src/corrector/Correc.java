@@ -63,14 +63,18 @@ public class Correc {
                 String fichaSeleccionada;
 
                 fichaSeleccionada = m.seleccionarArchivo();
-                dt.setFichaActiva(fichaSeleccionada);
 
-                //dt.setFichaActiva("/Gotico1/index.html");               // !!!!!!!!! Temporal
+                m.leerFichaCrr(fichaSeleccionada);                      // +++++++++++++++++++++++++++
+
+                //dt.setFichaActiva(fichaSeleccionada);
+                dt.setFichaActiva(dt.getArchivoInicialFch());
+
+                String carpFchasyFichaAct = dt.getCarpetaFichas() + dt.getFichaActiva();
 
                 if  (!dt.getFichaActiva().isEmpty()) {
                     //String abrir = dt.getCarpetaFichas();
                     //abrir = abrir + dt.getFichaActiva();
-                    m.abrirHTML(fichaSeleccionada, true);
+                    m.abrirHTML(carpFchasyFichaAct, false);
                 }
             }
         });
