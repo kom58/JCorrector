@@ -14,8 +14,6 @@ import java.util.Base64;
 
 
 public class MetodosLib {
-    private int diaA, mesA, anoA;
-    private int horaA, minA;
 
 
     public String versionCrr() { return "0.0.5";}
@@ -24,9 +22,9 @@ public class MetodosLib {
 
         String fechaAc;
         Calendar ahora = Calendar.getInstance();
-        diaA = ahora.get(Calendar.DAY_OF_MONTH);
-        mesA = ahora.get(Calendar.MONTH) + 1;
-        anoA = ahora.get(Calendar.YEAR);
+        int diaA = ahora.get(Calendar.DAY_OF_MONTH);
+        int mesA = ahora.get(Calendar.MONTH) + 1;
+        int anoA = ahora.get(Calendar.YEAR);
 
         fechaAc = String.format("%02d.%02d.%04d", diaA, mesA, anoA);
 
@@ -37,8 +35,8 @@ public class MetodosLib {
 
         String horaAc;
         Calendar ahora = Calendar.getInstance();
-        horaA = ahora.get(Calendar.HOUR_OF_DAY);
-        minA = ahora.get(Calendar.MINUTE);
+        int horaA = ahora.get(Calendar.HOUR_OF_DAY);
+        int minA = ahora.get(Calendar.MINUTE);
 
         horaAc = String.format("%02d:%02d", horaA, minA);
 
@@ -69,7 +67,7 @@ public class MetodosLib {
 
     public String directorioMWL (String sist){
 
-        File d = null;                                      // Comprueba y crea directorios
+        File d;                                      // Comprueba y crea directorios
         String ruta = "";
 
         if (sist.equals("mac")) {
@@ -105,10 +103,10 @@ public class MetodosLib {
                 cont++;
                 switch (cont) {
                     case 1:
-                        String clave = linea;
+                        String clave = linea;                       // Clave pública
                         break;
                     case 2:
-                        String version = linea;
+                        String version = linea;                     // Versión
                         break;
                     case 3:
                         dt.setAdministrador(linea);                 // Administrador
