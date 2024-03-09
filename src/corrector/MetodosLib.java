@@ -19,7 +19,7 @@ public class MetodosLib {
 
 
     public String versionCrr() {
-        return "0.0.5";
+        return "0.0.5w";
     }
 
     public String fechaActual() {
