@@ -27,7 +27,6 @@ public class Fichas2 {
         // Aquí todos los tipos de Fch
         tarRespuesta.append(d.getRespuestaPreguntaFch());
 
-
         btnCancelar.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
             frame.dispose();                // Cierra Fichas2
@@ -41,6 +40,7 @@ public class Fichas2 {
             f1.abrirFichas1();              // Abre Opciones
         });
         btnSiguiente.addActionListener(e -> {
+            guardarDatosFichas2();          // Guarda datos Ficha 2
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
             frame.dispose();                // Cierra Fichas2
             Fichas3 f3 = new Fichas3();
@@ -59,4 +59,14 @@ public class Fichas2 {
         frame.setResizable(false);
         frame.setVisible(true);
     }
+
+    public void guardarDatosFichas2() {
+
+        Datos d = new Datos();
+        d.setComandosFch(tflComandos.getText());
+        // Aqí todos los tipos de Fch
+        d.setRespuestaPreguntaFch(tarRespuesta.getText());
+
+    }
+
 }

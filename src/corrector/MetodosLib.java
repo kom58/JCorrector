@@ -16,7 +16,7 @@ import java.util.Base64;
 public class MetodosLib {
 
 
-    public String versionCrr() { return "0.0.5";}
+    public String versionCrr() { return "0.0.6";}
 
     public String fechaActual() {
 
@@ -335,7 +335,7 @@ public class MetodosLib {
                         dt.setArchivoAyudaFch(linea);                           // ArchivoAyudaFch
                         break;
                     case 6:
-                        dt.setNumeroPreguntasFch(Integer.parseInt(linea));      // NumeroPreguntasFch
+                        dt.setNumeroPreguntasFch(linea);      // NumeroPreguntasFch
                         break;
                     case 7:                                                     // EsDeConsultaFch
                         if ("true".equalsIgnoreCase(linea)) {
@@ -415,7 +415,7 @@ public class MetodosLib {
         String sistema = detectarSistemaOperativo();                        // Detecta Sistema Operativo
         String ruta = directorioMWL(sistema);                              // Comprueba directorio Mac Win Lin
         Datos dt = new Datos();
-        String rutaFichero = ruta + dt.getCarpetaFichas() + dt.getCarpetaFch() + "/" + dt.getNombreFch() + ".crr";
+        String rutaFichero = ruta + "/" + dt.getCarpetaFichas() + dt.getCarpetaFch() + "/" + dt.getNombreFch() + ".crr";
 
         String tab = "";
 

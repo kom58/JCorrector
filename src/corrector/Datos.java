@@ -20,7 +20,7 @@ public class Datos {
     private static String archivoInicialFch;
     private static String carpetaFch;
     private static String archivoAyudaFch;
-    private static int numeroPreguntasFch;
+    private static String numeroPreguntasFch;
     private static boolean esDeConsultaFch;
     private static String nivelFch;
     private static String cursoFch;
@@ -61,7 +61,7 @@ public class Datos {
         // Extraer la parte izquierda del string
         carpetaFch = archIniF.substring(0, lastIndex);}
     public void setArchivoAyudaFch(String archAyuF) { archivoAyudaFch = archAyuF;}
-    public void setNumeroPreguntasFch(int nPrF) { numeroPreguntasFch = nPrF;}
+    public void setNumeroPreguntasFch(String nPrF) { numeroPreguntasFch = nPrF;}
     public void setEsDeConsultaFch(boolean consF) { esDeConsultaFch = consF;}
     public void setNivelFch(String nivF) { nivelFch = nivF;}
     public void setCursoFch(String cursF) { cursoFch = cursF;}
@@ -97,7 +97,7 @@ public class Datos {
     public String getArchivoInicialFch() { return archivoInicialFch;}
     public String getCarpetaFch() { return carpetaFch;}
     public String getArchivoAyudaFch() { return archivoAyudaFch;}
-    public int getNumeroPreguntasFch() { return numeroPreguntasFch;}
+    public String getNumeroPreguntasFch() { return numeroPreguntasFch;}
     public boolean getEsDeConsultaFch() { return esDeConsultaFch;}
     public String getNivelFch() { return nivelFch;}
     public String getCursoFch() { return cursoFch;}
@@ -119,7 +119,7 @@ public class Datos {
         nombreFch = "";
         archivoInicialFch = "";
         archivoAyudaFch = "";
-        numeroPreguntasFch = 0;
+        numeroPreguntasFch = "0";
         esDeConsultaFch = false;
         nivelFch = "...";
         cursoFch = "...";

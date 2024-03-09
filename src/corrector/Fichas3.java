@@ -47,11 +47,10 @@ public class Fichas3 {
             opc.abrirOpciones();                // Abre Opciones
         });
         btnGuardar.addActionListener(e -> {
+            guardarDatosFichas3();              // Guarda Datos Fichas3
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
-
             MetodosLib m = new MetodosLib();
-            m.escribirFichaCrr();               // Guarda Fch
-
+            m.escribirFichaCrr();               // Guarda Fch en Crr
             frame.dispose();                    // Cierra Fichas3
             Correc crr = new Correc();
             crr.abrirCorrec();                  // Abre Correc
@@ -68,5 +67,18 @@ public class Fichas3 {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
+    }
+
+    public void guardarDatosFichas3() {
+
+        Datos d = new Datos();
+        d.setComandosInicioFch(tflComandosIni.getText());
+        d.setActivarCalcFch(cbxCalculadora.isSelected());
+        d.setActivarBlocFch(cbxBloc.isSelected());
+        d.setActivarAyudaCrrFch(cbxAyudaCrr.isSelected());
+        d.setActivarCronoFch(cbxCrono.isSelected());
+        // Aquí tipo de corrección
+        d.setEnvioEmailFch(tflEmail.getText());
+        d.setEnvioInformeFch(tflInforme.getText());
     }
 }

@@ -1,6 +1,9 @@
 package corrector;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class Fichas1 {
 
@@ -38,11 +41,13 @@ public class Fichas1 {
             Opciones opc = new Opciones();
             opc.abrirOpciones();           // Abre Opciones
         });
+
         btnSiguiente.addActionListener(e -> {
-            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
-            frame.dispose();                // Cierra Fichas1
-            Fichas2 f2 = new Fichas2();
-            f2.abrirFichas2();           // Abre Opciones
+                guardarDatosFichas1();             // Guarda datos Fichas 1
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
+                frame.dispose();                // Cierra Fichas1
+                Fichas2 f2 = new Fichas2();
+                f2.abrirFichas2();           // Abre Fichas2
         });
     }
 
@@ -56,6 +61,21 @@ public class Fichas1 {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
+    }
+
+    public void guardarDatosFichas1() {
+
+            Datos d = new Datos();
+            d.setNombreFch(tflNombre.getText());
+            d.setArchivoInicioFch(tflArchInicial.getText());
+            d.setArchivoAyudaFch(tflArchAyuda.getText());
+            d.setNumeroPreguntasFch((String) cbxNumPreg.getSelectedItem());
+            d.setEsDeConsultaFch(chbEsFchConsulta.isSelected());
+            d.setNivelFch((String) cbxNivel.getSelectedItem());
+            d.setCursoFch((String) cbxCurso.getSelectedItem());
+            d.setAreaFch((String) cbxArea.getSelectedItem());
+            d.setTemaFch(tflTema.getText());
+
     }
 
 }
