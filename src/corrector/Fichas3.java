@@ -10,17 +10,17 @@ public class Fichas3 {
     private JButton btnCancelar;
     private JButton btnAnterior;
     private JButton btnGuardar;
-    private JTextField textField1;
-    private JCheckBox calculadoraCheckBox;
-    private JCheckBox blocDeNotasCheckBox;
-    private JCheckBox ayudaDelCorrectorCheckBox;
-    private JCheckBox cronómetroCheckBox;
-    private JRadioButton mostrarErroresPendientesRadioButton;
-    private JRadioButton todosLosEjerciciosCorrectosRadioButton;
-    private JRadioButton informeConPreguntasMalRadioButton;
-    private JRadioButton controlDeEvaluaciónRadioButton;
-    private JTextField textField2;
-    private JTextField textField3;
+    private JTextField tflComandosIni;
+    private JCheckBox cbxCalculadora;
+    private JCheckBox cbxBloc;
+    private JCheckBox cbxAyudaCrr;
+    private JCheckBox cbxCrono;
+    private JRadioButton rbtEjerCorrec;
+    private JRadioButton rbtMostrarErrores;
+    private JRadioButton rbtInformePrMal;
+    private JRadioButton rbtControl;
+    private JTextField tflEmail;
+    private JTextField tflInforme;
 
     public Fichas3() {
         btnAnterior.addActionListener(e -> {
@@ -37,16 +37,13 @@ public class Fichas3 {
         });
         btnGuardar.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
-            frame.dispose();                // Cierra Fichas3
+
+            MetodosLib m = new MetodosLib();
+            m.escribirFichaCrr();               // Guarda Fch
+
+            frame.dispose();                    // Cierra Fichas3
             Correc crr = new Correc();
-            crr.abrirCorrec();              // Abre Correc
-        });
-        btnGuardar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MetodosLib m = new MetodosLib();
-                m.escribirFichaCrr();
-            }
+            crr.abrirCorrec();                  // Abre Correc
         });
     }
 

@@ -140,7 +140,7 @@
               <text value="Informe:"/>
             </properties>
           </component>
-          <component id="c98cd" class="javax.swing.JTextField" binding="tlfInforme">
+          <component id="c98cd" class="javax.swing.JTextField" binding="tflInforme">
             <constraints>
               <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="-1" height="30"/>
