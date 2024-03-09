@@ -21,6 +21,13 @@ public class Fichas2 {
     private JRadioButton rbtRespExacta;
 
     public Fichas2() {
+
+        Datos d = new Datos();          // Falta bucle de Numero de preguntas
+        tflComandos.setText(d.getComandosFch());
+        // Aquí todos los tipos de Fch
+        tarRespuesta.append(d.getRespuestaPreguntaFch());
+
+
         btnCancelar.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
             frame.dispose();                // Cierra Fichas2

@@ -235,7 +235,7 @@
                     <item value="23"/>
                     <item value="24"/>
                     <item value="25"/>
-                    <item value="--"/>
+                    <item value="0"/>
                   </model>
                 </properties>
               </component>
@@ -271,6 +271,7 @@
                     <item value="Secundaria"/>
                     <item value="Bachillerato"/>
                     <item value="Primaria"/>
+                    <item value="..."/>
                   </model>
                 </properties>
               </component>
@@ -289,6 +290,7 @@
                     <item value="Cuarto"/>
                     <item value="Quinto"/>
                     <item value="Sexto"/>
+                    <item value="..."/>
                   </model>
                 </properties>
               </component>
@@ -334,7 +336,7 @@
                   <text value="(Opcional)"/>
                 </properties>
               </component>
-              <component id="5b1b8" class="javax.swing.JCheckBox" binding="cbxEsFchConsulta">
+              <component id="5b1b8" class="javax.swing.JCheckBox" binding="chbEsFchConsulta">
                 <constraints>
                   <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>

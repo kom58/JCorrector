@@ -17,9 +17,21 @@ public class Fichas1 {
     private JTextField tflTema;
     private JButton btnArchInicial;
     private JButton btnArchAyuda;
-    private JCheckBox cbxEsFchConsulta;
+    private JCheckBox chbEsFchConsulta;
 
     public Fichas1() {
+
+        Datos d = new Datos();
+        tflNombre.setText(d.getNombreFch());
+        tflArchInicial.setText(d.getArchivoInicialFch());
+        tflArchAyuda.setText(d.getArchivoAyudaFch());
+        cbxNumPreg.setSelectedItem(d.getNumeroPreguntasFch());
+        chbEsFchConsulta.setSelected(d.getEsDeConsultaFch());
+        cbxNivel.setSelectedItem(d.getNivelFch());
+        cbxCurso.setSelectedItem(d.getCursoFch());
+        cbxArea.setSelectedItem(d.getAreaFch());
+        tflTema.setText(d.getTemaFch());
+
         btnCancelar.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
             frame.dispose();                // Cierra Fichas1

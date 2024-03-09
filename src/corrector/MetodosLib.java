@@ -18,9 +18,7 @@ public class MetodosLib {
     private int horaA, minA;
 
 
-    public String versionCrr() {
-        return "0.0.5w";
-    }
+    public String versionCrr() { return "0.0.5";}
 
     public String fechaActual() {
 
@@ -192,10 +190,8 @@ public class MetodosLib {
         if (conDir) {
             rutaFichero = archHtml;                             // Ruta completa de la HTML
         } else{
-
             String ruta = directorioMWL(sistema);               // Comprueba directorio Mac Win Lin
             rutaFichero = ruta + "/" + archHtml;                // Ruta completa de la página HTML
-            //String rutaError = ruta + "med/Error.htm";        // Ruta de página Error
         }
 
         try {
@@ -240,23 +236,6 @@ public class MetodosLib {
 
                 // Cierra el marco
                 frame.dispose();
-
-
-              /*  // Declara la variable activeWindow y obtener ventana activa
-                Window activeWindow = null;
-                if (sistema == "win") {
-                    activeWindow = javax.swing.FocusManager.getCurrentManager().getActiveWindow();
-                }
-
-                // Abre la página HTML en el navegador predeterminado
-                Desktop.getDesktop().browse(htmlFile.toURI());
-
-                // Intenta devolver el foco al formulario Java
-                if (activeWindow != null) {
-                    activeWindow.toFront();
-                }
-               */
-
             }
         }
         //catch (IOException e) {e.printStackTrace(); }

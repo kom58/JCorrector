@@ -61,12 +61,11 @@ public class Correc {
                 Datos dt = new Datos();
 
                 String fichaSeleccionada;
-
                 fichaSeleccionada = m.seleccionarArchivo();
 
-                m.leerFichaCrr(fichaSeleccionada);                      // +++++++++++++++++++++++++++
+                m.leerFichaCrr(fichaSeleccionada);                      // Lee Crr de la Fch
 
-                dt.setFichaActiva(dt.getArchivoInicialFch());
+                dt.setFichaActiva(dt.getArchivoInicialFch());           // Guarda FichaActiva
 
                 String carpFchasyFichaAct = dt.getCarpetaFichas() + dt.getFichaActiva();
 
@@ -110,6 +109,7 @@ public class Correc {
         frame.pack();
         //frame.setSize(630, 180);
         //frame.setLocationRelativeTo(null);
+        frame.setLocation(50,100);
         frame.setResizable(false);
         frame.setVisible(true);
     }

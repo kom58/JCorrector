@@ -23,6 +23,17 @@ public class Fichas3 {
     private JTextField tflInforme;
 
     public Fichas3() {
+
+        Datos d = new Datos();
+        tflComandosIni.setText(d.getComandosInicioFch());
+        cbxCalculadora.setSelected(d.getActivarCalcFch());
+        cbxBloc.setSelected(d.getActivarBlocFch());
+        cbxAyudaCrr.setSelected(d.getActivarAyudaCrrFch());
+        cbxCrono.setSelected(d.getActivarCronoFch());
+        // Aquí tipo de corrección
+        tflEmail.setText(d.getEnvioEmailFch());
+        tflInforme.setText(d.getEnvioInformeFch());
+
         btnAnterior.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
             frame.dispose();                // Cierra Fichas3

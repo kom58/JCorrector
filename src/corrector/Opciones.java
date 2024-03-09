@@ -1,6 +1,8 @@
 package corrector;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Opciones {
 
@@ -8,7 +10,7 @@ public class Opciones {
     private JButton btnConfig;
     private JButton btnCerrar;
     private JButton abrirInformeButton;
-    private JButton modificarFichaActualButton;
+    private JButton btnModificarFch;
     private JButton btnFichaNueva;
     private JLabel lblAdmin;
     private JLabel lblPassw;
@@ -45,6 +47,14 @@ public class Opciones {
             conf.abrirConf();           // Abre Configuración
         });
         btnFichaNueva.addActionListener(e -> {
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
+            Datos d = new Datos();
+            d.inicializarFch();         //Inicializa los Datos de la Fch
+            frame.dispose();            // Cierra Opciones
+            Fichas1 f1 = new Fichas1();
+            f1.abrirFichas1();           // Abre Fichas1
+        });
+        btnModificarFch.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
             frame.dispose();            // Cierra Opciones
             Fichas1 f1 = new Fichas1();

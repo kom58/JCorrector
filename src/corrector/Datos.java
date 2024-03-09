@@ -115,5 +115,26 @@ public class Datos {
     public String getEnvioEmailFch() { return envioEmailFch;}
     public String getEnvioInformeFch() { return envioInformeFch;}
 
-
+    public void inicializarFch() {
+        nombreFch = "";
+        archivoInicialFch = "";
+        archivoAyudaFch = "";
+        numeroPreguntasFch = 0;
+        esDeConsultaFch = false;
+        nivelFch = "...";
+        cursoFch = "...";
+        areaFch = "...";
+        temaFch = "";
+        comandosFch = "<> ... <>";
+        tipoFch = "";
+        respuestaPreguntaFch = "  ... | ... ";
+        comandosInicioFch = " <> <> <> ";
+        activarCalcFch = false;
+        activarBlocFch = false;
+        activarAyudaCrrFch = false;
+        activarCronoFch = false;
+        tipoCorreccionFch = "";
+        envioEmailFch = "email@gmail.com";
+        envioInformeFch = "Mi informe";
+    }
 }
