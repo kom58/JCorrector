@@ -194,7 +194,7 @@ public class MetodosLib {
         } else{
 
             String ruta = directorioMWL(sistema);               // Comprueba directorio Mac Win Lin
-            rutaFichero = ruta +  archHtml;                      // Ruta de la página HTML
+            rutaFichero = ruta + "/" + archHtml;                // Ruta completa de la página HTML
             //String rutaError = ruta + "med/Error.htm";        // Ruta de página Error
         }
 
@@ -261,7 +261,7 @@ public class MetodosLib {
         }
         //catch (IOException e) {e.printStackTrace(); }
         //catch (AWTException e) {throw new RuntimeException(e); }
-        catch (IOException | InterruptedException | java.awt.AWTException e) {
+        catch (IOException | InterruptedException | AWTException e) {
             e.printStackTrace();
         }
 
@@ -287,11 +287,22 @@ public class MetodosLib {
     public String seleccionarArchivo(){
 
         String archivoSeleccionado;
+        String sistema;
+        String ruta = "";
 
-        JFrame frame = new JFrame("File Chooser Example");
+        JFrame frame = new JFrame("Abrir");
+        sistema = detectarSistemaOperativo();
+        Datos  d = new Datos();
 
-        // Directorio inicial
-        File initialDirectory = new File("/Users/Shared/JCorrector/Fichas");
+        if (sistema.equals("mac")) {
+            // Directorio inicial Mac
+            ruta = "/Users/Shared/JCorrector/" + d.getCarpetaFichas();
+        } else if (sistema.equals("win")) {
+            // Directorio inicial Win
+            ruta = "C:/Users/Public/JCorrector/" + d.getCarpetaFichas();
+        }
+
+        File initialDirectory = new File(ruta);
 
         JFileChooser fileChooser = new JFileChooser(initialDirectory);
 
