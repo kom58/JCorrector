@@ -90,6 +90,7 @@ public class Correc {
 
     public void abrirFichaArranque(){
 
+        /*
         MetodosLib m = new MetodosLib();
         Datos dt = new Datos();
 
@@ -98,6 +99,8 @@ public class Correc {
             abrir = abrir + dt.getFichaArranque();
             m.abrirHTML(abrir, false);
         }
+
+         */
     }
 
     public void abrirCorrec() {

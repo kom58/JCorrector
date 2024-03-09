@@ -72,8 +72,16 @@ public class Inicio {
     public void abrirLaPortada (){
         MetodosLib m = new MetodosLib();
         Datos dt = new Datos();
+
+        String sistema = m.detectarSistemaOperativo();
+        String rutaCorrector = m.directorioMWL(sistema);
+
         String  abrir = dt.getArchivoPortada();
-        m.abrirHTML("/med/" + abrir, false);
+        String ruta = rutaCorrector + "/med/" + abrir;
+
+
+        m.abrirHTML(ruta, true);
+
     }
 
     public static void main(String[] args) {
@@ -81,7 +89,7 @@ public class Inicio {
         frame.setContentPane(new Inicio().panPrincipal);
         frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setSize(570,550);
+        frame.setSize(580,550);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
