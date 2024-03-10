@@ -66,7 +66,7 @@ public class Correc {
             String carpFchasyFichaAct = dt1.getCarpetaFichas() + dt1.getFichaActiva();
 
             if  (!dt1.getFichaActiva().isEmpty()) {
-                m.abrirHTML(carpFchasyFichaAct, false);
+                m.abrirHTML(carpFchasyFichaAct, true);
             }
         });
     }

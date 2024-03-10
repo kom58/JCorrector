@@ -72,6 +72,8 @@ public class Configuracion {
             String carpetaSeleccionada;
             carpetaSeleccionada = m.seleccionarCarpeta();
 
+            tflInicial.setText(carpetaSeleccionada);
+
             //m.leerFichaCrr(fichaSeleccionada);                      // Lee Crr de la Fch
 
             //d.setFichaActiva(d.getArchivoInicialFch());           // Guarda FichaActiva
