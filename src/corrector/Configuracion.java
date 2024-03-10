@@ -67,23 +67,13 @@ public class Configuracion {
         btnCarpetaIni.addActionListener(e -> {
 
             MetodosLib m = new MetodosLib();
-            Datos d = new Datos();
 
             String carpetaSeleccionada;
             carpetaSeleccionada = m.seleccionarCarpeta();
 
-            tflInicial.setText(carpetaSeleccionada);
-
-            //m.leerFichaCrr(fichaSeleccionada);                      // Lee Crr de la Fch
-
-            //d.setFichaActiva(d.getArchivoInicialFch());           // Guarda FichaActiva
-
-            //String carpFchasyFichaAct = d.getCarpetaFichas() + d.getFichaActiva();
-
-            //if  (!d.getFichaActiva().isEmpty()) {
-                //m.abrirHTML(carpFchasyFichaAct, false);
-            //}
-
+            if (!carpetaSeleccionada.equals("")) {
+                tflInicial.setText(carpetaSeleccionada);
+            }
         });
     }
 
