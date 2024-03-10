@@ -10,13 +10,13 @@ public class Configuracion {
     private JButton btnGuardar;
     private JLabel lblDia;
     private JLabel lblVersion;
-    private JButton button2;
-    private JButton button4;
-    private JButton button5;
-    private JButton button6;
-    private JButton button7;
+    private JButton btnCarpetaIni;
+    private JButton btnFchArranque;
+    private JButton btnArchFondo;
+    private JButton btnArchError;
+    private JButton btnIdioma;
     private JTextField tflInicial;
-    private JButton cambiarButton;
+    private JButton btnCambiarPass;
     private JTextField tflPassw;
     private JTextField tflAdmin;
     private JTextField tflArranque;
@@ -24,7 +24,7 @@ public class Configuracion {
     private JTextField tflError;
     private JTextField tflIdioma;
     private JTextField tflInforme;
-    private JButton crearButton;
+    private JButton btnCrearInforme;
     private JComboBox cbxAlSolucionar;
     private JCheckBox chbInicioAnonim;
 
@@ -52,34 +52,38 @@ public class Configuracion {
             Opciones opc = new Opciones();
             opc.abrirOpciones();           // Abre Opciones
         });
-        btnGuardar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        btnGuardar.addActionListener(e -> {
 
-                Datos dt = new Datos();
-                dt.setAdministrador(tflAdmin.getText());
-                dt.setContrasena(tflPassw.getText());
-                dt.setArchivoPortada(tflFondo.getText());
-                dt.setArchivoError(tflError.getText());
-                dt.setIdioma(tflIdioma.getText());
-                dt.setInforme(tflInforme.getText());
-                dt.setFichaArranque(tflArranque.getText());
-                dt.setCarpetaFichas(tflInicial.getText());
-                dt.setAlSolucionarFicha((String) cbxAlSolucionar.getSelectedItem());
-                dt.setInicioAnonimo(chbInicioAnonim.isSelected());
+           guardarConfiguracion();          // Guarda Configuración
 
-                MetodosLib m = new MetodosLib();
-                m.guardarCrrIni();
+            MetodosLib m = new MetodosLib();
+            m.guardarCrrIni();              // Escribe CrrIni
 
-                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
-                frame.dispose();                // Cierra Configuración
-                Opciones opc = new Opciones();
-                opc.abrirOpciones();           // Abre Opciones
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
+            frame.dispose();                // Cierra Configuración
+            Opciones opc = new Opciones();
+            opc.abrirOpciones();           // Abre Opciones
+        });
+        btnCarpetaIni.addActionListener(e -> {
 
-            }
+            MetodosLib m = new MetodosLib();
+            Datos d = new Datos();
+
+            String carpetaSeleccionada;
+            carpetaSeleccionada = m.seleccionarCarpeta();
+
+            //m.leerFichaCrr(fichaSeleccionada);                      // Lee Crr de la Fch
+
+            //d.setFichaActiva(d.getArchivoInicialFch());           // Guarda FichaActiva
+
+            //String carpFchasyFichaAct = d.getCarpetaFichas() + d.getFichaActiva();
+
+            //if  (!d.getFichaActiva().isEmpty()) {
+                //m.abrirHTML(carpFchasyFichaAct, false);
+            //}
+
         });
     }
-
 
     public  void abrirConf() {
         JFrame frame = new JFrame("Configuracion");
@@ -92,5 +96,19 @@ public class Configuracion {
         frame.setVisible(true);
     }
 
+    public void guardarConfiguracion() {
+
+        Datos dt = new Datos();
+        dt.setAdministrador(tflAdmin.getText());
+        dt.setContrasena(tflPassw.getText());
+        dt.setArchivoPortada(tflFondo.getText());
+        dt.setArchivoError(tflError.getText());
+        dt.setIdioma(tflIdioma.getText());
+        dt.setInforme(tflInforme.getText());
+        dt.setFichaArranque(tflArranque.getText());
+        dt.setCarpetaFichas(tflInicial.getText());
+        dt.setAlSolucionarFicha((String) cbxAlSolucionar.getSelectedItem());
+        dt.setInicioAnonimo(chbInicioAnonim.isSelected());
+    }
 
 }

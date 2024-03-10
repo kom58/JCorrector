@@ -2,6 +2,7 @@ package corrector;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.util.Calendar;
 import java.io.*;
@@ -297,11 +298,44 @@ public class MetodosLib {
         }
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //frame.setSize(300, 200);
-        //frame.setVisible(true);
 
         return archivoSeleccionado;
+    }
 
+    public String seleccionarCarpeta() {
+
+        String carpetaSeleccionada = "";
+        //String sistema;
+        //String ruta = "";
+
+        //JFrame frame = new JFrame("Abrir");
+        //sistema = detectarSistemaOperativo();
+        //Datos  d = new Datos();
+/*
+        if (sistema.equals("mac")) {
+            // Directorio inicial Mac
+            // ruta = "/Users/Shared/JCorrector/" + d.getCarpetaFichas();
+            ruta = "/Users/";
+        } else if (sistema.equals("win")) {
+            // Directorio inicial Win
+            ruta = "C:/Users/";
+        }
+*/
+        //File initialDirectory = new File(ruta);
+        //JFileChooser chooser = new JFileChooser(initialDirectory);
+
+        // Así se selecciona el usuario como raiz
+        JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+
+        chooser.setDialogTitle("Seleccionar un directorio");
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+        int returnValue = chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            carpetaSeleccionada = String.valueOf(chooser.getSelectedFile());
+        }
+
+        return carpetaSeleccionada;
     }
 
     public void leerFichaCrr(String fch) {

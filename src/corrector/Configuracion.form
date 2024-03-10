@@ -97,63 +97,63 @@
               <text value="Archivo de fondo"/>
             </properties>
           </component>
-          <component id="6d557" class="javax.swing.JButton" binding="button2" default-binding="true">
+          <component id="6d557" class="javax.swing.JButton" binding="btnCarpetaIni">
             <constraints>
               <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="-1" height="40"/>
-                <maximum-size width="50" height="40"/>
+                <minimum-size width="55" height="40"/>
+                <maximum-size width="55" height="-1"/>
               </grid>
             </constraints>
             <properties>
-              <font size="12"/>
+              <font size="11"/>
               <text value="&lt;+&gt;"/>
             </properties>
           </component>
-          <component id="b0cdc" class="javax.swing.JButton" binding="button4" default-binding="true">
+          <component id="b0cdc" class="javax.swing.JButton" binding="btnFchArranque">
             <constraints>
               <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="-1" height="40"/>
-                <maximum-size width="50" height="40"/>
+                <minimum-size width="55" height="40"/>
+                <maximum-size width="55" height="-1"/>
               </grid>
             </constraints>
             <properties>
-              <font size="12"/>
+              <font size="11"/>
               <text value="&lt;+&gt;"/>
             </properties>
           </component>
-          <component id="da0c0" class="javax.swing.JButton" binding="button5" default-binding="true">
+          <component id="da0c0" class="javax.swing.JButton" binding="btnArchFondo">
             <constraints>
               <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="-1" height="40"/>
-                <maximum-size width="50" height="40"/>
+                <minimum-size width="55" height="40"/>
+                <maximum-size width="55" height="-1"/>
               </grid>
             </constraints>
             <properties>
-              <font size="12"/>
+              <font size="11"/>
               <text value="&lt;+&gt;"/>
             </properties>
           </component>
-          <component id="d8dcd" class="javax.swing.JButton" binding="button6" default-binding="true">
+          <component id="d8dcd" class="javax.swing.JButton" binding="btnArchError">
             <constraints>
               <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="-1" height="40"/>
-                <maximum-size width="50" height="40"/>
+                <minimum-size width="55" height="40"/>
+                <maximum-size width="55" height="-1"/>
               </grid>
             </constraints>
             <properties>
-              <font size="12"/>
+              <font size="11"/>
               <text value="&lt;+&gt;"/>
             </properties>
           </component>
-          <component id="d9a96" class="javax.swing.JButton" binding="button7" default-binding="true">
+          <component id="d9a96" class="javax.swing.JButton" binding="btnIdioma">
             <constraints>
               <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="-1" height="40"/>
-                <maximum-size width="50" height="40"/>
+                <minimum-size width="55" height="40"/>
+                <maximum-size width="55" height="-1"/>
               </grid>
             </constraints>
             <properties>
-              <font size="12"/>
+              <font size="11"/>
               <text value="&lt;+&gt;"/>
             </properties>
           </component>
@@ -169,7 +169,7 @@
               <font size="14"/>
             </properties>
           </component>
-          <component id="1ad56" class="javax.swing.JButton" binding="cambiarButton" default-binding="true">
+          <component id="1ad56" class="javax.swing.JButton" binding="btnCambiarPass">
             <constraints>
               <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <minimum-size width="80" height="40"/>
@@ -177,7 +177,7 @@
               </grid>
             </constraints>
             <properties>
-              <font size="12"/>
+              <font size="11"/>
               <text value="Cambiar"/>
             </properties>
           </component>
@@ -265,14 +265,14 @@
               <font size="14"/>
             </properties>
           </component>
-          <component id="7d885" class="javax.swing.JButton" binding="crearButton" default-binding="true">
+          <component id="7d885" class="javax.swing.JButton" binding="btnCrearInforme">
             <constraints>
               <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <minimum-size width="80" height="40"/>
               </grid>
             </constraints>
             <properties>
-              <font size="12"/>
+              <font size="11"/>
               <text value="Crear"/>
             </properties>
           </component>

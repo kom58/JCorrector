@@ -1,8 +1,6 @@
 package corrector;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Correc {
 
@@ -53,25 +51,22 @@ public class Correc {
             Opciones opc = new Opciones();
             opc.abrirOpciones();           // Abre Configuración
         });
-        btnAbrirFicha.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        btnAbrirFicha.addActionListener(e -> {
 
-                MetodosLib m = new MetodosLib();
-                Datos dt = new Datos();
+            MetodosLib m = new MetodosLib();
+            Datos dt1 = new Datos();
 
-                String fichaSeleccionada;
-                fichaSeleccionada = m.seleccionarArchivo();
+            String fichaSeleccionada;
+            fichaSeleccionada = m.seleccionarArchivo();
 
-                m.leerFichaCrr(fichaSeleccionada);                      // Lee Crr de la Fch
+            m.leerFichaCrr(fichaSeleccionada);                      // Lee Crr de la Fch
 
-                dt.setFichaActiva(dt.getArchivoInicialFch());           // Guarda FichaActiva
+            dt1.setFichaActiva(dt1.getArchivoInicialFch());           // Guarda FichaActiva
 
-                String carpFchasyFichaAct = dt.getCarpetaFichas() + dt.getFichaActiva();
+            String carpFchasyFichaAct = dt1.getCarpetaFichas() + dt1.getFichaActiva();
 
-                if  (!dt.getFichaActiva().isEmpty()) {
-                    m.abrirHTML(carpFchasyFichaAct, false);
-                }
+            if  (!dt1.getFichaActiva().isEmpty()) {
+                m.abrirHTML(carpFchasyFichaAct, false);
             }
         });
     }
