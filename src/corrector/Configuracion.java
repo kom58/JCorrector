@@ -150,11 +150,6 @@ public class Configuracion {
                 m.comprobarArchivo_Crear(archivoInforme);
             }
         });
-        btnCrearInforme.addActionListener(e -> {
-
-
-
-        });
     }
 
     public  void abrirConf() {
