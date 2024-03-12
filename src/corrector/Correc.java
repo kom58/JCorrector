@@ -57,7 +57,7 @@ public class Correc {
             Datos dt1 = new Datos();
 
             String fichaSeleccionada;
-            fichaSeleccionada = m.seleccionarArchivo();
+            fichaSeleccionada = m.seleccionarArchivoFch();
 
             m.leerFichaCrr(fichaSeleccionada);                      // Lee Crr de la Fch
 

@@ -70,6 +70,7 @@ public class Inicio {
     }
 
     public void abrirLaPortada (){
+
         MetodosLib m = new MetodosLib();
         Datos dt = new Datos();
 
@@ -79,9 +80,7 @@ public class Inicio {
         String  abrir = dt.getArchivoPortada();
         String ruta = rutaCorrector + "/med/" + abrir;
 
-
         m.abrirHTML(ruta, true);
-
     }
 
     public static void main(String[] args) {

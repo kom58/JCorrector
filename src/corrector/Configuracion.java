@@ -1,8 +1,6 @@
 package corrector;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Configuracion {
     private JPanel panPrincipal;
@@ -67,13 +65,95 @@ public class Configuracion {
         btnCarpetaIni.addActionListener(e -> {
 
             MetodosLib m = new MetodosLib();
+            Datos d = new Datos();
 
             String carpetaSeleccionada;
             carpetaSeleccionada = m.seleccionarCarpeta();
 
             if (!carpetaSeleccionada.equals("")) {
                 tflInicial.setText(carpetaSeleccionada);
+                d.setCarpetaFichas(carpetaSeleccionada);
             }
+        });
+        btnFchArranque.addActionListener(e -> {
+
+            MetodosLib m = new MetodosLib();
+            Datos d = new Datos();
+
+            String fichaArranque;
+            String fichaSinDir;
+            fichaArranque = m.seleccionarArchivoFch();
+
+
+            if (!fichaArranque.equals("")) {
+                fichaSinDir = fichaArranque.replace(d.getCarpetaFichas(),"");
+                tflArranque.setText(fichaSinDir);
+            }
+        });
+        btnArchFondo.addActionListener(e -> {
+
+            MetodosLib m = new MetodosLib();
+
+            String archivoFondo;
+            String archivoSinDir;
+
+            archivoFondo = m.seleccionarArchivoMed();
+
+            if (!archivoFondo.equals("")) {
+                String sistema = m.detectarSistemaOperativo();
+                String rutaCrrMed = m.directorioMWL(sistema) + "/med/";
+                archivoSinDir = archivoFondo.replace(rutaCrrMed,"");
+                tflFondo.setText(archivoSinDir);
+            }
+        });
+        btnArchError.addActionListener(e -> {
+
+            MetodosLib m = new MetodosLib();
+
+            String archivoError;
+            String archivoSinDir;
+
+            archivoError = m.seleccionarArchivoMed();
+
+            if (!archivoError.equals("")) {
+                String sistema = m.detectarSistemaOperativo();
+                String rutaCrrMed = m.directorioMWL(sistema) + "/med/";
+                archivoSinDir = archivoError.replace(rutaCrrMed,"");
+                tflError.setText(archivoSinDir);
+            }
+        });
+        btnIdioma.addActionListener(e -> {
+
+            MetodosLib m = new MetodosLib();
+
+            String archivoIdioma;
+            String archivoSinDir;
+
+            archivoIdioma = m.seleccionarArchivoCrr("Seleccionar idioma ", "lng");
+
+            if (!archivoIdioma.equals("")) {
+                String sistema = m.detectarSistemaOperativo();
+                String rutaCrr = m.directorioMWL(sistema) + "/";
+                archivoSinDir = archivoIdioma.replace(rutaCrr, "");
+                tflIdioma.setText(archivoSinDir);
+            }
+        });
+        btnCrearInforme.addActionListener(e -> {
+
+            if (!tflInforme.getText().equals("")) {
+                MetodosLib m = new MetodosLib();
+
+                String sistema = m.detectarSistemaOperativo();
+                String dirSistema = m.directorioMWL(sistema);
+                String archivoInforme = dirSistema + "/" + tflInforme.getText() + ".lgx";
+
+                m.comprobarArchivo_Crear(archivoInforme);
+            }
+        });
+        btnCrearInforme.addActionListener(e -> {
+
+
+
         });
     }
 

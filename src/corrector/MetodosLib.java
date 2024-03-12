@@ -7,8 +7,6 @@ import java.awt.*;
 import java.util.Calendar;
 import java.io.*;
 import java.awt.event.KeyEvent;     // En Mac
-//import java.awt.Window;             // En Windows
-
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
@@ -17,7 +15,7 @@ import java.util.Base64;
 public class MetodosLib {
 
 
-    public String versionCrr() { return "0.0.6";}
+    public String versionCrr() { return "0.0.7";}
 
     public String fechaActual() {
 
@@ -262,7 +260,7 @@ public class MetodosLib {
 
     }
 
-    public String seleccionarArchivo(){
+    public String seleccionarArchivoFch(){
 
         String archivoSeleccionado;
         //String sistema;
@@ -272,15 +270,7 @@ public class MetodosLib {
         //sistema = detectarSistemaOperativo();
         Datos  d = new Datos();
 
-        //if (sistema.equals("mac")) {                                // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            // Directorio inicial Mac
-            //ruta = "/Users/Shared/JCorrector/" + d.getCarpetaFichas();
-            //ruta =  d.getCarpetaFichas();
-        //} else if (sistema.equals("win")) {
-            // Directorio inicial Win
-            //ruta = "C:/Users/Public/JCorrector/" + d.getCarpetaFichas();
-            ruta =  d.getCarpetaFichas();
-        //}
+        ruta =  d.getCarpetaFichas();                               // Carpeta Fichas
 
         File initialDirectory = new File(ruta);
 
@@ -303,30 +293,74 @@ public class MetodosLib {
         return archivoSeleccionado;
     }
 
+    public String seleccionarArchivoMed() {
+
+        String archivoSeleccionado;
+        String sistema;
+        String ruta = "";
+
+        JFrame frame = new JFrame("Abrir");
+        sistema = detectarSistemaOperativo();
+
+        ruta = directorioMWL(sistema) + "/med/";            // Carpeta /med/
+
+        File initialDirectory = new File(ruta);
+
+        JFileChooser fileChooser = new JFileChooser(initialDirectory);
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Seleccionar archivo ", "htm", "html");
+        fileChooser.setFileFilter(filter);
+
+        int returnValue = fileChooser.showOpenDialog(frame);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            archivoSeleccionado = selectedFile.getAbsolutePath();
+        } else {
+            archivoSeleccionado = "";
+            //System.out.println("No se seleccionó ningún archivo.");
+        }
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        return archivoSeleccionado;
+
+    }
+
+    public String seleccionarArchivoCrr(String seleccionar, String extension) {
+
+        String archivoSeleccionado;
+        String sistema;
+
+        JFrame frame = new JFrame("Abrir");
+        sistema = detectarSistemaOperativo();
+
+        String ruta = directorioMWL(sistema);            // Carpeta del Corrector
+
+        File initialDirectory = new File(ruta);
+
+        JFileChooser fileChooser = new JFileChooser(initialDirectory);
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(seleccionar, extension);
+        fileChooser.setFileFilter(filter);
+
+        int returnValue = fileChooser.showOpenDialog(frame);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            archivoSeleccionado = selectedFile.getAbsolutePath();
+        } else {
+            archivoSeleccionado = "";
+            //System.out.println("No se seleccionó ningún archivo.");
+        }
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        return archivoSeleccionado;
+
+    }
+
     public String seleccionarCarpeta() {
 
         String carpetaSeleccionada = "";
-
-        /*
-        //String sistema;
-        //String ruta = "";
-
-        //JFrame frame = new JFrame("Abrir");
-        //sistema = detectarSistemaOperativo();
-        //Datos  d = new Datos();
-
-        if (sistema.equals("mac")) {
-            // Directorio inicial Mac
-            // ruta = "/Users/Shared/JCorrector/" + d.getCarpetaFichas();
-            ruta = "/Users/";
-        } else if (sistema.equals("win")) {
-            // Directorio inicial Win
-            ruta = "C:/Users/";
-        }
-
-        //File initialDirectory = new File(ruta);
-        //JFileChooser chooser = new JFileChooser(initialDirectory);
-        */
 
         // Se selecciona el usuario como raiz
         JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -489,6 +523,30 @@ public class MetodosLib {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void comprobarArchivo_Crear (String arch) {
+
+        File archivo = new File(arch);
+
+        if (archivo.exists()) {
+            // El archivo ya existe
+        } else {
+            // El archivo no existe
+            try {
+                // Crear el archivo
+                if (archivo.createNewFile()) {
+                    // Aquí se puede incluir contenido
+                    FileWriter txt = new FileWriter(archivo);
+                    // escribir contenido ...
+                    txt.close();        // Se cierra el archivo
+                } else {
+                    System.out.println("No se pudo crear el archivo");
+                }
+            } catch (IOException e) {
+                System.out.println("Se produjo error al crear archivo");
+            }
         }
     }
 
