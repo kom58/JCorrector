@@ -96,12 +96,17 @@ public class Configuracion {
 
             String archivoFondo;
             String archivoSinDir;
+            String rutaCrrMed ="";
 
             archivoFondo = m.seleccionarArchivoMed();
 
             if (!archivoFondo.equals("")) {
                 String sistema = m.detectarSistemaOperativo();
-                String rutaCrrMed = m.directorioMWL(sistema) + "/med/";
+                if (sistema.equals("mac")) {
+                    rutaCrrMed = m.directorioMWL(sistema) + "/med/";
+                } else if (sistema.equals("win")) {
+                    rutaCrrMed =  m.directorioMWL(sistema) + "\\med\\";
+                }
                 archivoSinDir = archivoFondo.replace(rutaCrrMed,"");
                 tflFondo.setText(archivoSinDir);
             }
@@ -112,12 +117,17 @@ public class Configuracion {
 
             String archivoError;
             String archivoSinDir;
+            String rutaCrrMed ="";
 
             archivoError = m.seleccionarArchivoMed();
 
             if (!archivoError.equals("")) {
                 String sistema = m.detectarSistemaOperativo();
-                String rutaCrrMed = m.directorioMWL(sistema) + "/med/";
+                if (sistema.equals("mac")) {
+                    rutaCrrMed = m.directorioMWL(sistema) + "/med/";
+                } else if (sistema.equals("win")) {
+                    rutaCrrMed =  m.directorioMWL(sistema) + "\\med\\";
+                }
                 archivoSinDir = archivoError.replace(rutaCrrMed,"");
                 tflError.setText(archivoSinDir);
             }
@@ -128,12 +138,17 @@ public class Configuracion {
 
             String archivoIdioma;
             String archivoSinDir;
+            String rutaCrr ="";
 
             archivoIdioma = m.seleccionarArchivoCrr("Seleccionar idioma ", "lng");
 
             if (!archivoIdioma.equals("")) {
                 String sistema = m.detectarSistemaOperativo();
-                String rutaCrr = m.directorioMWL(sistema) + "/";
+                if (sistema.equals("mac")) {
+                    rutaCrr = m.directorioMWL(sistema) + "/";
+                } else if (sistema.equals("win")) {
+                    rutaCrr = m.directorioMWL(sistema) + "\\";
+                }
                 archivoSinDir = archivoIdioma.replace(rutaCrr, "");
                 tflIdioma.setText(archivoSinDir);
             }
@@ -145,8 +160,12 @@ public class Configuracion {
 
                 String sistema = m.detectarSistemaOperativo();
                 String dirSistema = m.directorioMWL(sistema);
-                String archivoInforme = dirSistema + "/" + tflInforme.getText() + ".lgx";
-
+                String archivoInforme = "";
+                if (sistema.equals("mac")){
+                    archivoInforme = dirSistema + "/" + tflInforme.getText() + ".lgx";
+                } else if (sistema.equals("win")) {
+                    archivoInforme = dirSistema + "\\" + tflInforme.getText() + ".lgx";
+                }
                 m.comprobarArchivo_Crear(archivoInforme);
             }
         });
