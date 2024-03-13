@@ -15,7 +15,7 @@ import java.util.Base64;
 public class MetodosLib {
 
 
-    public String versionCrr() { return "0.0.7w";}
+    public String versionCrr() { return "0.0.8";}
 
     public String fechaActual() {
 

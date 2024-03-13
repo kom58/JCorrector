@@ -35,7 +35,9 @@ public class Inicio {
                 dt.setEsAdmin(false);                       //No es Administrador
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
                 frame.dispose();                // Cierra Inicio
-                abrirLaPortada();               // Abre la Portada
+                if (dt.getFichaArranque().equals("")) {
+                    abrirLaPortada();           // Abre la Portada ... siempre q no haya ficha de arranque
+                }
                 Correc crr = new Correc();
                 crr.abrirCorrec();              // Abre Correc
             }
@@ -44,7 +46,9 @@ public class Inicio {
                 if (mtL.contrasenaAdmin(tflContrasena.getText())) {     // Contraseña correcta
                     JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
                     frame.dispose();            // Cierra Inicio
-                    abrirLaPortada();           // Abre la Portada
+                    if (dt.getFichaArranque().equals("")) {
+                        abrirLaPortada();           // Abre la Portada ... siempre q no haya ficha de arranque
+                    }
                     Correc crr = new Correc();
                     crr.abrirCorrec();           // Abre Correc
                 } else if (intentos > 3 ) {

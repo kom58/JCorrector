@@ -61,7 +61,7 @@ public class Correc {
 
             m.leerFichaCrr(fichaSeleccionada);                      // Lee Crr de la Fch
 
-            dt1.setFichaActiva(dt1.getArchivoInicialFch());           // Guarda FichaActiva
+            dt1.setFichaActiva(dt1.getArchivoInicialFch());           // Guarda ArchInicial FichaActiva
 
             String carpFchasyFichaAct = dt1.getCarpetaFichas() + dt1.getFichaActiva();
 
@@ -84,17 +84,19 @@ public class Correc {
 
     public void abrirFichaArranque(){
 
-        /*
-        MetodosLib m = new MetodosLib();
         Datos dt = new Datos();
 
         if  (!dt.getFichaArranque().isEmpty()) {
-            String abrir = dt.getCarpetaFichas();
-            abrir = abrir + dt.getFichaArranque();
-            m.abrirHTML(abrir, false);
-        }
+            MetodosLib m = new MetodosLib();
+            m.leerFichaCrr(dt.getCarpetaFichas() + dt.getFichaArranque());         // Lee Crr de la FchaArranque
+            dt.setFichaActiva(dt.getArchivoInicialFch());           // Guarda ArchInicial FichaACtiva
 
-         */
+            String carpFchasyFichaAct = dt.getCarpetaFichas() + dt.getFichaActiva();
+
+            if  (!dt.getFichaActiva().isEmpty()) {
+                m.abrirHTML(carpFchasyFichaAct, true);
+            }
+        }
     }
 
     public void abrirCorrec() {
