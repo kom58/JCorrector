@@ -19,6 +19,7 @@ public class Fichas2 {
     private JRadioButton rbtTxtLibre;
     private JRadioButton rbtDifResp;
     private JRadioButton rbtRespExacta;
+    private JComboBox cbxRespuesta;
 
     public Fichas2() {
 

@@ -84,7 +84,6 @@ public class Configuracion {
             String fichaSinDir;
             fichaArranque = m.seleccionarArchivoFch();
 
-
             if (!fichaArranque.equals("")) {
                 fichaSinDir = fichaArranque.replace(d.getCarpetaFichas(),"");
                 tflArranque.setText(fichaSinDir);

@@ -7,13 +7,8 @@ import java.awt.*;
 import java.util.Calendar;
 import java.io.*;
 import java.awt.event.KeyEvent;     // En Mac
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
-import java.util.Base64;
-
 
 public class MetodosLib {
-
 
     public String versionCrr() { return "0.0.8";}
 
@@ -276,7 +271,7 @@ public class MetodosLib {
 
         JFileChooser fileChooser = new JFileChooser(initialDirectory);
 
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Fichas Corrector", "crr");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Seleccionar ficha ", "crr");
         fileChooser.setFileFilter(filter);
 
         int returnValue = fileChooser.showOpenDialog(frame);
@@ -291,6 +286,40 @@ public class MetodosLib {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         return archivoSeleccionado;
+    }
+
+    public String seleccionarArchivoHtm() {
+
+        String archivoSeleccionado;
+        //String sistema;
+        String ruta = "";
+
+        JFrame frame = new JFrame("Abrir");
+        //sistema = detectarSistemaOperativo();
+        Datos  d = new Datos();
+
+        ruta =  d.getCarpetaFichas();                               // Carpeta Fichas
+
+        File initialDirectory = new File(ruta);
+
+        JFileChooser fileChooser = new JFileChooser(initialDirectory);
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Seleccionar archivo ", "htm", "html");
+        fileChooser.setFileFilter(filter);
+
+        int returnValue = fileChooser.showOpenDialog(frame);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            archivoSeleccionado = selectedFile.getAbsolutePath();
+        } else {
+            archivoSeleccionado = "";
+            //System.out.println("No se seleccionó ningún archivo.");
+        }
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        return archivoSeleccionado;
+
     }
 
     public String seleccionarArchivoMed() {
@@ -550,8 +579,8 @@ public class MetodosLib {
         }
     }
 
-    public String encripLin (String lin, String clav) {
-
+    public String encLin (String lin, String clav) {
+/*
         String clave = "Version01001" + clav;
 
         try {
@@ -563,11 +592,13 @@ public class MetodosLib {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+ */
         return null;
     }
 
-    public String desencripLin (String lin, String clav) {
-
+    public String desenLin (String lin, String clav) {
+/*
         String clave = "Version01001" + clav;
 
         try {
@@ -579,9 +610,9 @@ public class MetodosLib {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+ */
         return null;
     }
-
-
 
 }

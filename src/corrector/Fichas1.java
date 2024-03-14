@@ -46,6 +46,35 @@ public class Fichas1 {
                 Fichas2 f2 = new Fichas2();
                 f2.abrirFichas2();           // Abre Fichas2
         });
+        btnArchInicial.addActionListener(e -> {
+
+            MetodosLib m = new MetodosLib();
+            Datos dt = new Datos();
+
+            String fichaInicial;
+            String fichaSinDir;
+            fichaInicial = m.seleccionarArchivoHtm();
+
+            if (!fichaInicial.isEmpty()) {
+                fichaSinDir = fichaInicial.replace(dt.getCarpetaFichas(),"");
+                tflArchInicial.setText(fichaSinDir);
+            }
+        });
+        btnArchAyuda.addActionListener(e -> {
+
+            MetodosLib m = new MetodosLib();
+            Datos dt = new Datos();
+
+            String fichaAyuda;
+            String fichaSinDir;
+            fichaAyuda = m.seleccionarArchivoHtm();
+
+            if (!fichaAyuda.isEmpty()) {
+                fichaSinDir = fichaAyuda.replace(dt.getCarpetaFichas(),"");
+                tflArchAyuda.setText(fichaSinDir);
+            }
+
+        });
     }
 
     public void abrirFichas1() {
