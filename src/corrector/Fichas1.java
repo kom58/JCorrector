@@ -1,6 +1,7 @@
 package corrector;
 
 import javax.swing.*;
+import java.awt.event.ItemEvent;
 
 public class Fichas1 {
 
@@ -40,11 +41,19 @@ public class Fichas1 {
         });
 
         btnSiguiente.addActionListener(e -> {
+                                            // Comprueba no vacío el Nombre de la ficha ni ArchInicial
+            if ((!tflNombre.getText().isEmpty()) && (!tflArchInicial.getText().isEmpty())){
                 guardarDatosFichas1();             // Guarda datos Fichas 1
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
                 frame.dispose();                // Cierra Fichas1
-                Fichas2 f2 = new Fichas2();
-                f2.abrirFichas2();           // Abre Fichas2
+                if (cbxNumPreg.getSelectedItem().equals("0")) {
+                    Fichas3 f3 = new Fichas3();
+                    f3.abrirFichas3();           // Abre Fichas3
+                } else {
+                    Fichas2 f2 = new Fichas2();
+                    f2.abrirFichas2();           // Abre Fichas2
+                }
+            }
         });
         btnArchInicial.addActionListener(e -> {
 
@@ -74,6 +83,22 @@ public class Fichas1 {
                 tflArchAyuda.setText(fichaSinDir);
             }
 
+        });
+        chbEsFchConsulta.addActionListener(e -> {
+            if (chbEsFchConsulta.isSelected()) {
+                cbxNumPreg.setSelectedItem("0");
+                cbxNumPreg.setEnabled(false);
+            } else {
+                cbxNumPreg.setEnabled(true);
+            }
+        });
+        cbxNumPreg.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                String selectedItem = cbxNumPreg.getSelectedItem().toString();
+                if ("0".equals(selectedItem)) {
+                    chbEsFchConsulta.setSelected(true);
+                }
+            }
         });
     }
 

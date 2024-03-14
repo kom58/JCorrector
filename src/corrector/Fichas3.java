@@ -35,8 +35,13 @@ public class Fichas3 {
         btnAnterior.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
             frame.dispose();                // Cierra Fichas3
-            Fichas2 f2 = new Fichas2();
-            f2.abrirFichas2();              // Abre Ficha2
+            if (d.getNumeroPreguntasFch().equals("0")) {
+                Fichas1 f1 = new Fichas1();
+                f1.abrirFichas1();           // Abre Fichas1
+            } else {
+                Fichas2 f2 = new Fichas2();
+                f2.abrirFichas2();           // Abre Fichas2
+            }
         });
         btnCancelar.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);

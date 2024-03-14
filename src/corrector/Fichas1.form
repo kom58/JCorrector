@@ -207,9 +207,11 @@
                 </constraints>
                 <properties>
                   <alignmentY value="0.5"/>
+                  <enabled value="true"/>
                   <font size="14"/>
                   <lightWeightPopupEnabled value="true"/>
                   <model>
+                    <item value="0"/>
                     <item value="1"/>
                     <item value="2"/>
                     <item value="3"/>
@@ -235,7 +237,6 @@
                     <item value="23"/>
                     <item value="24"/>
                     <item value="25"/>
-                    <item value="0"/>
                   </model>
                 </properties>
               </component>
