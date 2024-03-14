@@ -69,6 +69,12 @@ public class Correc {
                 m.abrirHTML(carpFchasyFichaAct, true);
             }
         });
+        btnContestar.addActionListener(e -> {
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
+            frame.dispose();                    // Cierra Correc
+            CrrRespuestas cr = new CrrRespuestas();
+            cr.abrirCrrRespuestas();            // Abre CrrRespuestas
+        });
     }
 
     public void ponerFechaYHora(){
