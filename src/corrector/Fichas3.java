@@ -23,6 +23,13 @@ public class Fichas3 {
     public Fichas3() {
 
         Datos d = new Datos();
+
+        ButtonGroup grupo = new ButtonGroup();
+        grupo.add(rbtMostrarErrores);
+        grupo.add(rbtEjerCorrec);
+        grupo.add(rbtControl);
+        grupo.add(rbtInformePrMal);
+
         tflComandosIni.setText(d.getComandosInicioFch());
         cbxCalculadora.setSelected(d.getActivarCalcFch());
         cbxBloc.setSelected(d.getActivarBlocFch());

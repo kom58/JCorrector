@@ -125,16 +125,16 @@ public class Datos {
         cursoFch = "...";
         areaFch = "...";
         temaFch = "";
-        comandosFch = "<> ... <>";
+        comandosFch = "";
         tipoFch = "";
-        respuestaPreguntaFch = "  ... | ... ";
-        comandosInicioFch = " <> <> <> ";
+        respuestaPreguntaFch = "";
+        comandosInicioFch = "";
         activarCalcFch = false;
         activarBlocFch = false;
         activarAyudaCrrFch = false;
         activarCronoFch = false;
         tipoCorreccionFch = "";
-        envioEmailFch = "email@gmail.com";
-        envioInformeFch = "Mi informe";
+        envioEmailFch = "";
+        envioInformeFch = "";
     }
 }
