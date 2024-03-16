@@ -436,7 +436,7 @@ public class MetodosLib {
                         dt.setArchivoAyudaFch(linea);                           // ArchivoAyudaFch
                         break;
                     case 6:
-                        dt.setNumeroPreguntasFch(linea);      // NumeroPreguntasFch
+                        dt.setNumeroPreguntasFch(linea);    // NumeroPreguntasFch
                         break;
                     case 7:                                                     // EsDeConsultaFch
                         if ("true".equalsIgnoreCase(linea)) {
@@ -456,45 +456,45 @@ public class MetodosLib {
                         dt.setTemaFch(linea);                                   // TemaFch
                         break;
                     case 12:
-                        dt.setComandosFch(linea);                               // ComandosFch
-                        break;
-                    case 13:
-                        dt.setTipoFch(linea);                                   // TipoFch
-                        break;
-                    case 14:
-                        dt.setRespuestaPreguntaFch(linea);                      // RespuestaPreguntaFch
-                        break;
-                    case 15:
                         dt.setComandosInicioFch(linea);                         // ComandosInicioFch
                         break;
-                    case 16:                                                    // ActivarCalcFch
+                    case 13:                                                    // ActivarCalcFch
                         if ("true".equalsIgnoreCase(linea)) {
                             dt.setActivarCalcFch(true);
                         } else  { dt.setActivarCalcFch(false); }
                         break;
-                    case 17:                                                    // ActivarBlocFch
+                    case 14:                                                    // ActivarBlocFch
                         if ("true".equalsIgnoreCase(linea)) {
                             dt.setActivarBlocFch(true);
                         } else  { dt.setActivarBlocFch(false); }
                         break;
-                    case 18:                                                    // ActivarAyudaCrrFch
+                    case 15:                                                    // ActivarAyudaCrrFch
                         if ("true".equalsIgnoreCase(linea)) {
                             dt.setActivarAyudaCrrFch(true);
                         } else  { dt.setActivarAyudaCrrFch(false); }
                         break;
-                    case 19:                                                    // ActivarCronoFch
+                    case 16:                                                    // ActivarCronoFch
                         if ("true".equalsIgnoreCase(linea)) {
                             dt.setActivarCronoFch(true);
                         } else  { dt.setActivarCronoFch(false); }
                         break;
-                    case 20:
+                    case 17:
                         dt.setTipoCorreccionFch(linea);                         // TipoCorrecciónFch
                         break;
-                    case 21:
+                    case 18:
                         dt.setEnvioEmailFch(linea);                             // EnvioEmailFch
                         break;
-                    case 22:
+                    case 19:
                         dt.setEnvioInformeFch(linea);                           // EnvioInformeFch
+                        break;
+                    case 20:
+                        dt.setComandosFch(linea);                               // ComandosFch !!!!!!!!!!!!!!!!!!!
+                        break;
+                    case 21:
+                        dt.setTipoFch(linea);                                   // TipoFch !!!!!!!!!!!!!!!!!!!!!!!!
+                        break;
+                    case 22:
+                        dt.setRespuestaPreguntaFch(linea);                      // RespuestaPreguntaFch !!!!!!!!!!!!
                         break;
                     case 23:
                         if (!linea.equals("[Fin]")){                            // [Fin]
@@ -511,7 +511,6 @@ public class MetodosLib {
     }
 
     public void escribirFichaCrr() {
-
 
         //String sistema = detectarSistemaOperativo();                        // Detecta Sistema Operativo
         //String ruta = directorioMWL(sistema);                              // Comprueba directorio Mac Win Lin
@@ -534,9 +533,6 @@ public class MetodosLib {
             tab = tab + dt.getCursoFch() + "\n";
             tab = tab + dt.getAreaFch() + "\n";
             tab = tab + dt.getTemaFch() + "\n";
-            tab = tab + dt.getComandosFch() + "\n";
-            tab = tab + dt.getTipoFch() + "\n";
-            tab = tab + dt.getRespuestaPreguntaFch() + "\n";
             tab = tab + dt.getComandosInicioFch() + "\n";
             tab = tab + dt.getActivarCalcFch() + "\n";
             tab = tab + dt.getActivarBlocFch() + "\n";
@@ -545,6 +541,13 @@ public class MetodosLib {
             tab = tab + dt.getTipoCorreccionFch() + "\n";
             tab = tab + dt.getEnvioEmailFch() + "\n";
             tab = tab + dt.getEnvioInformeFch() + "\n";
+            if (Integer.parseInt(dt.getNumeroPreguntasFch()) == 0) {
+                tab = tab + "\n\n\n";
+            } else if (Integer.parseInt(dt.getNumeroPreguntasFch()) > 0) {
+                tab = tab + "Aquí dt.getComandosFch()  \n";
+                tab = tab + "Aquí dt.getTipoFch() \n";
+                tab = tab + "Aquí dt.getRespuestaPreguntaFch() \n";
+            }
             tab = tab + "[Fin]\n";
 
             f.write(tab);

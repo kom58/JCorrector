@@ -2,6 +2,7 @@ package corrector;
 
 import javax.swing.*;
 import java.awt.event.ItemEvent;
+import java.util.Objects;
 
 public class Fichas1 {
 
@@ -46,6 +47,7 @@ public class Fichas1 {
                 guardarDatosFichas1();             // Guarda datos Fichas 1
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
                 frame.dispose();                // Cierra Fichas1
+
                 if (cbxNumPreg.getSelectedItem().equals("0")) {
                     Fichas3 f3 = new Fichas3();
                     f3.abrirFichas3();           // Abre Fichas3
@@ -53,6 +55,7 @@ public class Fichas1 {
                     Fichas2 f2 = new Fichas2();
                     f2.abrirFichas2();           // Abre Fichas2
                 }
+
             }
         });
         btnArchInicial.addActionListener(e -> {

@@ -32,7 +32,7 @@ public class Fichas2 {
 
         Datos d = new Datos();
 
-        int x =  Integer.parseInt(d.getNumeroPreguntasFch());       // NumeroPreguntasFch
+        int x =  Integer.parseInt(d.getNumeroPreguntasFch());      // NumeroPreguntasFch
 
         comandosPreg = new String[x];
         tipoPreg = new String[x];

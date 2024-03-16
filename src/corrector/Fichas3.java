@@ -35,14 +35,14 @@ public class Fichas3 {
         cbxBloc.setSelected(d.getActivarBlocFch());
         cbxAyudaCrr.setSelected(d.getActivarAyudaCrrFch());
         cbxCrono.setSelected(d.getActivarCronoFch());
-        // Aquí tipo de corrección
+        ponerRadioSelecc();
         tflEmail.setText(d.getEnvioEmailFch());
         tflInforme.setText(d.getEnvioInformeFch());
 
         btnAnterior.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
             frame.dispose();                // Cierra Fichas3
-            if (d.getNumeroPreguntasFch().equals("0")) {
+            if (Integer.parseInt(d.getNumeroPreguntasFch()) == 0) {
                 Fichas1 f1 = new Fichas1();
                 f1.abrirFichas1();           // Abre Fichas1
             } else {
@@ -87,8 +87,46 @@ public class Fichas3 {
         d.setActivarBlocFch(cbxBloc.isSelected());
         d.setActivarAyudaCrrFch(cbxAyudaCrr.isSelected());
         d.setActivarCronoFch(cbxCrono.isSelected());
-        // Aquí tipo de corrección
+        d.setTipoCorreccionFch(verRadioSelecc());
         d.setEnvioEmailFch(tflEmail.getText());
         d.setEnvioInformeFch(tflInforme.getText());
     }
+
+    public String verRadioSelecc () {
+
+        String seleccionado = "";
+
+        if (rbtEjerCorrec.isSelected()) {
+            seleccionado = "Correctos";
+        } else if (rbtMostrarErrores.isSelected()) {
+            seleccionado = "Errores";
+        } else if (rbtInformePrMal.isSelected()) {
+            seleccionado = "Informe";
+        } else if (rbtControl.isSelected()) {
+            seleccionado = "Control";
+        }
+
+        return seleccionado;
+
+    }
+
+    public void ponerRadioSelecc () {
+
+        Datos d = new Datos();
+
+        String tipo = d.getTipoCorreccionFch();
+
+        if (tipo != "") {
+            if (tipo.equals("Correctos")) {
+                rbtEjerCorrec.setSelected(true);
+            } else if (tipo.equals("Errores")) {
+                rbtMostrarErrores.setSelected(true);
+            } else if (tipo.equals("Informe")) {
+                rbtInformePrMal.setSelected(true);
+            } else if (tipo.equals("Control")) {
+                rbtControl.setSelected(true);
+            }
+        }
+    }
+
 }
