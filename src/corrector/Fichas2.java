@@ -239,36 +239,53 @@ public class Fichas2 {
         if (tipo != "") {
             if (tipo.equals("VF")) {
                 rbtVF.setSelected(true); // Selecciona el botón de radio "VF"
+                rbtRespExacta.setEnabled(false);
+                rbtDifResp.setEnabled(false);
+                radioBotonSeleccionado();
                 panTxtRespuesta.setVisible(false);
                 panCbxRespuesta.setVisible(true);
                 cbxRespuesta.setSelectedItem(respuestaPreg[numPregActual - 1]); // Establece la respuesta en el JComboBox
             } else if (tipo.equals("SN")) {
                 rbtSN.setSelected(true); // Selecciona el botón de radio "SN"
+                rbtRespExacta.setEnabled(false);
+                rbtDifResp.setEnabled(false);
+                radioBotonSeleccionado();
                 panTxtRespuesta.setVisible(false);
                 panCbxRespuesta.setVisible(true);
                 cbxRespuesta.setSelectedItem(respuestaPreg[numPregActual - 1]); // Establece la respuesta en el JComboBox
             } else if (tipo.equals("123")) {
                 rbt123.setSelected(true); // Selecciona el botón de radio "123"
+                rbtRespExacta.setEnabled(false);
+                rbtDifResp.setEnabled(false);
+                radioBotonSeleccionado();
                 panTxtRespuesta.setVisible(false);
                 panCbxRespuesta.setVisible(true);
                 cbxRespuesta.setSelectedItem(respuestaPreg[numPregActual - 1]); // Establece la respuesta en el JComboBox
             } else if (tipo.equals("ABC")) {
                 rbtABC.setSelected(true); // Selecciona el botón de radio "ABC"
+                rbtRespExacta.setEnabled(false);
+                rbtDifResp.setEnabled(false);
+                radioBotonSeleccionado();
                 panTxtRespuesta.setVisible(false);
                 panCbxRespuesta.setVisible(true);
                 cbxRespuesta.setSelectedItem(respuestaPreg[numPregActual - 1]); // Establece la respuesta en el JComboBox
             } else if (tipo.equals("Exacta")) {
                 rbtRespExacta.setSelected(true); // Selecciona el botón de radio "Exacta"
+                rbtTxtLibre.setSelected(true);
+                rbtRespExacta.setEnabled(true);
+                rbtDifResp.setEnabled(true);
                 panTxtRespuesta.setVisible(true);
                 panCbxRespuesta.setVisible(false);
                 tarRespuesta.setText(respuestaPreg[numPregActual - 1]); // Establece la respuesta en el JTextArea
             } else if (tipo.equals("Diferente")) {
                 rbtDifResp.setSelected(true); // Selecciona el botón de radio "Diferente"
+                rbtTxtLibre.setSelected(true);
+                rbtRespExacta.setEnabled(true);
+                rbtDifResp.setEnabled(true);
                 panTxtRespuesta.setVisible(true);
                 panCbxRespuesta.setVisible(false);
                 tarRespuesta.setText(respuestaPreg[numPregActual - 1]); // Establece la respuesta en el JTextArea
             }
         }
-
     }
 }

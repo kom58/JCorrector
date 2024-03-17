@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;     // En Mac
 
 public class MetodosLib {
 
-    public String versionCrr() { return "0.0.9";}
+    public String versionCrr() { return "0.0.10";}
 
     public String fechaActual() {
 
@@ -88,17 +88,20 @@ public class MetodosLib {
         String rutaFichero = ruta + "/crr.ini";
 
         Datos dt = new Datos();
+        EncripDecrip ed = new EncripDecrip();
 
         try (BufferedReader buff = new BufferedReader(new FileReader(rutaFichero))) {
             String linea;
+            String clave = "0000";
             int cont = 0;
 
             while ((linea = buff.readLine()) != null) {
                 cont++;
                 switch (cont) {
                     case 1:
-                        String clave = linea;                       // Clave pública
+                        clave = linea;                       // Clave pública
                         break;
+                             /*                                                 SIN ENCRIPTAR
                     case 2:
                         String version = linea;                     // Versión
                         break;
@@ -132,6 +135,43 @@ public class MetodosLib {
                     case 12:
                         dt.setInicioAnonimo(Boolean.parseBoolean(linea));   // Inicio anónimo
                         break;
+
+                              */
+
+                    case 2:
+                        String version = ed.desencripLin(linea,clave);                     // Versión
+                        break;
+                    case 3:
+                        dt.setAdministrador(ed.desencripLin(linea,clave));                 // Administrador
+                        break;
+                    case 4:
+                        dt.setContrasena(ed.desencripLin(linea,clave));                    // Contraseña
+                        break;
+                    case 5:
+                        dt.setArchivoPortada(ed.desencripLin(linea,clave));                // ArchivoPortada
+                        break;
+                    case 6:
+                        dt.setArchivoError(ed.desencripLin(linea,clave));                  // ArchivoError
+                        break;
+                    case 7:
+                        dt.setIdioma(ed.desencripLin(linea,clave));                        // Idioma
+                        break;
+                    case 8:
+                        dt.setInforme(ed.desencripLin(linea,clave));                       // Informe
+                        break;
+                    case 9:
+                        dt.setFichaArranque(ed.desencripLin(linea,clave));                 // Arranque
+                        break;
+                    case 10:
+                        dt.setCarpetaFichas(ed.desencripLin(linea,clave));                 // CarpetaFichas
+                        break;
+                    case 11:
+                        dt.setAlSolucionarFicha(ed.desencripLin(linea,clave));             // AlSolucionarFicha
+                        break;
+                    case 12:
+                        dt.setInicioAnonimo(Boolean.parseBoolean(ed.desencripLin(linea,clave)));   // Inicio anónimo
+                        break;
+                    // */
                 }
             }
         } catch (FileNotFoundException ex) {
@@ -144,8 +184,11 @@ public class MetodosLib {
     public void guardarCrrIni () {
 
         String sistema = detectarSistemaOperativo();                        // Detecta Sistema Operativo
-        String ruta = directorioMWL(sistema);                              // Comprueba directorio Mac Win Lin
+        String ruta = directorioMWL(sistema);                               // Comprueba directorio Mac Win Lin
         String rutaFichero = ruta + "/crr.ini";
+
+        int  clv = (int)(Math.random() * 8999 + 1000);                      // Clave pública
+        String clave = String.valueOf(clv);
 
         Datos dt = new Datos();
         String tab = "";
@@ -153,8 +196,10 @@ public class MetodosLib {
         try {
             FileWriter f = new FileWriter(rutaFichero);
 
-                tab = tab + (int)(Math.random() * 8999 + 1000) + "\n";
-                tab = tab + "Versión 0.0\n";
+                tab = tab + clave + "\n";
+
+                /*                                                          SIN ENCRIPTAR
+                tab = tab + "Versión 0.0" + "\n";
                 tab = tab + dt.getAdministrador() + "\n";
                 tab = tab + dt.getContrasena() + "\n";
                 tab = tab + dt.getArchivoPortada() + "\n";
@@ -165,6 +210,22 @@ public class MetodosLib {
                 tab = tab + dt.getCarpetaFichas() + "\n";
                 tab = tab + dt.getAlSolucionarFicha() + "\n";
                 tab = tab + dt.getInicioAnonimo() + "\n";
+
+                 */
+
+                EncripDecrip ed = new EncripDecrip();
+                tab = tab + ed.encripLin("Versión 1.0",clave) + "\n";
+                tab = tab + ed.encripLin(dt.getAdministrador(),clave) + "\n";
+                tab = tab + ed.encripLin(dt.getContrasena(),clave) + "\n";
+                tab = tab + ed.encripLin(dt.getArchivoPortada(),clave) + "\n";
+                tab = tab + ed.encripLin(dt.getArchivoError(),clave) + "\n";
+                tab = tab + ed.encripLin(dt.getIdioma(),clave) + "\n";
+                tab = tab + ed.encripLin(dt.getInforme(),clave) + "\n";
+                tab = tab + ed.encripLin(dt.getFichaArranque(),clave) + "\n";
+                tab = tab + ed.encripLin(dt.getCarpetaFichas(),clave) + "\n";
+                tab = tab + ed.encripLin(dt.getAlSolucionarFicha(),clave) + "\n";
+                tab = tab + ed.encripLin("" + dt.getInicioAnonimo(),clave) + "\n";
+                // */
 
                 f.write(tab);
                 f.close();
@@ -584,7 +645,7 @@ public class MetodosLib {
 
     public String encLin (String lin, String clav) {
 /*
-        String clave = "Version01001" + clav;
+        String clave = "Version00" + clav;
 
         try {
             SecretKeySpec secretKey = new SecretKeySpec(clave.getBytes(), "AES");
@@ -602,7 +663,7 @@ public class MetodosLib {
 
     public String desenLin (String lin, String clav) {
 /*
-        String clave = "Version01001" + clav;
+        String clave = "Version00" + clav;
 
         try {
             SecretKeySpec secretKey = new SecretKeySpec(clave.getBytes(), "AES");

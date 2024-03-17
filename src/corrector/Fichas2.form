@@ -246,7 +246,7 @@
             </constraints>
             <properties>
               <enabled value="false"/>
-              <text value="Diferentes respuestas posibles: Consultar &quot;Criterior de corrección&quot;"/>
+              <text value="Diferentes respuestas posibles: Consultar &quot;Criterios de corrección&quot;"/>
             </properties>
           </component>
           <component id="3e95d" class="javax.swing.JLabel">
