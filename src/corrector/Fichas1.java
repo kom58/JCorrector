@@ -2,7 +2,6 @@ package corrector;
 
 import javax.swing.*;
 import java.awt.event.ItemEvent;
-import java.util.Objects;
 
 public class Fichas1 {
 
@@ -40,7 +39,6 @@ public class Fichas1 {
             Opciones opc = new Opciones();
             opc.abrirOpciones();           // Abre Opciones
         });
-
         btnSiguiente.addActionListener(e -> {
                                             // Comprueba no vacío el Nombre de la ficha ni ArchInicial
             if ((!tflNombre.getText().isEmpty()) && (!tflArchInicial.getText().isEmpty())){
@@ -129,7 +127,5 @@ public class Fichas1 {
             d.setCursoFch((String) cbxCurso.getSelectedItem());
             d.setAreaFch((String) cbxArea.getSelectedItem());
             d.setTemaFch(tflTema.getText());
-
     }
-
 }
