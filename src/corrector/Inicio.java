@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Inicio {
 
-    private  JPanel panPrincipal;
+    private JPanel panPrincipal;
     private JTextField tflNombre;
     private JTextField tflContrasena;
     private JButton btnAceptar;
@@ -32,7 +32,7 @@ public class Inicio {
                 lblContrasena.setVisible(true);
                 dt.setEsAdmin(true);                        // Almacena esAdmin en Datos
             } else {
-                dt.setEsAdmin(false);                       //No es Administrador
+                dt.setEsAdmin(false);                       // No es Administrador
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
                 frame.dispose();                // Cierra Inicio
                 if (dt.getFichaArranque().isEmpty()) {
@@ -84,7 +84,7 @@ public class Inicio {
         String  abrir = dt.getArchivoPortada();
         String ruta = rutaCorrector + "/med/" + abrir;
 
-        m.abrirHTML(ruta, true);
+        //m.abrirHTML(ruta, true);      AQUI SE ABRE LA PORTADA !!!!!!!!!!!
     }
 
     public static void main(String[] args) {

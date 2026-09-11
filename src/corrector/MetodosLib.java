@@ -2,15 +2,16 @@ package corrector;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
-import java.util.Calendar;
-import java.io.*;
 import java.awt.event.KeyEvent;     // En Mac
+import java.io.*;
+import java.util.Calendar;
 
 public class MetodosLib {
 
-    public String versionCrr() { return "0.0.10";}
+    public String versionCrr() {
+        return "0.1.11";
+    }
 
     public String fechaActual() {
 
@@ -42,8 +43,12 @@ public class MetodosLib {
         boolean esAd = false;
         Datos dt = new Datos();
 
-        if (usuario.equals(dt.getAdministrador())) { esAd = true;}
-        if (usuario.equals("kkk")) { esAd = true;}
+        if (usuario.equals(dt.getAdministrador())) {
+            esAd = true;
+        }
+        if (usuario.equals("kkk")) {
+            esAd = true;
+        }
 
         return esAd;
     }
@@ -53,13 +58,17 @@ public class MetodosLib {
         boolean correcta = false;
         Datos dt = new Datos();
 
-        if (passw.equals(dt.getContrasena())) { correcta = true;}
-        if (passw.equals("lll")) { correcta = true;}
+        if (passw.equals(dt.getContrasena())) {
+            correcta = true;
+        }
+        if (passw.equals("lll")) {
+            correcta = true;
+        }
 
         return correcta;
     }
 
-    public String directorioMWL (String sist){
+    public String directorioMWL(String sist) {
 
         File d;                                      // Comprueba y crea directorios
         String ruta = "";
@@ -139,37 +148,37 @@ public class MetodosLib {
                               */
 
                     case 2:
-                        String version = ed.desencripLin(linea,clave);                     // Versión
+                        String version = ed.desencripLin(linea, clave);                     // Versión
                         break;
                     case 3:
-                        dt.setAdministrador(ed.desencripLin(linea,clave));                 // Administrador
+                        dt.setAdministrador(ed.desencripLin(linea, clave));                 // Administrador
                         break;
                     case 4:
-                        dt.setContrasena(ed.desencripLin(linea,clave));                    // Contraseña
+                        dt.setContrasena(ed.desencripLin(linea, clave));                    // Contraseña
                         break;
                     case 5:
-                        dt.setArchivoPortada(ed.desencripLin(linea,clave));                // ArchivoPortada
+                        dt.setArchivoPortada(ed.desencripLin(linea, clave));                // ArchivoPortada
                         break;
                     case 6:
-                        dt.setArchivoError(ed.desencripLin(linea,clave));                  // ArchivoError
+                        dt.setArchivoError(ed.desencripLin(linea, clave));                  // ArchivoError
                         break;
                     case 7:
-                        dt.setIdioma(ed.desencripLin(linea,clave));                        // Idioma
+                        dt.setIdioma(ed.desencripLin(linea, clave));                        // Idioma
                         break;
                     case 8:
-                        dt.setInforme(ed.desencripLin(linea,clave));                       // Informe
+                        dt.setInforme(ed.desencripLin(linea, clave));                       // Informe
                         break;
                     case 9:
-                        dt.setFichaArranque(ed.desencripLin(linea,clave));                 // Arranque
+                        dt.setFichaArranque(ed.desencripLin(linea, clave));                 // Arranque
                         break;
                     case 10:
-                        dt.setCarpetaFichas(ed.desencripLin(linea,clave));                 // CarpetaFichas
+                        dt.setCarpetaFichas(ed.desencripLin(linea, clave));                 // CarpetaFichas
                         break;
                     case 11:
-                        dt.setAlSolucionarFicha(ed.desencripLin(linea,clave));             // AlSolucionarFicha
+                        dt.setAlSolucionarFicha(ed.desencripLin(linea, clave));             // AlSolucionarFicha
                         break;
                     case 12:
-                        dt.setInicioAnonimo(Boolean.parseBoolean(ed.desencripLin(linea,clave)));   // Inicio anónimo
+                        dt.setInicioAnonimo(Boolean.parseBoolean(ed.desencripLin(linea, clave)));   // Inicio anónimo
                         break;
                     // */
                 }
@@ -181,13 +190,13 @@ public class MetodosLib {
         }
     }
 
-    public void guardarCrrIni () {
+    public void guardarCrrIni() {
 
         String sistema = detectarSistemaOperativo();                        // Detecta Sistema Operativo
         String ruta = directorioMWL(sistema);                               // Comprueba directorio Mac Win Lin
         String rutaFichero = ruta + "/crr.ini";
 
-        int  clv = (int)(Math.random() * 8999 + 1000);                      // Clave pública
+        int clv = (int) (Math.random() * 8999 + 1000);                      // Clave pública
         String clave = String.valueOf(clv);
 
         Datos dt = new Datos();
@@ -196,7 +205,7 @@ public class MetodosLib {
         try {
             FileWriter f = new FileWriter(rutaFichero);
 
-                tab = tab + clave + "\n";
+            tab = tab + clave + "\n";
 
                 /*                                                          SIN ENCRIPTAR
                 tab = tab + "Versión 0.0" + "\n";
@@ -213,36 +222,36 @@ public class MetodosLib {
 
                  */
 
-                EncripDecrip ed = new EncripDecrip();
-                tab = tab + ed.encripLin("Versión 1.0",clave) + "\n";
-                tab = tab + ed.encripLin(dt.getAdministrador(),clave) + "\n";
-                tab = tab + ed.encripLin(dt.getContrasena(),clave) + "\n";
-                tab = tab + ed.encripLin(dt.getArchivoPortada(),clave) + "\n";
-                tab = tab + ed.encripLin(dt.getArchivoError(),clave) + "\n";
-                tab = tab + ed.encripLin(dt.getIdioma(),clave) + "\n";
-                tab = tab + ed.encripLin(dt.getInforme(),clave) + "\n";
-                tab = tab + ed.encripLin(dt.getFichaArranque(),clave) + "\n";
-                tab = tab + ed.encripLin(dt.getCarpetaFichas(),clave) + "\n";
-                tab = tab + ed.encripLin(dt.getAlSolucionarFicha(),clave) + "\n";
-                tab = tab + ed.encripLin("" + dt.getInicioAnonimo(),clave) + "\n";
-                // */
+            EncripDecrip ed = new EncripDecrip();
+            tab = tab + ed.encripLin("Versión 1.0", clave) + "\n";
+            tab = tab + ed.encripLin(dt.getAdministrador(), clave) + "\n";
+            tab = tab + ed.encripLin(dt.getContrasena(), clave) + "\n";
+            tab = tab + ed.encripLin(dt.getArchivoPortada(), clave) + "\n";
+            tab = tab + ed.encripLin(dt.getArchivoError(), clave) + "\n";
+            tab = tab + ed.encripLin(dt.getIdioma(), clave) + "\n";
+            tab = tab + ed.encripLin(dt.getInforme(), clave) + "\n";
+            tab = tab + ed.encripLin(dt.getFichaArranque(), clave) + "\n";
+            tab = tab + ed.encripLin(dt.getCarpetaFichas(), clave) + "\n";
+            tab = tab + ed.encripLin(dt.getAlSolucionarFicha(), clave) + "\n";
+            tab = tab + ed.encripLin("" + dt.getInicioAnonimo(), clave) + "\n";
+            // */
 
-                f.write(tab);
-                f.close();
+            f.write(tab);
+            f.close();
 
         } catch (IOException e) {
-                e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
-    public void abrirHTML (String archHtml, boolean conDir) {
+    public void abrirHTML(String archHtml, boolean conDir) {
 
         String rutaFichero;
         String sistema = detectarSistemaOperativo();            // Detecta Sistema Operativo
 
         if (conDir) {
             rutaFichero = archHtml;                             // Ruta completa de la HTML
-        } else{
+        } else {
             String ruta = directorioMWL(sistema);               // Comprueba directorio Mac Win Lin
             rutaFichero = ruta + "/" + archHtml;                // Ruta completa de la página HTML
         }
@@ -299,24 +308,24 @@ public class MetodosLib {
 
     }
 
-    public String detectarSistemaOperativo (){
+    public String detectarSistemaOperativo() {
 
         String sistema;
         String sistemaOperativo = System.getProperty("os.name").toLowerCase();
 
         if (sistemaOperativo.contains("win")) {
-                sistema = "win";
+            sistema = "win";
         } else if (sistemaOperativo.contains("mac")) {
-                sistema = "mac";
+            sistema = "mac";
         } else {
-                sistema = "otro";
+            sistema = "otro";
         }
 
         return sistema;
 
     }
 
-    public String seleccionarArchivoFch(){
+    public String seleccionarArchivoFch() {
 
         String archivoSeleccionado;
         //String sistema;
@@ -324,9 +333,9 @@ public class MetodosLib {
 
         JFrame frame = new JFrame("Abrir");
         //sistema = detectarSistemaOperativo();
-        Datos  d = new Datos();
+        Datos d = new Datos();
 
-        ruta =  d.getCarpetaFichas();                               // Carpeta Fichas
+        ruta = d.getCarpetaFichas();                               // Carpeta Fichas
 
         File initialDirectory = new File(ruta);
 
@@ -357,9 +366,9 @@ public class MetodosLib {
 
         JFrame frame = new JFrame("Abrir");
         //sistema = detectarSistemaOperativo();
-        Datos  d = new Datos();
+        Datos d = new Datos();
 
-        ruta =  d.getCarpetaFichas();                               // Carpeta Fichas
+        ruta = d.getCarpetaFichas();                               // Carpeta Fichas
 
         File initialDirectory = new File(ruta);
 
@@ -450,7 +459,27 @@ public class MetodosLib {
 
     public String seleccionarCarpeta() {
 
-        String carpetaSeleccionada = "";
+
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Seleccionar carpeta");
+        chooser.showDialog(null, "Seleccionar");
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+        int resultado = chooser.showOpenDialog(null);
+
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File carpeta = chooser.getSelectedFile();
+            System.out.println(carpeta.getAbsolutePath());
+
+            return carpeta.getAbsolutePath();
+        }
+
+        return null;
+
+    }
+
+
+        /*String carpetaSeleccionada = "";
 
         // Se selecciona el usuario como raiz
         JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -462,9 +491,37 @@ public class MetodosLib {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             carpetaSeleccionada = String.valueOf(chooser.getSelectedFile());
         }
+         */
 
-        return carpetaSeleccionada;
-    }
+        /*
+        UIManager.put("FileChooser.openButtonText", "Abrir");
+        UIManager.put("FileChooser.saveButtonText", "Guardar");
+        UIManager.put("FileChooser.cancelButtonText", "Cancelar");
+        UIManager.put("FileChooser.folderNameLabelText", "Nombre de la carpeta");
+
+        SwingUtilities.invokeLater(() -> {
+
+            String carpetaSeleccionada = "";
+
+            JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+            chooser.setDialogTitle("Seleccionar un directorio");
+            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+            int returnValue = chooser.showOpenDialog(null);
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                carpetaSeleccionada = String.valueOf(chooser.getSelectedFile());
+            }
+
+            //return carpetaSeleccionada;
+        });
+
+         */
+
+        //return carpetaSeleccionada;
+
+        //return "000000843525";
+
+        //}
 
     public void leerFichaCrr(String fch) {
 
@@ -502,7 +559,9 @@ public class MetodosLib {
                     case 7:                                                     // EsDeConsultaFch
                         if ("true".equalsIgnoreCase(linea)) {
                             dt.setEsDeConsultaFch(true);
-                            } else  { dt.setEsDeConsultaFch(false); }
+                        } else {
+                            dt.setEsDeConsultaFch(false);
+                        }
                         break;
                     case 8:
                         dt.setNivelFch(linea);                                  // NivelFch
@@ -522,22 +581,30 @@ public class MetodosLib {
                     case 13:                                                    // ActivarCalcFch
                         if ("true".equalsIgnoreCase(linea)) {
                             dt.setActivarCalcFch(true);
-                        } else  { dt.setActivarCalcFch(false); }
+                        } else {
+                            dt.setActivarCalcFch(false);
+                        }
                         break;
                     case 14:                                                    // ActivarBlocFch
                         if ("true".equalsIgnoreCase(linea)) {
                             dt.setActivarBlocFch(true);
-                        } else  { dt.setActivarBlocFch(false); }
+                        } else {
+                            dt.setActivarBlocFch(false);
+                        }
                         break;
                     case 15:                                                    // ActivarAyudaCrrFch
                         if ("true".equalsIgnoreCase(linea)) {
                             dt.setActivarAyudaCrrFch(true);
-                        } else  { dt.setActivarAyudaCrrFch(false); }
+                        } else {
+                            dt.setActivarAyudaCrrFch(false);
+                        }
                         break;
                     case 16:                                                    // ActivarCronoFch
                         if ("true".equalsIgnoreCase(linea)) {
                             dt.setActivarCronoFch(true);
-                        } else  { dt.setActivarCronoFch(false); }
+                        } else {
+                            dt.setActivarCronoFch(false);
+                        }
                         break;
                     case 17:
                         dt.setTipoCorreccionFch(linea);                         // TipoCorrecciónFch
@@ -558,8 +625,9 @@ public class MetodosLib {
                         dt.setRespuestaPreguntaFch(linea);                      // RespuestaPreguntaFch !!!!!!!!!!!!
                         break;
                     case 23:
-                        if (!linea.equals("[Fin]")){                            // [Fin]
-                            System.err.println("Error en [FchCrr:23]");}
+                        if (!linea.equals("[Fin]")) {                            // [Fin]
+                            System.err.println("Error en [FchCrr:23]");
+                        }
                         break;
                 }
             }
@@ -583,7 +651,7 @@ public class MetodosLib {
         try {
             FileWriter f = new FileWriter(rutaFichero);
 
-            tab = tab + (int)(Math.random() * 8999 + 1000) + "\n";
+            tab = tab + (int) (Math.random() * 8999 + 1000) + "\n";
             tab = tab + "Versión 0.0\n";
             tab = tab + dt.getNombreFch() + "\n";
             tab = tab + dt.getArchivoInicialFch() + "\n";
@@ -619,7 +687,7 @@ public class MetodosLib {
         }
     }
 
-    public void comprobarArchivo_Crear (String arch) {
+    public void comprobarArchivo_Crear(String arch) {
 
         File archivo = new File(arch);
 
@@ -643,7 +711,7 @@ public class MetodosLib {
         }
     }
 
-    public String encLin (String lin, String clav) {
+    public String encLin(String lin, String clav) {
 /*
         String clave = "Version00" + clav;
 
@@ -661,7 +729,7 @@ public class MetodosLib {
         return null;
     }
 
-    public String desenLin (String lin, String clav) {
+    public String desenLin(String lin, String clav) {
 /*
         String clave = "Version00" + clav;
 
