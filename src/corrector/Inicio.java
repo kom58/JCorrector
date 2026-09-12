@@ -84,7 +84,7 @@ public class Inicio {
         String  abrir = dt.getArchivoPortada();
         String ruta = rutaCorrector + "/med/" + abrir;
 
-        //m.abrirHTML(ruta, true);      AQUI SE ABRE LA PORTADA !!!!!!!!!!!
+        m.abrirHTML(ruta, true);
     }
 
     public static void main(String[] args) {

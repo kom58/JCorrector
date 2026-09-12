@@ -15,7 +15,7 @@ public class Correc {
     private JButton btnContestar;
     private JButton btnAyudaFch;
     private JButton button10;
-    private JButton button11;
+    private JButton btnAyuda;
     private JButton button12;
     private JButton btnOpciones;
     private JButton btnInternet;
@@ -44,6 +44,20 @@ public class Correc {
         }
 
         btnSalir.addActionListener(e -> System.exit(0));
+
+        btnAyuda.addActionListener(e -> {
+
+            MetodosLib m = new MetodosLib();
+            //Datos dt = new Datos();
+
+            String sistema = m.detectarSistemaOperativo();
+            String rutaCorrector = m.directorioMWL(sistema);
+
+            //String  abrir = dt.getArchivoPortada();
+            String ruta = rutaCorrector + "/hlp/Inicio.htm";
+
+            m.abrirHTML(ruta, true);
+        });
 
         btnOpciones.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);

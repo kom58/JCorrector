@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
-import java.awt.event.KeyEvent;     // En Mac
+import java.awt.event.KeyEvent;      // En Mac
 import java.io.*;
 import java.util.Calendar;
 
