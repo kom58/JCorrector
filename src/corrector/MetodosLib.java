@@ -2,6 +2,7 @@ package corrector;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.awt.event.KeyEvent;     // En Mac
 import java.io.*;
@@ -460,68 +461,27 @@ public class MetodosLib {
     public String seleccionarCarpeta() {
 
 
-        JFileChooser chooser = new JFileChooser();
-        chooser.setDialogTitle("Seleccionar carpeta");
-        chooser.showDialog(null, "Seleccionar");
-        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-
-        int resultado = chooser.showOpenDialog(null);
-
-        if (resultado == JFileChooser.APPROVE_OPTION) {
-            File carpeta = chooser.getSelectedFile();
-            System.out.println(carpeta.getAbsolutePath());
-
-            return carpeta.getAbsolutePath();
-        }
-
-        return null;
-
-    }
-
-
-        /*String carpetaSeleccionada = "";
-
-        // Se selecciona el usuario como raiz
-        JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-
-        chooser.setDialogTitle("Seleccionar un directorio");
-        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-
-        int returnValue = chooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            carpetaSeleccionada = String.valueOf(chooser.getSelectedFile());
-        }
-         */
-
-        /*
         UIManager.put("FileChooser.openButtonText", "Abrir");
         UIManager.put("FileChooser.saveButtonText", "Guardar");
         UIManager.put("FileChooser.cancelButtonText", "Cancelar");
         UIManager.put("FileChooser.folderNameLabelText", "Nombre de la carpeta");
 
-        SwingUtilities.invokeLater(() -> {
+        JFileChooser chooser = new JFileChooser(
+                FileSystemView.getFileSystemView().getHomeDirectory()
+        );
 
-            String carpetaSeleccionada = "";
+        chooser.setDialogTitle("Seleccionar un directorio");
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
-            JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-            chooser.setDialogTitle("Seleccionar un directorio");
-            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int returnValue = chooser.showOpenDialog(null);
 
-            int returnValue = chooser.showOpenDialog(null);
-            if (returnValue == JFileChooser.APPROVE_OPTION) {
-                carpetaSeleccionada = String.valueOf(chooser.getSelectedFile());
-            }
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            return chooser.getSelectedFile().getAbsolutePath();
+        }
 
-            //return carpetaSeleccionada;
-        });
+        return "";
 
-         */
-
-        //return carpetaSeleccionada;
-
-        //return "000000843525";
-
-        //}
+    }
 
     public void leerFichaCrr(String fch) {
 
