@@ -57,9 +57,49 @@ public class Fichas3 {
             opc.abrirOpciones();                // Abre Opciones
         });
         btnGuardar.addActionListener(e -> {
+            /*
             guardarDatosFichas3();              // Guarda Datos Fichas3
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
             MetodosLib m = new MetodosLib();
+
+            // Reinicializa completamente las respuestas
+            d.respPreguntaFch.clear();
+
+            if (Integer.parseInt(d.getNumeroPreguntasFch()) == 0){      // Guarda respuestas
+                d.respPreguntaFch.add ("---");
+            } else  {
+                d.respPreguntaFch.add ("* * R * *");
+                for ( int i=1; i <= (Integer.parseInt(d.getNumeroPreguntasFch())) ; i++) {
+                    d.respPreguntaFch.add (d.posibleRespuesta.get(i));
+                }
+            }
+             */
+
+            guardarDatosFichas3();
+
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
+            MetodosLib m = new MetodosLib();
+
+            int numeroPreguntas = Integer.parseInt(d.getNumeroPreguntasFch());
+
+            // Reinicializa completamente las respuestas
+            d.respPreguntaFch.clear();
+
+            if (numeroPreguntas == 0) {
+
+                d.respPreguntaFch.add("---");
+
+            } else {
+
+                d.respPreguntaFch.add("* * R * *");
+
+                for (int i = 1; i <= numeroPreguntas; i++) {
+                    d.respPreguntaFch.add(d.posibleRespuesta.get(i));
+                }
+            }
+
+
+
             m.escribirFichaCrr();               // Guarda Fch en Crr
             frame.dispose();                    // Cierra Fichas3
             Correc crr = new Correc();

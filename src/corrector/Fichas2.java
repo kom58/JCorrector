@@ -82,7 +82,9 @@ public class Fichas2 {
         btnPregAnterior.addActionListener(e -> {
             if (numPregActual > 1) {
                 comandosPreg[numPregActual-1] = tflComandos.getText();      // Guarda ComandosPreg
-                tipoPreg[numPregActual-1] = verRadioSeleccionado();         // Guarda Tipo y Respuesta Preg
+                tipoPreg[numPregActual-1] = verRadioSeleccionado();         // Guarda Tipo
+
+                d.posibleRespuesta.set(numPregActual,tarRespuesta.getText());       // Guarda Respuesta
 
                 numPregActual--;
                 tflComandos.setText(comandosPreg[numPregActual - 1]);
@@ -93,7 +95,9 @@ public class Fichas2 {
         btnPregSiguiente.addActionListener(e -> {
             if (numPregActual < Integer.parseInt(d.getNumeroPreguntasFch())) {
                 comandosPreg[numPregActual-1] = tflComandos.getText();      // Guarda ComandosPreg
-                tipoPreg[numPregActual-1] = verRadioSeleccionado();         // Guarda Tipo y Respuesta Preg
+                tipoPreg[numPregActual-1] = verRadioSeleccionado();         // Guarda Tipo
+
+                d.posibleRespuesta.add(numPregActual,tarRespuesta.getText());       // Guarda Respuesta
 
                 numPregActual++;
                 tflComandos.setText(comandosPreg[numPregActual - 1]);
@@ -125,7 +129,8 @@ public class Fichas2 {
         Datos d = new Datos();
         d.setComandosFch(tflComandos.getText());
         // Aqí todos los tipos de Fch
-        d.setRespuestaPreguntaFch(tarRespuesta.getText());
+        //d.setRespuestaPreguntaFch(tarRespuesta.getText());
+        d.posibleRespuesta.set(numPregActual,tarRespuesta.getText());       // Guarda Respuesta actual
 
     }
 

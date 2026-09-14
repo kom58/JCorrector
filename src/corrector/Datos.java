@@ -1,5 +1,8 @@
 package corrector;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Datos {
                                                 // Configuración
     private static String usuarioActual;
@@ -28,7 +31,10 @@ public class Datos {
     private static String temaFch;
     private static String comandosFch;
     private static String tipoFch;
-    private static String respuestaPreguntaFch;             // Crear para multiples posibles preguntas
+    //private static String respuestaPreguntaFch;
+    static List<String> respPreguntaFch = new ArrayList<>();
+    static List<String> posibleRespuesta = new ArrayList<>();
+
     private static String comandosInicioFch;
     private static boolean activarCalcFch;
     private static boolean activarBlocFch;
@@ -69,7 +75,7 @@ public class Datos {
     public void setTemaFch(String temF) { temaFch = temF;}
     public void setComandosFch(String comF) { comandosFch = comF;}
     public void setTipoFch(String tipF) { tipoFch = tipF;}
-    public void setRespuestaPreguntaFch(String respF) { respuestaPreguntaFch = respF;}
+    //public void setRespuestaPreguntaFch(String respF) { respuestaPreguntaFch = respF;}
     public void setComandosInicioFch(String comF) { comandosInicioFch = comF;}
     public void setActivarCalcFch(boolean calF) { activarCalcFch = calF;}
     public void setActivarBlocFch(boolean blocF) { activarBlocFch = blocF;}
@@ -105,7 +111,7 @@ public class Datos {
     public String getTemaFch() { return temaFch;}
     public String getComandosFch() { return comandosFch;}
     public String getTipoFch() { return tipoFch;}
-    public String getRespuestaPreguntaFch() { return respuestaPreguntaFch;}
+    //public String getRespuestaPreguntaFch() { return respuestaPreguntaFch;}
     public String getComandosInicioFch() { return comandosInicioFch;}
     public boolean getActivarCalcFch() { return activarCalcFch;}
     public boolean getActivarBlocFch() { return activarBlocFch;}
@@ -127,7 +133,10 @@ public class Datos {
         temaFch = "";
         comandosFch = "";
         tipoFch = "";
-        respuestaPreguntaFch = "";
+        respPreguntaFch.clear();
+        respPreguntaFch.add("* * R * *");
+        posibleRespuesta.clear();
+        posibleRespuesta.add("-----");
         comandosInicioFch = "";
         activarCalcFch = false;
         activarBlocFch = false;

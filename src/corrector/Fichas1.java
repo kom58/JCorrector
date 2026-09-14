@@ -49,7 +49,11 @@ public class Fichas1 {
                 if (cbxNumPreg.getSelectedItem().equals("0")) {
                     Fichas3 f3 = new Fichas3();
                     f3.abrirFichas3();           // Abre Fichas3
-                } else {
+                } else {                        // Inicializa posibles respuestas))
+                    for ( int i=1; i <= Integer.parseInt(cbxNumPreg.getSelectedItem().toString()); i++) {
+                        d.posibleRespuesta.add (i,"");
+                    }
+
                     Fichas2 f2 = new Fichas2();
                     f2.abrirFichas2();           // Abre Fichas2
                 }

@@ -582,7 +582,7 @@ public class MetodosLib {
                         dt.setTipoFch(linea);                                   // TipoFch !!!!!!!!!!!!!!!!!!!!!!!!
                         break;
                     case 22:
-                        dt.setRespuestaPreguntaFch(linea);                      // RespuestaPreguntaFch !!!!!!!!!!!!
+                        //dt.setRespuestaPreguntaFch(linea);                      // RespuestaPreguntaFch !!!!!!!!!!!!
                         break;
                     case 23:
                         if (!linea.equals("[Fin]")) {                            // [Fin]
@@ -630,12 +630,24 @@ public class MetodosLib {
             tab = tab + dt.getTipoCorreccionFch() + "\n";
             tab = tab + dt.getEnvioEmailFch() + "\n";
             tab = tab + dt.getEnvioInformeFch() + "\n";
+
+
+            System.out.println("Número preguntas: " + dt.getNumeroPreguntasFch());
+            System.out.println("Tamaño posibleRespuesta: " + dt.respPreguntaFch.size());
+
+            for (int i = 0; i < dt.respPreguntaFch.size(); i++) {
+                System.out.println("[" + i + "] = " + dt.posibleRespuesta.get(i));
+            }
+
+
             if (Integer.parseInt(dt.getNumeroPreguntasFch()) == 0) {
-                tab = tab + "\n\n\n";
+                tab = tab + "- - - - -\n";
             } else if (Integer.parseInt(dt.getNumeroPreguntasFch()) > 0) {
-                tab = tab + "Aquí dt.getComandosFch()  \n";
-                tab = tab + "Aquí dt.getTipoFch() \n";
-                tab = tab + "Aquí dt.getRespuestaPreguntaFch() \n";
+                tab = tab + dt.respPreguntaFch.get(0) + "\n";
+
+                for ( int i=1; i <= (Integer.parseInt(dt.getNumeroPreguntasFch())) ; i++) {
+                    tab = tab + dt.respPreguntaFch.get(i) + "\n";
+                }
             }
             tab = tab + "[Fin]\n";
 

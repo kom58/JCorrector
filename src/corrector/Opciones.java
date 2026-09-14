@@ -46,7 +46,7 @@ public class Opciones {
         btnFichaNueva.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
             Datos d = new Datos();
-            d.inicializarFch();             //Inicializa los Datos de la Fch
+            d.inicializarFch();             //Inicializa los Datos de la FICHA NUEVA
             frame.dispose();                // Cierra Opciones
             Fichas1 f1 = new Fichas1();
             f1.abrirFichas1();              // Abre Fichas1
