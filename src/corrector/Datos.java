@@ -28,7 +28,7 @@ public class Datos {
     private static String temaFch;
     private static String comandosFch;
     private static String tipoFch;
-    private static String respuestaPreguntaFch;
+    private static String respuestaPreguntaFch;             // Crear para multiples posibles preguntas
     private static String comandosInicioFch;
     private static boolean activarCalcFch;
     private static boolean activarBlocFch;

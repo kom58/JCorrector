@@ -7,7 +7,7 @@ public class Correc {
     private JPanel panPrincipal;
     private JButton btnAbrirFicha;
     private JButton btnSalir;
-    private JButton button3;
+    private JButton btnInicio;
     private JButton button4;
     private JButton button5;
     private JButton button6;
@@ -44,6 +44,19 @@ public class Correc {
         }
 
         btnSalir.addActionListener(e -> System.exit(0));
+
+        btnInicio.addActionListener(e -> {
+
+            MetodosLib m = new MetodosLib();
+            Datos d = new Datos();
+
+            //String sistema = m.detectarSistemaOperativo();
+            //String rutaCorrector = m.directorioMWL(sistema);
+
+            String  abrir = d.getArchivoInicialFch();
+
+            m.abrirHTML(abrir, true);
+        });
 
         btnAyuda.addActionListener(e -> {
 
