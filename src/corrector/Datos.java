@@ -35,7 +35,7 @@ public class Datos {
     static List<String> respPreguntaFch = new ArrayList<>();
     // static List<String> posibleRespuesta = new ArrayList<>();    // Creo se puede eliminar
     //static List<String> comandosPreg = new ArrayList<>();
-    //static List<String> tipoPreg = new ArrayList<>();
+    static List<String> tipoPreg = new ArrayList<>();
 
     private static String comandosInicioFch;
     private static boolean activarCalcFch;
@@ -140,9 +140,9 @@ public class Datos {
         //posibleRespuesta.clear();
         //posibleRespuesta.add("-----");
         //comandosPreg.clear();
-        //comandosPreg.add("* comandos Pr *");
-        //tipoPreg.clear();
-        //tipoPreg.add("* tipos Pr *");
+        //comandosPreg.add("* comandos Preg *");
+        tipoPreg.clear();
+        tipoPreg.add("* tipo Preg *");
         comandosInicioFch = "";
         activarCalcFch = false;
         activarBlocFch = false;

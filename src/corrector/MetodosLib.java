@@ -648,7 +648,7 @@ public class MetodosLib {
 
                 for ( int i=1; i <= (Integer.parseInt(dt.getNumeroPreguntasFch())) ; i++) {
                     //tab = tab + dt.comandosPreg.get(i) + "\n";
-                    //tab = tab + dt.tipoPreg.get(i) + "\n";
+                    tab = tab + dt.tipoPreg.get(i) + "\n";
                     tab = tab + dt.respPreguntaFch.get(i) + "\n";
                 }
             }

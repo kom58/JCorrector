@@ -46,14 +46,22 @@ public class Fichas1 {
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
                 frame.dispose();                // Cierra Fichas1
 
-                if (cbxNumPreg.getSelectedItem().equals("0")) {
+                if (cbxNumPreg.getSelectedItem().equals("0")) {     // No tiene preguntas
                     Fichas3 f3 = new Fichas3();
                     f3.abrirFichas3();           // Abre Fichas3
-                } else {                        // Inicializa respuestas
+                } else {                                            // Tiene preguntas
+                                                // Inicializa respuestas
                     d.respPreguntaFch.clear();
                     d.respPreguntaFch.add(" * * R * * ");
                     for ( int i=1; i <= Integer.parseInt(cbxNumPreg.getSelectedItem().toString()); i++) {
                         d.respPreguntaFch.add (i,"");}
+
+                                                // Iniciaoiza tipos preg
+                    d.tipoPreg.clear();
+                    d.tipoPreg.add(" * tipo Pr * ");
+                    for ( int i=1; i <= Integer.parseInt(cbxNumPreg.getSelectedItem().toString()); i++) {
+                        d.tipoPreg.add (i,"");}
+
                     Fichas2 f2 = new Fichas2();
                     f2.abrirFichas2();           // Abre Fichas2
                 }
