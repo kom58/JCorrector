@@ -632,12 +632,13 @@ public class MetodosLib {
             tab = tab + dt.getEnvioInformeFch() + "\n";
 
 
-            System.out.println("Número preguntas: " + dt.getNumeroPreguntasFch());
+            /*System.out.println("Número preguntas: " + dt.getNumeroPreguntasFch());
             System.out.println("Tamaño posibleRespuesta: " + dt.respPreguntaFch.size());
 
             for (int i = 0; i < dt.respPreguntaFch.size(); i++) {
                 System.out.println("[" + i + "] = " + dt.posibleRespuesta.get(i));
             }
+             */
 
 
             if (Integer.parseInt(dt.getNumeroPreguntasFch()) == 0) {
@@ -646,6 +647,8 @@ public class MetodosLib {
                 tab = tab + dt.respPreguntaFch.get(0) + "\n";
 
                 for ( int i=1; i <= (Integer.parseInt(dt.getNumeroPreguntasFch())) ; i++) {
+                    //tab = tab + dt.comandosPreg.get(i) + "\n";
+                    //tab = tab + dt.tipoPreg.get(i) + "\n";
                     tab = tab + dt.respPreguntaFch.get(i) + "\n";
                 }
             }

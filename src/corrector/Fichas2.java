@@ -11,7 +11,7 @@ public class Fichas2 {
     private JButton btnSiguiente;
     private JButton btnPregSiguiente;
     private JButton btnPregAnterior;
-    private JTextField tflComandos;
+    private JTextField tflComandosPrg;
     private JRadioButton rbtVF;
     private JRadioButton rbtABC;
     private JRadioButton rbtSN;
@@ -23,10 +23,11 @@ public class Fichas2 {
     private JLabel lblNumPreg;
     private JPanel panTxtRespuesta;
     private JPanel panCbxRespuesta;
+    private JRadioButton rbtIA;
     private int numPregActual = 1;
-    private String[] comandosPreg;
-    private String[] tipoPreg;
-    private String[] respuestaPreg;
+    //private String[] comandosPreg;
+    //private String[] tipoPreg;
+    //private String[] respuestaPreg;
 
     public Fichas2() {
 
@@ -34,15 +35,23 @@ public class Fichas2 {
 
         int x =  Integer.parseInt(d.getNumeroPreguntasFch());      // NumeroPreguntasFch
 
-        comandosPreg = new String[x];
-        tipoPreg = new String[x];
-        respuestaPreg = new String[x];
+        //d.comandosPreg.clear();                                     // Se inicializan comandos de preguntas
+        //d.comandosPreg.add("***");
+        //for (int i = 1; i <= x; i++) { d.comandosPreg.add(""); }
 
-        for (int i = 0 ; i  <= x-1 ; i++){                          // Se inicializan arrays
-            comandosPreg[i] = "";
-            tipoPreg[i] = "";
-            respuestaPreg[i] = "";
-        }
+        //d.tipoPreg.clear();                                         // Se inicializan tipos de preguntas
+        //d.tipoPreg.add("***");
+        //for (int i = 1; i <= x; i++) { d.tipoPreg.add(""); }
+
+        //d.posibleRespuesta.clear();                                 // Se inicializan posibles Respuestas
+        //d.posibleRespuesta.add("-----");
+        //for (int i = 1; i <= x; i++) { d.posibleRespuesta.add(""); }
+
+        //for (int i = 0 ; i  <= x-1 ; i++){       // Se inicializan arrays  REVISAR !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //comandosPreg[i] = "";
+            //tipoPreg[i] = "";
+            //respuestaPreg[i] = "";
+        //}
 
 
         ButtonGroup grupo1 = new ButtonGroup();             // Grupo 1
@@ -56,7 +65,7 @@ public class Fichas2 {
         grupo2.add(rbtRespExacta);
 
         lblNumPreg.setText(numPregActual + " / " + d.getNumeroPreguntasFch());      // Pone NumPreg
-        // tflComandos.setText(d.getComandosFch());
+        // tflComandosPrg.setText(d.getComandosFch());
         // Aquí todos los tipos de Fch
         // tarRespuesta.append(d.getRespuestaPreguntaFch());
 
@@ -81,26 +90,35 @@ public class Fichas2 {
         });
         btnPregAnterior.addActionListener(e -> {
             if (numPregActual > 1) {
-                comandosPreg[numPregActual-1] = tflComandos.getText();      // Guarda ComandosPreg
-                tipoPreg[numPregActual-1] = verRadioSeleccionado();         // Guarda Tipo
+                //comandosPreg[numPregActual-1] = tflComandosPrg.getText();      // Guarda ComandosPreg
+                //tipoPreg[numPregActual-1] = verRadioSeleccionado();         // Guarda Tipo
 
-                d.posibleRespuesta.set(numPregActual,tarRespuesta.getText());       // Guarda Respuesta
+                //d.posibleRespuesta.set(numPregActual,tarRespuesta.getText());       // Guarda Respuesta
+                guardarRespuestaActual();
 
                 numPregActual--;
-                tflComandos.setText(comandosPreg[numPregActual - 1]);
+                //tflComandosPrg.setText(comandosPreg[numPregActual - 1]);
                 ponerRadioSeleccionado();
                 lblNumPreg.setText(numPregActual + " / " + d.getNumeroPreguntasFch());      // Pone NumPreg
             }
         });
         btnPregSiguiente.addActionListener(e -> {
             if (numPregActual < Integer.parseInt(d.getNumeroPreguntasFch())) {
-                comandosPreg[numPregActual-1] = tflComandos.getText();      // Guarda ComandosPreg
-                tipoPreg[numPregActual-1] = verRadioSeleccionado();         // Guarda Tipo
+                //comandosPreg[numPregActual-1] = tflComandosPrg.getText();      // Guarda ComandosPreg
+                //d.comandosPreg.set(numPregActual, comandosPreg[numPregActual - 1]);
 
-                d.posibleRespuesta.add(numPregActual,tarRespuesta.getText());       // Guarda Respuesta
+                //d.comandosPreg.set(numPregActual, tflComandosPrg.getText());
+
+                //tipoPreg[numPregActual-1] = verRadioSeleccionado();         // Guarda Tipo
+                //d.tipoPreg.set(numPregActual, tipoPreg[numPregActual-1]);
+
+                //d.tipoPreg.set(numPregActual, verRadioSeleccionado());
+
+                //d.posibleRespuesta.set(numPregActual,tarRespuesta.getText());       // Guarda Respuesta
+                guardarRespuestaActual();
 
                 numPregActual++;
-                tflComandos.setText(comandosPreg[numPregActual - 1]);
+                //tflComandosPrg.setText(comandosPreg[numPregActual - 1]);
                 ponerRadioSeleccionado();
                 lblNumPreg.setText(numPregActual + " / " + d.getNumeroPreguntasFch());      // Pone NumPreg
             }
@@ -126,11 +144,30 @@ public class Fichas2 {
 
     public void guardarDatosFichas2() {
 
-        Datos d = new Datos();
-        d.setComandosFch(tflComandos.getText());
+        //Datos d = new Datos();
+        //d.setComandosFch(tflComandosPrg.getText());
         // Aqí todos los tipos de Fch
         //d.setRespuestaPreguntaFch(tarRespuesta.getText());
-        d.posibleRespuesta.set(numPregActual,tarRespuesta.getText());       // Guarda Respuesta actual
+
+        //d.posibleRespuesta.set(numPregActual,tarRespuesta.getText());       // Guarda Respuesta actual
+
+        guardarRespuestaActual();
+/*
+        System.out.println("================================");
+        System.out.println("GUARDANDO RESPUESTAS");
+        System.out.println("Pregunta actual: " + numPregActual);
+        System.out.println("Número preguntas: " + d.getNumeroPreguntasFch());
+
+        for (int i = 0; i < d.posibleRespuesta.size(); i++) {
+            System.out.println(
+                    "posibleRespuesta[" + i + "] = [" +
+                            d.posibleRespuesta.get(i) + "]"
+            );
+        }
+
+        System.out.println("================================");
+
+ */
 
     }
 
@@ -212,12 +249,13 @@ public class Fichas2 {
 
     public String verRadioSeleccionado() {
 
+        Datos d = new Datos();
         String seleccionado = "";
 
         if (rbtVF.isSelected()) {
             seleccionado = "VF";
-            respuestaPreg[numPregActual - 1] = (String) cbxRespuesta.getSelectedItem();
-        } else if (rbtSN.isSelected()) {
+            d.respPreguntaFch.set(numPregActual, (String) cbxRespuesta.getSelectedItem());
+        } /* else if (rbtSN.isSelected()) {
             seleccionado = "SN";
             respuestaPreg[numPregActual - 1] = (String) cbxRespuesta.getSelectedItem();
         } else if (rbt123.isSelected()) {
@@ -232,14 +270,19 @@ public class Fichas2 {
         } else if (rbtDifResp.isSelected()) {
             seleccionado = "Diferente";
             respuestaPreg[numPregActual - 1] = tarRespuesta.getText();
+        } else if (rbtIA.isSelected()) {
+            seleccionado = "CorrecionIA";
+            respuestaPreg[numPregActual - 1] = tarRespuesta.getText();
         }
+       */
 
         return seleccionado;
     }
 
     public void ponerRadioSeleccionado() {
 
-        String tipo = tipoPreg[numPregActual - 1];
+        //String tipo = tipoPreg[numPregActual - 1];
+        String tipo = "VF";
 
         if (tipo != "") {
             if (tipo.equals("VF")) {
@@ -249,8 +292,8 @@ public class Fichas2 {
                 radioBotonSeleccionado();
                 panTxtRespuesta.setVisible(false);
                 panCbxRespuesta.setVisible(true);
-                cbxRespuesta.setSelectedItem(respuestaPreg[numPregActual - 1]); // Establece la respuesta en el JComboBox
-            } else if (tipo.equals("SN")) {
+                //cbxRespuesta.setSelectedItem(d.respPreguntaFch[numPregActual]); // Establece la respuesta en el JComboBox
+            } /*else if (tipo.equals("SN")) {
                 rbtSN.setSelected(true); // Selecciona el botón de radio "SN"
                 rbtRespExacta.setEnabled(false);
                 rbtDifResp.setEnabled(false);
@@ -291,6 +334,33 @@ public class Fichas2 {
                 panCbxRespuesta.setVisible(false);
                 tarRespuesta.setText(respuestaPreg[numPregActual - 1]); // Establece la respuesta en el JTextArea
             }
+            */
         }
+    }
+
+    private void guardarRespuestaActual() {
+
+        Datos d = new Datos();
+
+        String respuesta;
+
+        if (rbtTxtLibre.isSelected()) {
+            // La respuesta está en el JTextArea
+            respuesta = tarRespuesta.getText();
+
+        } else {
+            // La respuesta está en el JComboBox
+            respuesta = (String) cbxRespuesta.getSelectedItem();
+        }
+
+        if (respuesta == null) {
+            respuesta = "";
+        }
+
+        d.respPreguntaFch.set(numPregActual, respuesta);
+
+        System.out.println("Guardada pregunta "
+                + numPregActual
+                + " = [" + respuesta + "]");
     }
 }

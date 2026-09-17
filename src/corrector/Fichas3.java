@@ -82,6 +82,7 @@ public class Fichas3 {
 
             int numeroPreguntas = Integer.parseInt(d.getNumeroPreguntasFch());
 
+            /*
             // Reinicializa completamente las respuestas
             d.respPreguntaFch.clear();
 
@@ -97,6 +98,8 @@ public class Fichas3 {
                     d.respPreguntaFch.add(d.posibleRespuesta.get(i));
                 }
             }
+
+             */
 
 
 
