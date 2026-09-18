@@ -514,7 +514,7 @@ public class MetodosLib {
                         dt.setArchivoAyudaFch(linea);                           // ArchivoAyudaFch
                         break;
                     case 6:
-                        dt.setNumeroPreguntasFch(linea);    // NumeroPreguntasFch
+                        dt.setNumeroPreguntasFch(linea);                    // NumeroPreguntasFch
                         break;
                     case 7:                                                     // EsDeConsultaFch
                         if ("true".equalsIgnoreCase(linea)) {
@@ -576,13 +576,13 @@ public class MetodosLib {
                         dt.setEnvioInformeFch(linea);                           // EnvioInformeFch
                         break;
                     case 20:
-                        dt.setComandosFch(linea);                               // ComandosFch !!!!!!!!!!!!!!!!!!!
+                        //dt.setComandosPreg(linea);                               // ComandosPreg !!!!!!!!!!!!!!!!!!!
                         break;
                     case 21:
-                        dt.setTipoFch(linea);                                   // TipoFch !!!!!!!!!!!!!!!!!!!!!!!!
+                        //dt.setTipoPreg(linea);                                   // TipoPreg !!!!!!!!!!!!!!!!!!!!!!!!
                         break;
                     case 22:
-                        //dt.setRespuestaPreguntaFch(linea);                      // RespuestaPreguntaFch !!!!!!!!!!!!
+                        //dt.setRespuestaPregunta(linea);                      // RespuestaPreguntaFch !!!!!!!!!!!!
                         break;
                     case 23:
                         if (!linea.equals("[Fin]")) {                            // [Fin]
@@ -644,12 +644,12 @@ public class MetodosLib {
             if (Integer.parseInt(dt.getNumeroPreguntasFch()) == 0) {
                 tab = tab + "- - - - -\n";
             } else if (Integer.parseInt(dt.getNumeroPreguntasFch()) > 0) {
-                tab = tab + dt.respPreguntaFch.get(0) + "\n";
+                tab = tab + dt.getRespPregunta(0) + "\n";
 
                 for ( int i=1; i <= (Integer.parseInt(dt.getNumeroPreguntasFch())) ; i++) {
-                    //tab = tab + dt.comandosPreg.get(i) + "\n";
-                    tab = tab + dt.tipoPreg.get(i) + "\n";
-                    tab = tab + dt.respPreguntaFch.get(i) + "\n";
+                    tab = tab + dt.getComandosPreg(i) + "\n";
+                    tab = tab + dt.getTipoPreg(i) + "\n";
+                    tab = tab + dt.getRespPregunta(i) + "\n";
                 }
             }
             tab = tab + "[Fin]\n";

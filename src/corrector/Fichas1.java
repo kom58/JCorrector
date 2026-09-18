@@ -51,16 +51,23 @@ public class Fichas1 {
                     f3.abrirFichas3();           // Abre Fichas3
                 } else {                                            // Tiene preguntas
                                                 // Inicializa respuestas
-                    d.respPreguntaFch.clear();
-                    d.respPreguntaFch.add(" * * R * * ");
+                    d.respPregunta.clear();
+                    d.respPregunta.add(" * * R * * ");
                     for ( int i=1; i <= Integer.parseInt(cbxNumPreg.getSelectedItem().toString()); i++) {
-                        d.respPreguntaFch.add (i,"");}
+                        d.respPregunta.add (i,"");}
 
                                                 // Iniciaoiza tipos preg
                     d.tipoPreg.clear();
                     d.tipoPreg.add(" * tipo Pr * ");
                     for ( int i=1; i <= Integer.parseInt(cbxNumPreg.getSelectedItem().toString()); i++) {
                         d.tipoPreg.add (i,"");}
+
+                                                // Inicializa comandos preg
+                    d.comandosPreg.clear();
+                    d.comandosPreg.add("* * com Pr * * ");
+                    for ( int i=1; i <= Integer.parseInt(cbxNumPreg.getSelectedItem().toString()); i++) {
+                        d.comandosPreg.add (i,"");}
+
 
                     Fichas2 f2 = new Fichas2();
                     f2.abrirFichas2();           // Abre Fichas2

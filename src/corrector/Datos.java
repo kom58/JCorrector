@@ -29,14 +29,13 @@ public class Datos {
     private static String cursoFch;
     private static String areaFch;
     private static String temaFch;
-    private static String comandosFch;
-    private static String tipoFch;
-    //private static String respuestaPreguntaFch;
-    static List<String> respPreguntaFch = new ArrayList<>();
-    // static List<String> posibleRespuesta = new ArrayList<>();    // Creo se puede eliminar
-    //static List<String> comandosPreg = new ArrayList<>();
+    //private static String comandosFch;
+    //private static String tipoFch;
+                                                //Comandos Tipo y Respuesta de las preguntas
+    static List<String> comandosPreg = new ArrayList<>();
     static List<String> tipoPreg = new ArrayList<>();
-
+    static List<String> respPregunta = new ArrayList<>();
+                                                // ==========================================
     private static String comandosInicioFch;
     private static boolean activarCalcFch;
     private static boolean activarBlocFch;
@@ -75,10 +74,10 @@ public class Datos {
     public void setCursoFch(String cursF) { cursoFch = cursF;}
     public void setAreaFch(String arF) { areaFch = arF;}
     public void setTemaFch(String temF) { temaFch = temF;}
-    public void setComandosFch(String comF) { comandosFch = comF;}
-    public void setTipoFch(String tipF) { tipoFch = tipF;}
-    //public void setRespuestaPreguntaFch(String respF) { respuestaPreguntaFch = respF;}
-    public void setComandosInicioFch(String comF) { comandosInicioFch = comF;}
+    public void setComandosPreg(int nPreg, String comF) { comandosPreg.set(nPreg, comF);}
+    public void setTipoPreg(int nPreg, String tipoF) {tipoPreg.set(nPreg, tipoF);}
+    public void setRespPregunta(int nPreg, String respF) {respPregunta.set(nPreg, respF);}
+    public void setComandosInicioFch(String cIniF) { comandosInicioFch = cIniF;}
     public void setActivarCalcFch(boolean calF) { activarCalcFch = calF;}
     public void setActivarBlocFch(boolean blocF) { activarBlocFch = blocF;}
     public void setActivarAyudaCrrFch(boolean ayCrrF) { activarAyudaCrrFch = ayCrrF;}
@@ -111,9 +110,9 @@ public class Datos {
     public String getCursoFch() { return cursoFch;}
     public String getAreaFch() { return areaFch;}
     public String getTemaFch() { return temaFch;}
-    //public String getComandosFch() { return comandosFch;}
-    //public String getTipoFch() { return tipoFch;}
-    //public String getRespuestaPreguntaFch() { return respuestaPreguntaFch;}
+    public String getComandosPreg(int nPreg) { return comandosPreg.get(nPreg);}
+    public String getTipoPreg(int nPreg) { return tipoPreg.get(nPreg);}
+    public String getRespPregunta(int nPreg) { return respPregunta.get(nPreg);}
     public String getComandosInicioFch() { return comandosInicioFch;}
     public boolean getActivarCalcFch() { return activarCalcFch;}
     public boolean getActivarBlocFch() { return activarBlocFch;}
@@ -133,16 +132,12 @@ public class Datos {
         cursoFch = "...";
         areaFch = "...";
         temaFch = "";
-        comandosFch = "";
-        tipoFch = "";
-        respPreguntaFch.clear();
-        respPreguntaFch.add("* * R * *");
-        //posibleRespuesta.clear();
-        //posibleRespuesta.add("-----");
-        //comandosPreg.clear();
-        //comandosPreg.add("* comandos Preg *");
+        comandosPreg.clear();
+        comandosPreg.add("* comandos Preg *");
         tipoPreg.clear();
         tipoPreg.add("* tipo Preg *");
+        respPregunta.clear();
+        respPregunta.add("* * resp Preg * *");
         comandosInicioFch = "";
         activarCalcFch = false;
         activarBlocFch = false;
