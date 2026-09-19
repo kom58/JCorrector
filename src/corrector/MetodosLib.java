@@ -11,7 +11,7 @@ import java.util.Calendar;
 public class MetodosLib {
 
     public String versionCrr() {
-        return "0.1.11";
+        return "0.1.12";
     }
 
     public String fechaActual() {
@@ -491,111 +491,186 @@ public class MetodosLib {
 
         Datos dt = new Datos();
 
-        try (BufferedReader buff = new BufferedReader(new FileReader(rutaFichero))) {
-            String linea;
-            int cont = 0;
 
-            while ((linea = buff.readLine()) != null) {
-                cont++;
-                switch (cont) {
-                    case 1:
-                        String clave = linea;
-                        break;
-                    case 2:
-                        String version = linea;
-                        break;
-                    case 3:
-                        dt.setNombreFch(linea);                                 // NombreFch
-                        break;
-                    case 4:
-                        dt.setArchivoInicioFch(linea);                          // ArchivoInicialFch
-                        break;
-                    case 5:
-                        dt.setArchivoAyudaFch(linea);                           // ArchivoAyudaFch
-                        break;
-                    case 6:
-                        dt.setNumeroPreguntasFch(linea);                    // NumeroPreguntasFch
-                        break;
-                    case 7:                                                     // EsDeConsultaFch
-                        if ("true".equalsIgnoreCase(linea)) {
-                            dt.setEsDeConsultaFch(true);
-                        } else {
-                            dt.setEsDeConsultaFch(false);
-                        }
-                        break;
-                    case 8:
-                        dt.setNivelFch(linea);                                  // NivelFch
-                        break;
-                    case 9:
-                        dt.setCursoFch(linea);                                  // CursoFch
-                        break;
-                    case 10:
-                        dt.setAreaFch(linea);                                   // AreaFch
-                        break;
-                    case 11:
-                        dt.setTemaFch(linea);                                   // TemaFch
-                        break;
-                    case 12:
-                        dt.setComandosInicioFch(linea);                         // ComandosInicioFch
-                        break;
-                    case 13:                                                    // ActivarCalcFch
-                        if ("true".equalsIgnoreCase(linea)) {
-                            dt.setActivarCalcFch(true);
-                        } else {
-                            dt.setActivarCalcFch(false);
-                        }
-                        break;
-                    case 14:                                                    // ActivarBlocFch
-                        if ("true".equalsIgnoreCase(linea)) {
-                            dt.setActivarBlocFch(true);
-                        } else {
-                            dt.setActivarBlocFch(false);
-                        }
-                        break;
-                    case 15:                                                    // ActivarAyudaCrrFch
-                        if ("true".equalsIgnoreCase(linea)) {
-                            dt.setActivarAyudaCrrFch(true);
-                        } else {
-                            dt.setActivarAyudaCrrFch(false);
-                        }
-                        break;
-                    case 16:                                                    // ActivarCronoFch
-                        if ("true".equalsIgnoreCase(linea)) {
-                            dt.setActivarCronoFch(true);
-                        } else {
-                            dt.setActivarCronoFch(false);
-                        }
-                        break;
-                    case 17:
-                        dt.setTipoCorreccionFch(linea);                         // TipoCorrecciónFch
-                        break;
-                    case 18:
-                        dt.setEnvioEmailFch(linea);                             // EnvioEmailFch
-                        break;
-                    case 19:
-                        dt.setEnvioInformeFch(linea);                           // EnvioInformeFch
-                        break;
-                    case 20:
-                        //dt.setComandosPreg(linea);                               // ComandosPreg !!!!!!!!!!!!!!!!!!!
-                        break;
-                    case 21:
-                        //dt.setTipoPreg(linea);                                   // TipoPreg !!!!!!!!!!!!!!!!!!!!!!!!
-                        break;
-                    case 22:
-                        //dt.setRespuestaPregunta(linea);                      // RespuestaPreguntaFch !!!!!!!!!!!!
-                        break;
-                    case 23:
-                        if (!linea.equals("[Fin]")) {                            // [Fin]
-                            System.err.println("Error en [FchCrr:23]");
-                        }
-                        break;
+        try (BufferedReader buff = new BufferedReader(new FileReader(rutaFichero))) {
+
+            // =====================================================
+            // ENCABEZADO DE LA FICHA
+            // =====================================================
+
+                                            // LÍNEA 1      CLAVE
+            String clave = buff.readLine();
+
+                                            // LÍNEA 2      VERSION
+            String version = buff.readLine();
+
+                                            // LÍNEA 3      NOMBRE FICHA
+            dt.setNombreFch(buff.readLine());
+
+                                            // LÍNEA 4      ARCHIVO INICIO FCH
+            dt.setArchivoInicioFch(buff.readLine());
+
+                                            // LÍNEA 5      ARCHIVO AYUDA FCH
+            dt.setArchivoAyudaFch(buff.readLine());
+
+                                            // LÍNEA 6      NUMERO DE PREGUNTAS Y CONVERSION EN INT
+            String numeroPreguntas = buff.readLine();
+            dt.setNumeroPreguntasFch(numeroPreguntas);
+            int numPreguntas = Integer.parseInt(numeroPreguntas);
+
+                                            // LÍNEA 7      ES DE CONSULTA
+            dt.setEsDeConsultaFch(
+                    Boolean.parseBoolean(buff.readLine()));
+
+                                            // LÍNEA 8      NIVEL
+            dt.setNivelFch(buff.readLine());
+
+                                            // LÍNEA 9      CURSO
+            dt.setCursoFch(buff.readLine());
+
+                                            // LÍNEA 10     AREA
+            dt.setAreaFch(buff.readLine());
+
+                                            // LÍNEA 11     TEMA
+            dt.setTemaFch(buff.readLine());
+
+                                            // LÍNEA 12     COMANDOS INICIO FCH
+            dt.setComandosInicioFch(buff.readLine());
+
+                                            // LÍNEA 13     ACTIVAR CALC
+            dt.setActivarCalcFch(
+                    Boolean.parseBoolean(buff.readLine()));
+
+                                            // LÍNEA 14     ACTIVAR BLOC
+            dt.setActivarBlocFch(
+                    Boolean.parseBoolean(buff.readLine()));
+
+                                            // LÍNEA 15     ACTIVAR AYUDA
+            dt.setActivarAyudaCrrFch(
+                    Boolean.parseBoolean(buff.readLine()));
+
+                                            // LÍNEA 16     ACTIVAR CRONO
+            dt.setActivarCronoFch(
+                    Boolean.parseBoolean(buff.readLine()));
+
+                                            // LÍNEA 17     TIPO CORRECCION
+            dt.setTipoCorreccionFch(buff.readLine());
+
+                                            // LÍNEA 18     EMAIL
+            dt.setEnvioEmailFch(buff.readLine());
+
+                                            // LÍNEA 19     INFORME
+            dt.setEnvioInformeFch(buff.readLine());
+
+
+            // =====================================================
+            // CREAR ARRAYLIST DE PREGUNTAS
+            // =====================================================
+
+            dt.respPregunta.clear();
+            dt.tipoPreg.clear();
+            dt.comandosPreg.clear();
+
+            for (int i = 0; i <= numPreguntas; i++) {
+
+                dt.respPregunta.add("");
+                dt.tipoPreg.add("");
+                dt.comandosPreg.add("");
+            }
+
+
+            // =====================================================
+            // FICHA SIN PREGUNTAS
+            // =====================================================
+
+            if (numPreguntas == 0) {
+
+                String respuesta = buff.readLine();
+
+                if (!"- - - - -".equals(respuesta)) {
+
+                    System.err.println(
+                            "Error: se esperaba - - - - -"
+                    );
+                }
+
+                String fin = buff.readLine();
+
+                if (!"[Fin]".equals(fin)) {
+
+                    System.err.println(
+                            "Error: se esperaba [Fin]"
+                    );
                 }
             }
+
+
+            // =====================================================
+            // FICHA CON PREGUNTAS
+            // =====================================================
+
+            else {
+
+                // ---------------------------------------------
+                // RESPUESTA 0
+                // ---------------------------------------------
+
+                String respuesta0 = buff.readLine();
+
+                dt.setRespPregunta(0, respuesta0);
+
+
+                // ---------------------------------------------
+                // PREGUNTAS 1 ... N
+                // ---------------------------------------------
+
+                for (int i = 1; i <= numPreguntas; i++) {
+
+                    String comandos = buff.readLine();
+                    String tipo = buff.readLine();
+                    String respuesta = buff.readLine();
+
+                    dt.setComandosPreg(i, comandos);
+                    dt.setTipoPreg(i, tipo);
+                    dt.setRespPregunta(i, respuesta);
+                }
+
+
+                // ---------------------------------------------
+                // FIN
+                // ---------------------------------------------
+
+                String fin = buff.readLine();
+
+                if (!"[Fin]".equals(fin)) {
+
+                    System.err.println(
+                            "Error: se esperaba [Fin], se encontró: "
+                                    + fin
+                    );
+                }
+            }
+
+
         } catch (FileNotFoundException ex) {
-            System.err.println("No se puede abrir el archivo.\n ¡¡ Archivo no encontrado !!");
+
+            System.err.println(
+                    "Archivo no encontrado: " + rutaFichero
+            );
+
+        } catch (NumberFormatException ex) {
+
+            System.err.println(
+                    "El número de preguntas no es válido."
+            );
+
         } catch (IOException ex) {
-            System.err.println("Error en la lectura del archivo");
+
+            System.err.println(
+                    "Error de lectura: " + ex.getMessage()
+            );
         }
+
 
     }
 
@@ -630,16 +705,6 @@ public class MetodosLib {
             tab = tab + dt.getTipoCorreccionFch() + "\n";
             tab = tab + dt.getEnvioEmailFch() + "\n";
             tab = tab + dt.getEnvioInformeFch() + "\n";
-
-
-            /*System.out.println("Número preguntas: " + dt.getNumeroPreguntasFch());
-            System.out.println("Tamaño posibleRespuesta: " + dt.respPreguntaFch.size());
-
-            for (int i = 0; i < dt.respPreguntaFch.size(); i++) {
-                System.out.println("[" + i + "] = " + dt.posibleRespuesta.get(i));
-            }
-             */
-
 
             if (Integer.parseInt(dt.getNumeroPreguntasFch()) == 0) {
                 tab = tab + "- - - - -\n";

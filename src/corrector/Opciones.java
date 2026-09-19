@@ -45,14 +45,16 @@ public class Opciones {
         });
         btnFichaNueva.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
-            Datos d = new Datos();
-            d.inicializarFch();             //Inicializa los Datos de la FICHA NUEVA
+            //Datos d = new Datos();
+            dt.inicializarFch();             //Inicializa los Datos de la FICHA NUEVA
+            dt.setEsNuevaFch(true);
             frame.dispose();                // Cierra Opciones
             Fichas1 f1 = new Fichas1();
             f1.abrirFichas1();              // Abre Fichas1
         });
         btnModificarFch.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
+            dt.setEsNuevaFch(false);
             frame.dispose();                // Cierra Opciones
             Fichas1 f1 = new Fichas1();
             f1.abrirFichas1();              // Abre Fichas1

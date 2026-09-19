@@ -25,6 +25,7 @@ public class Datos {
     private static String archivoAyudaFch;
     private static String numeroPreguntasFch;
     private static boolean esDeConsultaFch;
+    private static boolean esNuevaFch;
     private static String nivelFch;
     private static String cursoFch;
     private static String areaFch;
@@ -62,14 +63,23 @@ public class Datos {
     public void setInicioAnonimo(boolean iniAnonim) { inicioAnonimo = iniAnonim;}
 
     public void setNombreFch(String nomF) { nombreFch = nomF;}
-    public void setArchivoInicioFch(String archIniF) { archivoInicialFch = archIniF;
+    /*public void setArchivoInicioFch(String archIniF) { archivoInicialFch = archIniF;
         // Encontrar el índice de la última ocurrencia de "/"
         int lastIndex = archIniF.lastIndexOf("/");
         // Extraer la parte izquierda del string
         carpetaFch = archIniF.substring(0, lastIndex);}
+     */
+    public void setArchivoInicioFch(String archIniF) {
+        archivoInicialFch = archIniF;
+        if (archIniF == null || archIniF.isEmpty()) { carpetaFch = ""; return;}
+        int lastIndex = archIniF.lastIndexOf("/");
+        if (lastIndex >= 0) { carpetaFch = archIniF.substring(0, lastIndex);}
+            else { carpetaFch = "";}
+    }
     public void setArchivoAyudaFch(String archAyuF) { archivoAyudaFch = archAyuF;}
     public void setNumeroPreguntasFch(String nPrF) { numeroPreguntasFch = nPrF;}
     public void setEsDeConsultaFch(boolean consF) { esDeConsultaFch = consF;}
+    public void setEsNuevaFch(boolean nuevaF) { esNuevaFch = nuevaF;}
     public void setNivelFch(String nivF) { nivelFch = nivF;}
     public void setCursoFch(String cursF) { cursoFch = cursF;}
     public void setAreaFch(String arF) { areaFch = arF;}
@@ -106,6 +116,7 @@ public class Datos {
     public String getArchivoAyudaFch() { return archivoAyudaFch;}
     public String getNumeroPreguntasFch() { return numeroPreguntasFch;}
     public boolean getEsDeConsultaFch() { return esDeConsultaFch;}
+    public boolean getEsNuevaFch() { return esNuevaFch;}
     public String getNivelFch() { return nivelFch;}
     public String getCursoFch() { return cursoFch;}
     public String getAreaFch() { return areaFch;}
@@ -128,16 +139,11 @@ public class Datos {
         archivoAyudaFch = "";
         numeroPreguntasFch = "0";
         esDeConsultaFch = false;
+        esNuevaFch = false;
         nivelFch = "...";
         cursoFch = "...";
         areaFch = "...";
         temaFch = "";
-        comandosPreg.clear();
-        comandosPreg.add("* comandos Preg *");
-        tipoPreg.clear();
-        tipoPreg.add("* tipo Preg *");
-        respPregunta.clear();
-        respPregunta.add("* * resp Preg * *");
         comandosInicioFch = "";
         activarCalcFch = false;
         activarBlocFch = false;
@@ -146,5 +152,20 @@ public class Datos {
         tipoCorreccionFch = "";
         envioEmailFch = "";
         envioInformeFch = "";
+        inicializarComTipResp(0);
     }
+
+    public void inicializarComTipResp( int nPrg) {
+        comandosPreg.clear();
+        tipoPreg.clear();
+        respPregunta.clear();
+
+        for  ( int i=0; i<=nPrg; i++ ) {
+            comandosPreg.add( i, "");
+            tipoPreg.add( i, "");
+            respPregunta.add( i , "");
+        }
+
+    }
+
 }

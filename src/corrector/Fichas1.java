@@ -50,23 +50,10 @@ public class Fichas1 {
                     Fichas3 f3 = new Fichas3();
                     f3.abrirFichas3();           // Abre Fichas3
                 } else {                                            // Tiene preguntas
-                                                // Inicializa respuestas
-                    d.respPregunta.clear();
-                    d.respPregunta.add(" * * R * * ");
-                    for ( int i=1; i <= Integer.parseInt(cbxNumPreg.getSelectedItem().toString()); i++) {
-                        d.respPregunta.add (i,"");}
+                                                // Inicializa respuestas    SOLO SI ES FICHA NUEVA !!!!!!!!!
 
-                                                // Iniciaoiza tipos preg
-                    d.tipoPreg.clear();
-                    d.tipoPreg.add(" * tipo Pr * ");
-                    for ( int i=1; i <= Integer.parseInt(cbxNumPreg.getSelectedItem().toString()); i++) {
-                        d.tipoPreg.add (i,"");}
-
-                                                // Inicializa comandos preg
-                    d.comandosPreg.clear();
-                    d.comandosPreg.add("* * com Pr * * ");
-                    for ( int i=1; i <= Integer.parseInt(cbxNumPreg.getSelectedItem().toString()); i++) {
-                        d.comandosPreg.add (i,"");}
+                     //   int nPr = Integer.parseInt(cbxNumPreg.getSelectedItem().toString());
+                     //   d.inicializarComTipResp(nPr);
 
 
                     Fichas2 f2 = new Fichas2();
@@ -146,5 +133,6 @@ public class Fichas1 {
             d.setCursoFch((String) cbxCurso.getSelectedItem());
             d.setAreaFch((String) cbxArea.getSelectedItem());
             d.setTemaFch(tflTema.getText());
+
     }
 }

@@ -80,7 +80,7 @@ public class Fichas3 {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
             MetodosLib m = new MetodosLib();
 
-            int numeroPreguntas = Integer.parseInt(d.getNumeroPreguntasFch());
+            //int numeroPreguntas = Integer.parseInt(d.getNumeroPreguntasFch());
 
             /*
             // Reinicializa completamente las respuestas

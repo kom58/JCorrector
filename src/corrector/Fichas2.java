@@ -25,15 +25,18 @@ public class Fichas2 {
     private JPanel panCbxRespuesta;
     private JRadioButton rbtIA;
     private int numPregActual = 1;
-    //private String[] comandosPreg;
-    //private String[] tipoPreg;
-    //private String[] respuestaPreg;
 
     public Fichas2() {
 
         Datos d = new Datos();
 
         int x =  Integer.parseInt(d.getNumeroPreguntasFch());      // NumeroPreguntasFch
+
+        if (d.getEsNuevaFch()) {                                    // Si es nueva se inicializan arrays
+            d.inicializarComTipResp(x);
+        }
+
+        ponerRadioSeleccionado();
 
         //d.comandosPreg.clear();                                     // Se inicializan comandos de preguntas
         //d.comandosPreg.add("***");
@@ -296,7 +299,7 @@ public class Fichas2 {
         String tipo = d.getTipoPreg(numPregActual);
         
 
-        if (tipo != "") {
+        if (tipo != null && !tipo.isEmpty())  {
             if (tipo.equals("VF")) {
                 rbtVF.setSelected(true); // Selecciona el botón de radio "VF"
                 rbtRespExacta.setEnabled(false);
