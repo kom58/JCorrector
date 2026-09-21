@@ -38,24 +38,6 @@ public class Fichas2 {
 
         ponerRadioSeleccionado();
 
-        //d.comandosPreg.clear();                                     // Se inicializan comandos de preguntas
-        //d.comandosPreg.add("***");
-        //for (int i = 1; i <= x; i++) { d.comandosPreg.add(""); }
-
-        //d.tipoPreg.clear();                                         // Se inicializan tipos de preguntas
-        //d.tipoPreg.add("***");
-        //for (int i = 1; i <= x; i++) { d.tipoPreg.add(""); }
-
-        //d.posibleRespuesta.clear();                                 // Se inicializan posibles Respuestas
-        //d.posibleRespuesta.add("-----");
-        //for (int i = 1; i <= x; i++) { d.posibleRespuesta.add(""); }
-
-        //for (int i = 0 ; i  <= x-1 ; i++){       // Se inicializan arrays  REVISAR !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            //comandosPreg[i] = "";
-            //tipoPreg[i] = "";
-            //respuestaPreg[i] = "";
-        //}
-
 
         ButtonGroup grupo1 = new ButtonGroup();             // Grupo 1
         ButtonGroup grupo2 = new ButtonGroup();             // Grupo 2
@@ -93,37 +75,24 @@ public class Fichas2 {
         });
         btnPregAnterior.addActionListener(e -> {
             if (numPregActual > 1) {
-                //comandosPreg[numPregActual-1] = tflComandosPrg.getText();      // Guarda ComandosPreg
-                //tipoPreg[numPregActual-1] = verRadioSeleccionado();         // Guarda Tipo
 
-                //d.posibleRespuesta.set(numPregActual,tarRespuesta.getText());       // Guarda Respuesta
                 guardarRespuestaActual();
                 verRadioSeleccionado();
 
                 numPregActual--;
-                //tflComandosPrg.setText(comandosPreg[numPregActual - 1]);
+
                 ponerRadioSeleccionado();
                 lblNumPreg.setText(numPregActual + " / " + d.getNumeroPreguntasFch());      // Pone NumPreg
             }
         });
         btnPregSiguiente.addActionListener(e -> {
             if (numPregActual < Integer.parseInt(d.getNumeroPreguntasFch())) {
-                //comandosPreg[numPregActual-1] = tflComandosPrg.getText();      // Guarda ComandosPreg
-                //d.comandosPreg.set(numPregActual, comandosPreg[numPregActual - 1]);
 
-                //d.comandosPreg.set(numPregActual, tflComandosPrg.getText());
-
-                //tipoPreg[numPregActual-1] = verRadioSeleccionado();         // Guarda Tipo
-                //d.tipoPreg.set(numPregActual, tipoPreg[numPregActual-1]);
-
-                //d.tipoPreg.set(numPregActual, verRadioSeleccionado());
-
-                //d.posibleRespuesta.set(numPregActual,tarRespuesta.getText());       // Guarda Respuesta
                 guardarRespuestaActual();
                 verRadioSeleccionado();
 
                 numPregActual++;
-                //tflComandosPrg.setText(comandosPreg[numPregActual - 1]);
+
                 ponerRadioSeleccionado();
                 lblNumPreg.setText(numPregActual + " / " + d.getNumeroPreguntasFch());      // Pone NumPreg
             }
@@ -149,31 +118,8 @@ public class Fichas2 {
 
     public void guardarDatosFichas2() {
 
-        //Datos d = new Datos();
-        //d.setComandosFch(tflComandosPrg.getText());
-        // Aqí todos los tipos de Fch
-        //d.setRespuestaPreguntaFch(tarRespuesta.getText());
-
-        //d.posibleRespuesta.set(numPregActual,tarRespuesta.getText());       // Guarda Respuesta actual
-
         verRadioSeleccionado();
         guardarRespuestaActual();
-/*
-        System.out.println("================================");
-        System.out.println("GUARDANDO RESPUESTAS");
-        System.out.println("Pregunta actual: " + numPregActual);
-        System.out.println("Número preguntas: " + d.getNumeroPreguntasFch());
-
-        for (int i = 0; i < d.posibleRespuesta.size(); i++) {
-            System.out.println(
-                    "posibleRespuesta[" + i + "] = [" +
-                            d.posibleRespuesta.get(i) + "]"
-            );
-        }
-
-        System.out.println("================================");
-
- */
 
     }
 
@@ -278,17 +224,28 @@ public class Fichas2 {
             d.setRespPregunta(numPregActual, (String) cbxRespuesta.getSelectedItem());
             d.setTipoPreg(numPregActual, seleccionado);
             d.setComandosPreg(numPregActual, tflComandosPrg.getText());
-        } /*else if (rbtRespExacta.isSelected()) {
+        } else if (rbtRespExacta.isSelected()) {
             seleccionado = "Exacta";
-            respuestaPreg[numPregActual - 1] = tarRespuesta.getText();
+            String texto = tarRespuesta.getText();
+            texto = texto.replaceAll("\\R", "/&/");        // Sustituye saltos de línea por /&/
+            d.setRespPregunta(numPregActual, texto);
+            d.setTipoPreg(numPregActual, seleccionado);
+            d.setComandosPreg(numPregActual, tflComandosPrg.getText());
         } else if (rbtDifResp.isSelected()) {
             seleccionado = "Diferente";
-            respuestaPreg[numPregActual - 1] = tarRespuesta.getText();
+            String texto = tarRespuesta.getText();
+            texto = texto.replaceAll("\\R", "/&/");        // Sustituye saltos de línea por /&/
+            d.setRespPregunta(numPregActual, texto);
+            d.setTipoPreg(numPregActual, seleccionado);
+            d.setComandosPreg(numPregActual, tflComandosPrg.getText());
         } else if (rbtIA.isSelected()) {
-            seleccionado = "CorrecionIA";
-            respuestaPreg[numPregActual - 1] = tarRespuesta.getText();
+            seleccionado = "IA";
+            String texto = tarRespuesta.getText();
+            texto = texto.replaceAll("\\R", "/&/");        // Sustituye saltos de línea por /&$/
+            d.setRespPregunta(numPregActual, texto);
+            d.setTipoPreg(numPregActual, seleccionado);
+            d.setComandosPreg(numPregActual, tflComandosPrg.getText());
         }
-       */
 
         return seleccionado;
     }
@@ -336,24 +293,32 @@ public class Fichas2 {
                 panCbxRespuesta.setVisible(true);
                 cbxRespuesta.setSelectedItem(d.getRespPregunta(numPregActual)); // Establece la respuesta en el JComboBox
                 tflComandosPrg.setText(d.getComandosPreg(numPregActual));       // Establece Comandos Pregunta
-            } /*else if (tipo.equals("Exacta")) {
+            } else if (tipo.equals("Exacta")) {
                 rbtRespExacta.setSelected(true); // Selecciona el botón de radio "Exacta"
                 rbtTxtLibre.setSelected(true);
                 rbtRespExacta.setEnabled(true);
                 rbtDifResp.setEnabled(true);
+                radioBotonSeleccionado();
                 panTxtRespuesta.setVisible(true);
                 panCbxRespuesta.setVisible(false);
-                tarRespuesta.setText(respuestaPreg[numPregActual - 1]); // Establece la respuesta en el JTextArea
+                String texto = d.getRespPregunta(numPregActual);
+                texto = texto.replace("/&/", System.lineSeparator());    // Coloca saltos de línea
+                tarRespuesta.setText(texto);                                    // Establece la respuesta en el JTextArea
+                tflComandosPrg.setText(d.getComandosPreg(numPregActual));       // Establece Comandos Pregunta
             } else if (tipo.equals("Diferente")) {
                 rbtDifResp.setSelected(true); // Selecciona el botón de radio "Diferente"
                 rbtTxtLibre.setSelected(true);
                 rbtRespExacta.setEnabled(true);
                 rbtDifResp.setEnabled(true);
+                radioBotonSeleccionado();
                 panTxtRespuesta.setVisible(true);
                 panCbxRespuesta.setVisible(false);
-                tarRespuesta.setText(respuestaPreg[numPregActual - 1]); // Establece la respuesta en el JTextArea
+                String texto = d.getRespPregunta(numPregActual);
+                texto = texto.replace("/&/", System.lineSeparator());    // Coloca saltos de línea
+                tarRespuesta.setText(texto);                                    // Establece la respuesta en el JTextArea
+                tflComandosPrg.setText(d.getComandosPreg(numPregActual));       // Establece Comandos Pregunta
             }
-            */
+
         }
     }
 
@@ -366,7 +331,7 @@ public class Fichas2 {
         if (rbtTxtLibre.isSelected()) {
             // La respuesta está en el JTextArea
             respuesta = tarRespuesta.getText();
-
+            respuesta = respuesta.replaceAll("\\R", "/&/");
         } else {
             // La respuesta está en el JComboBox
             respuesta = (String) cbxRespuesta.getSelectedItem();
