@@ -490,6 +490,7 @@ public class MetodosLib {
         String rutaFichero = fch;
 
         Datos dt = new Datos();
+        EncripDecrip ed = new EncripDecrip();
 
 
         try (BufferedReader buff = new BufferedReader(new FileReader(rutaFichero))) {
@@ -629,6 +630,8 @@ public class MetodosLib {
                     String comandos = buff.readLine();
                     String tipo = buff.readLine();
                     String respuesta = buff.readLine();
+                    //String resp = buff.readLine();                            // Desencripta
+                    //String respuesta = ed.desencripLin(resp,clave);
 
                     dt.setComandosPreg(i, comandos);
                     dt.setTipoPreg(i, tipo);
@@ -679,14 +682,18 @@ public class MetodosLib {
         //String sistema = detectarSistemaOperativo();                        // Detecta Sistema Operativo
         //String ruta = directorioMWL(sistema);                              // Comprueba directorio Mac Win Lin
         Datos dt = new Datos();
+        EncripDecrip ed = new EncripDecrip();
         String rutaFichero = dt.getCarpetaFichas() + dt.getCarpetaFch() + "/" + dt.getNombreFch() + ".crr";
+
+        int clv = (int) (Math.random() * 8999 + 1000);                      // Clave pública
+        String clave = String.valueOf(clv);
 
         String tab = "";
 
         try {
             FileWriter f = new FileWriter(rutaFichero);
 
-            tab = tab + (int) (Math.random() * 8999 + 1000) + "\n";
+            tab = tab + clave + "\n";
             tab = tab + "Versión 0.0\n";
             tab = tab + dt.getNombreFch() + "\n";
             tab = tab + dt.getArchivoInicialFch() + "\n";
@@ -709,12 +716,13 @@ public class MetodosLib {
             if (Integer.parseInt(dt.getNumeroPreguntasFch()) == 0) {
                 tab = tab + "- - - - -\n";
             } else if (Integer.parseInt(dt.getNumeroPreguntasFch()) > 0) {
-                tab = tab + dt.getRespPregunta(0) + "\n";
+                tab = tab + "* * R * *\n";
 
                 for ( int i=1; i <= (Integer.parseInt(dt.getNumeroPreguntasFch())) ; i++) {
                     tab = tab + dt.getComandosPreg(i) + "\n";
                     tab = tab + dt.getTipoPreg(i) + "\n";
-                    tab = tab + dt.getRespPregunta(i) + "\n";
+                    //tab = tab + ed.encripLin(dt.getRespPregunta(i), clave) + "\n";      // Encriptada
+                    tab = tab + dt.getRespPregunta(i) + "\n";                         // Sin encriptar
                 }
             }
             tab = tab + "[Fin]\n";
@@ -751,8 +759,9 @@ public class MetodosLib {
         }
     }
 
+    /*
     public String encLin(String lin, String clav) {
-/*
+
         String clave = "Version00" + clav;
 
         try {
@@ -765,12 +774,11 @@ public class MetodosLib {
             e.printStackTrace();
         }
 
- */
         return null;
     }
 
     public String desenLin(String lin, String clav) {
-/*
+
         String clave = "Version00" + clav;
 
         try {
@@ -783,8 +791,8 @@ public class MetodosLib {
             e.printStackTrace();
         }
 
- */
         return null;
     }
+     */
 
 }

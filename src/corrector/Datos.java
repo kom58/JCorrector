@@ -36,6 +36,7 @@ public class Datos {
     static List<String> comandosPreg = new ArrayList<>();
     static List<String> tipoPreg = new ArrayList<>();
     static List<String> respPregunta = new ArrayList<>();
+    static List<String> respUsuario = new ArrayList<>();
                                                 // ==========================================
     private static String comandosInicioFch;
     private static boolean activarCalcFch;
@@ -159,11 +160,13 @@ public class Datos {
         comandosPreg.clear();
         tipoPreg.clear();
         respPregunta.clear();
+        respUsuario.clear();
 
         for  ( int i=0; i<=nPrg; i++ ) {
             comandosPreg.add( i, "");
             tipoPreg.add( i, "");
             respPregunta.add( i , "");
+            respUsuario.add( i, "");
         }
 
     }
