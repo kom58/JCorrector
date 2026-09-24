@@ -759,6 +759,20 @@ public class MetodosLib {
         }
     }
 
+    public String leerComando2(String texto , String inicio, String fin) {
+
+        int posInicio = texto.indexOf(inicio);
+        int posFin = texto.indexOf(fin);
+
+        if (posInicio != -1 && posFin != -1 && posFin > posInicio) {
+            return texto.substring(posInicio + inicio.length(), posFin).trim();
+        }
+
+        return "";
+
+    }
+
+
     /*
     public String encLin(String lin, String clav) {
 

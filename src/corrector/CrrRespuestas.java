@@ -1,6 +1,7 @@
 package corrector;
 
 import javax.swing.*;
+import java.util.Objects;
 
 public class CrrRespuestas {
     private JPanel panPrincipal;
@@ -35,6 +36,7 @@ public class CrrRespuestas {
             }
         }
 
+        leeComandos();
         verTipoPreg();                  // Mostrar primera pregunta
 
 
@@ -52,6 +54,7 @@ public class CrrRespuestas {
                 numPregActual--;
                 lblPreg.setText(Integer.toString(numPregActual));
                 lblRespActual.setText(Integer.toString(numPregActual));
+                leeComandos();
                 verTipoPreg();
             }
         });
@@ -62,10 +65,29 @@ public class CrrRespuestas {
                 numPregActual++;
                 lblPreg.setText(Integer.toString(numPregActual));
                 lblRespActual.setText(Integer.toString(numPregActual));
+                leeComandos();
                 verTipoPreg();
             }
         });
 
+    }
+
+    public void leeComandos() {
+        Datos d = new Datos();
+        MetodosLib m = new MetodosLib();
+        String comand = d.getComandosPreg(numPregActual);
+
+        String comando = m.leerComando2(comand,"<Vis>","</Vis>");
+
+       if (Objects.equals(comando, "")){ return;}
+       else  {
+                                                                 //Aqui carga de página nueva
+            String cargarNuevaPag = d.getCarpetaFichas() + d.getCarpetaFch() + "/" + comando;
+            //System.out.println(comando);
+
+                m.abrirHTML(cargarNuevaPag, true);
+
+        }
     }
 
     public void verTipoPreg() {
@@ -120,10 +142,6 @@ public class CrrRespuestas {
     }
         }
 
-        private void mostrarCombo() {
-            scrollPanel.setVisible(false);
-            cbxRespuesta.setVisible(true);
-        }
 
     public void guardarRespuestaActual(){
 
@@ -173,9 +191,13 @@ public class CrrRespuestas {
         }
     }
 
+    private void mostrarCombo() {
+        scrollPanel.setVisible(false);
+        cbxRespuesta.setVisible(true);
+    }
+
     private void mostrarTexto() {
         scrollPanel.setVisible(true);
-        //cbxPanel.setVisible(false);
         cbxRespuesta.setVisible(false);
     }
 
