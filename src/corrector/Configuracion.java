@@ -189,11 +189,17 @@ public class Configuracion {
         dt.setArchivoPortada(tflFondo.getText());
         dt.setArchivoError(tflError.getText());
         dt.setIdioma(tflIdioma.getText());
-        dt.setInforme(tflInforme.getText());
+        //dt.setInforme(tflInforme.getText());
         dt.setFichaArranque(tflArranque.getText());
         dt.setCarpetaFichas(tflInicial.getText());
         dt.setAlSolucionarFicha((String) cbxAlSolucionar.getSelectedItem());
         dt.setInicioAnonimo(chbInicioAnonim.isSelected());
+
+        if (tflInforme.getText().equals("")) {
+            dt.setInforme("Informe");
+        } else {
+            dt.setInforme(tflInforme.getText());
+        }
     }
 
 }

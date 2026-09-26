@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;      // En Mac
 import java.io.*;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class MetodosLib {
 
@@ -375,7 +376,7 @@ public class MetodosLib {
 
         JFileChooser fileChooser = new JFileChooser(initialDirectory);
 
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Seleccionar archivo ", "htm", "html");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Seleccionar archivo ", "htm", "html", ".pdf");
         fileChooser.setFileFilter(filter);
 
         int returnValue = fileChooser.showOpenDialog(frame);
@@ -759,6 +760,19 @@ public class MetodosLib {
         }
     }
 
+
+    public boolean leerComando1(String texto, String cmd) {
+
+        boolean estaCom = false;
+
+        if (texto.contains(cmd)) {
+            estaCom = true;
+        }
+
+        return estaCom;
+    }
+
+
     public String leerComando2(String texto , String inicio, String fin) {
 
         int posInicio = texto.indexOf(inicio);
@@ -769,6 +783,71 @@ public class MetodosLib {
         }
 
         return "";
+
+    }
+
+    public void  escribirInforme() {
+
+        String sistema = detectarSistemaOperativo();                        // Detecta Sistema Operativo
+        String ruta = directorioMWL(sistema);                               // Comprueba directorio Mac Win Lin
+
+        Datos d = new Datos();
+        String nombreInforme = "";
+        if (d.getEnvioInformeFch().equals("")) {
+            nombreInforme = d.getInforme();
+        } else {
+            nombreInforme = d.getEnvioInformeFch();
+        }
+        String rutaFichero = ruta + "/" + nombreInforme + ".lgx";
+
+        StringBuilder txt = new StringBuilder();
+        int aciertos = 0;
+
+        try {
+
+            // true = añadir al final del archivo
+            FileWriter f = new FileWriter(rutaFichero, true);
+
+            txt.append("\n       *********************************\n\n");
+            txt.append("                  ").append(d.getUsuarioActual()).append("\n\n");
+            txt.append("                  ").append(fechaActual()).append("\n");
+            txt.append("                     ").append(horaActual()).append("\n");
+            txt.append("\n            ***********************\n\n");
+            txt.append("FICHA :               ").append(d.getNombreFch()).append("\n");
+            txt.append("Tipo de corrección  : ").append(d.getTipoCorreccionFch()).append("\n\n");
+
+            if (d.getNumeroPreguntasFch().equals("0")) {
+                txt.append("\n\n        FICHA DE CONSULTA SIN PREGUNTAS\n\n");
+            } else {
+                for (int i = 1; i <= (Integer.parseInt(d.getNumeroPreguntasFch())); i++) {
+
+                    txt.append("Respuesta ").append(i).append(" ");
+
+                    if (Objects.equals(d.getRespPregunta(i), d.getRespUsuario(i))) {
+                        txt.append(" está bien : ")
+                            .append(d.getRespUsuario(i))
+                            .append("\n\n");
+                        aciertos++;
+                    } else {
+                        txt.append(" es INCORRECTA. Contestó : ")
+                            .append(d.getRespUsuario(i)).append("\n")
+                            .append("La respuesta correcta es : ")
+                                .append(d.getRespPregunta(i)).append("\n\n");
+                    }
+                }
+            }
+
+            txt.append("\nTOTAL : ").append(aciertos).append(" respuestas correctas de ");
+            txt.append(d.getNumeroPreguntasFch()).append(" preguntas\n");
+            txt.append("        =====================================\n\n");
+
+            f.write(txt.toString());
+            f.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 

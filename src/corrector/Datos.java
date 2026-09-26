@@ -88,6 +88,7 @@ public class Datos {
     public void setComandosPreg(int nPreg, String comF) { comandosPreg.set(nPreg, comF);}
     public void setTipoPreg(int nPreg, String tipoF) {tipoPreg.set(nPreg, tipoF);}
     public void setRespPregunta(int nPreg, String respF) {respPregunta.set(nPreg, respF);}
+    public void setRespUsuario(int nPreg, String respU) {respUsuario.set(nPreg, respU);}
     public void setComandosInicioFch(String cIniF) { comandosInicioFch = cIniF;}
     public void setActivarCalcFch(boolean calF) { activarCalcFch = calF;}
     public void setActivarBlocFch(boolean blocF) { activarBlocFch = blocF;}
@@ -125,6 +126,7 @@ public class Datos {
     public String getComandosPreg(int nPreg) { return comandosPreg.get(nPreg);}
     public String getTipoPreg(int nPreg) { return tipoPreg.get(nPreg);}
     public String getRespPregunta(int nPreg) { return respPregunta.get(nPreg);}
+    public String getRespUsuario(int nPreg) { return respUsuario.get(nPreg);}
     public String getComandosInicioFch() { return comandosInicioFch;}
     public boolean getActivarCalcFch() { return activarCalcFch;}
     public boolean getActivarBlocFch() { return activarBlocFch;}

@@ -41,11 +41,19 @@ public class CrrRespuestas {
 
 
         btnFinalizar.addActionListener(e -> {
+            MetodosLib mt = new MetodosLib();
             guardarRespuestaActual();
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
-            frame.dispose();                    // Cierra CrrRespuestas
-            Correc cr = new Correc();
-            cr.abrirCorrec();                   // Abre Correc
+            if (Objects.equals(d.getAlSolucionarFicha(), "Salir")){
+                mt.escribirInforme();                       // Guardar informe  !!!!!!!!!!!!!!!!!
+                frame.dispose();                // Cierra CrrRespuestas
+                System.exit(0);
+            } else {
+                mt.escribirInforme();                       // Guardar informe  !!!!!!!!!!!!!!!!!
+                frame.dispose();                    // Cierra CrrRespuestas
+                Correc cr = new Correc();
+                cr.abrirCorrec();                   // Abre Correc
+            }
         });
 
         btnAnterior.addActionListener(e -> {
@@ -76,18 +84,23 @@ public class CrrRespuestas {
         Datos d = new Datos();
         MetodosLib m = new MetodosLib();
         String comand = d.getComandosPreg(numPregActual);
-
+                                                                        // Comando <Vis>
         String comando = m.leerComando2(comand,"<Vis>","</Vis>");
 
-       if (Objects.equals(comando, "")){ return;}
-       else  {
-                                                                 //Aqui carga de página nueva
+       if (!comando.equals("")){
+                                                                        //Aqui carga de página nueva
             String cargarNuevaPag = d.getCarpetaFichas() + d.getCarpetaFch() + "/" + comando;
             //System.out.println(comando);
-
                 m.abrirHTML(cargarNuevaPag, true);
-
         }
+
+                                                                        // Comando <End>
+       boolean cmd = m.leerComando1(comand, "<End>");               // Salir del programa
+        if (cmd) {
+           System.exit(0);
+        }
+
+
     }
 
     public void verTipoPreg() {
@@ -164,7 +177,8 @@ public class CrrRespuestas {
             }
         }
 
-        Datos.respUsuario.set(numPregActual, respuesta);
+        //Datos.respUsuario.set(numPregActual, respuesta);
+        d.setRespUsuario(numPregActual, respuesta);
 
     }
 
