@@ -29,7 +29,6 @@ public class Correc {
         Datos dt = new Datos();
         lblUsuarioAct.setText(dt.getUsuarioActual());
         ponerFechaYHora();
-        abrirFichaArranque();
 
         if (dt.getEsAdmin()) {
             btnOpciones.setVisible(true);
@@ -43,6 +42,8 @@ public class Correc {
             btnAyudaFch.setVisible(false);
         }
 
+        abrirFichaArranque();
+
         btnSalir.addActionListener(e -> System.exit(0));
 
         btnInicio.addActionListener(e -> {
@@ -50,10 +51,7 @@ public class Correc {
             MetodosLib m = new MetodosLib();
             Datos d = new Datos();
 
-            //String sistema = m.detectarSistemaOperativo();
-            //String rutaCorrector = m.directorioMWL(sistema);
-
-            String  abrir = d.getArchivoInicialFch();
+            String abrir = d.getCarpetaFichas() + d.getFichaActiva();
 
             m.abrirHTML(abrir, true);
         });
@@ -65,12 +63,24 @@ public class Correc {
 
             String sistema = m.detectarSistemaOperativo();
             String rutaCorrector = m.directorioMWL(sistema);
-
-            //String  abrir = dt.getArchivoPortada();
+            
             String ruta = rutaCorrector + "/hlp/Inicio.htm";
 
             m.abrirHTML(ruta, true);
         });
+
+
+        btnAyudaFch.addActionListener(e -> {
+
+            MetodosLib m = new MetodosLib();
+            String archAyudaFch = dt.getCarpetaFichas() + dt.getArchivoAyudaFch();
+
+            if  (!dt.getArchivoAyudaFch().isEmpty()) {
+                m.abrirHTML(archAyudaFch, true);
+            }
+
+        });
+
 
         btnOpciones.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
@@ -92,8 +102,13 @@ public class Correc {
 
             String carpFchasyFichaAct = dt1.getCarpetaFichas() + dt1.getFichaActiva();
 
+            if (!dt1.getArchivoAyudaFch().isEmpty()) {
+                btnAyudaFch.setVisible(true);
+            }
+
             if  (!dt1.getFichaActiva().isEmpty()) {
                 m.abrirHTML(carpFchasyFichaAct, true);
+                btnContestar.setVisible(true);
             }
         });
         btnContestar.addActionListener(e -> {
@@ -126,8 +141,13 @@ public class Correc {
 
             String carpFchasyFichaAct = dt.getCarpetaFichas() + dt.getFichaActiva();
 
+            if (!dt.getArchivoAyudaFch().isEmpty()) {
+                btnAyudaFch.setVisible(true);
+            }
+
             if  (!dt.getFichaActiva().isEmpty()) {
                 m.abrirHTML(carpFchasyFichaAct, true);
+                btnContestar.setVisible(true);
             }
         }
     }

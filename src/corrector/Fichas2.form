@@ -237,7 +237,7 @@
             <properties>
               <enabled value="false"/>
               <selected value="true"/>
-              <text value="Respuesta exacta a una de las propuestas: r1 | r2 | r3 | ..."/>
+              <text value="Respuesta exacta a: r1 | r2 | r3  ... Consultar &quot;Criterios de corrección&quot;"/>
             </properties>
           </component>
           <component id="ddfa4" class="javax.swing.JRadioButton" binding="rbtDifResp">
@@ -246,7 +246,7 @@
             </constraints>
             <properties>
               <enabled value="false"/>
-              <text value="Diferentes respuestas posibles: Consultar &quot;Criterios de corrección&quot;"/>
+              <text value="Escribir &quot;Criterios de corrección para la IA&quot;"/>
             </properties>
           </component>
           <component id="3e95d" class="javax.swing.JLabel">

@@ -81,25 +81,30 @@ public class CrrRespuestas {
     }
 
     public void leeComandos() {
+
         Datos d = new Datos();
-        MetodosLib m = new MetodosLib();
-        String comand = d.getComandosPreg(numPregActual);
-                                                                        // Comando <Vis>
-        String comando = m.leerComando2(comand,"<Vis>","</Vis>");
+                System.out.println(d.getComandosPreg(numPregActual).toUpperCase());
+        if (d.getRespUsuario(numPregActual).equals("") ||
+                d.getComandosPreg(numPregActual).toUpperCase().contains("<SIREP>")) {
+            MetodosLib m = new MetodosLib();
+            Sentencias s = new Sentencias();
+            String comand = d.getComandosPreg(numPregActual);
+            // Comando <Vis>
+            String comando = s.leerComando2(comand.toUpperCase(), "<VIS>", "</VIS>");
 
-       if (!comando.equals("")){
-                                                                        //Aqui carga de página nueva
-            String cargarNuevaPag = d.getCarpetaFichas() + d.getCarpetaFch() + "/" + comando;
-            //System.out.println(comando);
+            if (!comando.equals("")) {
+                //Aqui carga de página nueva
+                String cargarNuevaPag = d.getCarpetaFichas() + d.getCarpetaFch() + "/" + comando;
+                //System.out.println(comando);
                 m.abrirHTML(cargarNuevaPag, true);
-        }
+            }
 
-                                                                        // Comando <End>
-       boolean cmd = m.leerComando1(comand, "<End>");               // Salir del programa
-        if (cmd) {
-           System.exit(0);
+            // Comando <End>
+            boolean cmd = s.leerComando1(comand.toUpperCase(), "<END>");
+            if (cmd) {
+                System.exit(0);          // Salir del programa
+            }
         }
-
 
     }
 

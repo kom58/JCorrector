@@ -12,7 +12,7 @@ import java.util.Objects;
 public class MetodosLib {
 
     public String versionCrr() {
-        return "0.1.12";
+        return "0.1.13";
     }
 
     public String fechaActual() {
@@ -146,7 +146,8 @@ public class MetodosLib {
                     case 12:
                         dt.setInicioAnonimo(Boolean.parseBoolean(linea));   // Inicio anónimo
                         break;
-
+                    case 13:
+                        dt.setChatGptAPI(linea);
                               */
 
                     case 2:
@@ -182,6 +183,9 @@ public class MetodosLib {
                     case 12:
                         dt.setInicioAnonimo(Boolean.parseBoolean(ed.desencripLin(linea, clave)));   // Inicio anónimo
                         break;
+                    case 13:
+                        dt.setChatGptAPI(linea);
+                        System.out.println(dt.getChatGptAPI());
                     // */
                 }
             }
@@ -264,7 +268,7 @@ public class MetodosLib {
 
             if (sistema.equals("mac")) {                                                     // Mac
 
-                // Abre la página HTML en el navegador predeterminado
+                                                // Abre la página HTML en el navegador predeterminado
                 Desktop.getDesktop().browse(htmlFile.toURI());
 
                 // Simula una pulsación de tecla para devolver el foco al formulario Java
@@ -760,7 +764,7 @@ public class MetodosLib {
         }
     }
 
-
+/*
     public boolean leerComando1(String texto, String cmd) {
 
         boolean estaCom = false;
@@ -786,12 +790,15 @@ public class MetodosLib {
 
     }
 
+ */
+
     public void  escribirInforme() {
 
         String sistema = detectarSistemaOperativo();                        // Detecta Sistema Operativo
         String ruta = directorioMWL(sistema);                               // Comprueba directorio Mac Win Lin
 
         Datos d = new Datos();
+        Sentencias s = new Sentencias();
         String nombreInforme = "";
         if (d.getEnvioInformeFch().equals("")) {
             nombreInforme = d.getInforme();
@@ -823,18 +830,35 @@ public class MetodosLib {
 
                     txt.append("Respuesta ").append(i).append(" ");
 
-                    if (Objects.equals(d.getRespPregunta(i), d.getRespUsuario(i))) {
+                                                                        // Analiza respuestas de texto Exactas
+                    if (d.getTipoPreg(i).equals("Exacta")){
+                        if (s.analizaRespExacta(d.getRespPregunta(i),d.getRespUsuario(i), d.getComandosPreg(i))) {
+                            txt.append(" está bien : ")
+                                    .append(d.getRespUsuario(i))
+                                    .append("\n\n");
+                            aciertos++;
+                        } else {
+                            txt.append(" es INCORRECTA.\nContestó : ")
+                                    .append(d.getRespUsuario(i)).append("\n")
+                                    .append("La respuesta correcta es : ")
+                                    .append(d.getRespPregunta(i)).append("\n\n");
+                        }
+                    }
+                                                                        // Analiza VF SN 123 ABC
+                   else if (Objects.equals(d.getRespPregunta(i), d.getRespUsuario(i))) {
                         txt.append(" está bien : ")
                             .append(d.getRespUsuario(i))
                             .append("\n\n");
                         aciertos++;
                     } else {
-                        txt.append(" es INCORRECTA. Contestó : ")
+                        txt.append(" es INCORRECTA.\nContestó : ")
                             .append(d.getRespUsuario(i)).append("\n")
                             .append("La respuesta correcta es : ")
                                 .append(d.getRespPregunta(i)).append("\n\n");
                     }
                 }
+
+                                                                        // Analiza respuestas de texto Sentencias
             }
 
             txt.append("\nTOTAL : ").append(aciertos).append(" respuestas correctas de ");

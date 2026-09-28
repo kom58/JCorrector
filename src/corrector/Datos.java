@@ -18,6 +18,7 @@ public class Datos {
     private static String carpetaFichas;
     private static String alSolucionarFicha;
     private static boolean inicioAnonimo;
+    private static String chatGptAPI;
                                                 // Datos Ficha
     private static String nombreFch;
     private static String archivoInicialFch;
@@ -62,6 +63,7 @@ public class Datos {
     public void setCarpetaFichas(String carp) { carpetaFichas = carp;}
     public void setAlSolucionarFicha(String alSolucFch) { alSolucionarFicha = alSolucFch;}
     public void setInicioAnonimo(boolean iniAnonim) { inicioAnonimo = iniAnonim;}
+    public void setChatGptAPI(String api) { chatGptAPI = api;}
 
     public void setNombreFch(String nomF) { nombreFch = nomF;}
     /*public void setArchivoInicioFch(String archIniF) { archivoInicialFch = archIniF;
@@ -111,6 +113,7 @@ public class Datos {
     public String getCarpetaFichas() { return carpetaFichas;}
     public String getAlSolucionarFicha() { return alSolucionarFicha;}
     public boolean getInicioAnonimo() { return inicioAnonimo;}
+    public String getChatGptAPI() { return chatGptAPI;}
 
     public String getNombreFch() { return nombreFch;}
     public String getArchivoInicialFch() { return archivoInicialFch;}

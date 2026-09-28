@@ -232,7 +232,7 @@ public class Fichas2 {
             d.setTipoPreg(numPregActual, seleccionado);
             d.setComandosPreg(numPregActual, tflComandosPrg.getText());
         } else if (rbtDifResp.isSelected()) {
-            seleccionado = "Diferente";
+            seleccionado = "Sentencias";
             String texto = tarRespuesta.getText();
             texto = texto.replaceAll("\\R", "/&/");        // Sustituye saltos de línea por /&/
             d.setRespPregunta(numPregActual, texto);
@@ -305,7 +305,7 @@ public class Fichas2 {
                 texto = texto.replace("/&/", System.lineSeparator());    // Coloca saltos de línea
                 tarRespuesta.setText(texto);                                    // Establece la respuesta en el JTextArea
                 tflComandosPrg.setText(d.getComandosPreg(numPregActual));       // Establece Comandos Pregunta
-            } else if (tipo.equals("Diferente")) {
+            } else if (tipo.equals("Sentencias")) {
                 rbtDifResp.setSelected(true); // Selecciona el botón de radio "Diferente"
                 rbtTxtLibre.setSelected(true);
                 rbtRespExacta.setEnabled(true);
