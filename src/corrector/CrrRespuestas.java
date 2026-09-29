@@ -44,6 +44,8 @@ public class CrrRespuestas {
             MetodosLib mt = new MetodosLib();
             guardarRespuestaActual();
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
+            frame.setVisible(false);
+
             if (Objects.equals(d.getAlSolucionarFicha(), "Salir")){
                 mt.escribirInforme();                       // Guardar informe  !!!!!!!!!!!!!!!!!
                 frame.dispose();                // Cierra CrrRespuestas
@@ -151,14 +153,11 @@ public class CrrRespuestas {
         } else if (tipo.equals("Exacta")) {
             mostrarTexto();
             cargarRespuestaUsuario();
-        } else if (tipo.equals("Diferente")) {
+        }  else if (tipo.equals("IA")) {
             mostrarTexto();
             cargarRespuestaUsuario();
-        } else if (tipo.equals("IA")) {
-            mostrarTexto();
-            cargarRespuestaUsuario();
-    }
         }
+    }
 
 
     public void guardarRespuestaActual(){
@@ -168,7 +167,6 @@ public class CrrRespuestas {
         String tipo = d.getTipoPreg(numPregActual);
 
         if (tipo.equals("Exacta")
-                || tipo.equals("Diferente")
                 || tipo.equals("IA")) {
             respuesta = tarRespuesta.getText();
             respuesta = respuesta.replaceAll("\\R", "/&/");     // Igual que en Fichas2
@@ -199,7 +197,6 @@ public class CrrRespuestas {
         String tipo = d.getTipoPreg(numPregActual);
 
         if (tipo.equals("Exacta")
-                || tipo.equals("Diferente")
                 || tipo.equals("IA")) {
             respuesta = respuesta.replace("/&/", System.lineSeparator());
             tarRespuesta.setText(respuesta);

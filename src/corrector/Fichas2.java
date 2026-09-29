@@ -50,9 +50,6 @@ public class Fichas2 {
         grupo2.add(rbtRespExacta);
 
         lblNumPreg.setText(numPregActual + " / " + d.getNumeroPreguntasFch());      // Pone NumPreg
-        // tflComandosPrg.setText(d.getComandosFch());
-        // Aquí todos los tipos de Fch
-        // tarRespuesta.append(d.getRespuestaPreguntaFch());
 
         btnCancelar.addActionListener(e -> {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
@@ -232,16 +229,9 @@ public class Fichas2 {
             d.setTipoPreg(numPregActual, seleccionado);
             d.setComandosPreg(numPregActual, tflComandosPrg.getText());
         } else if (rbtDifResp.isSelected()) {
-            seleccionado = "Sentencias";
-            String texto = tarRespuesta.getText();
-            texto = texto.replaceAll("\\R", "/&/");        // Sustituye saltos de línea por /&/
-            d.setRespPregunta(numPregActual, texto);
-            d.setTipoPreg(numPregActual, seleccionado);
-            d.setComandosPreg(numPregActual, tflComandosPrg.getText());
-        } else if (rbtIA.isSelected()) {
             seleccionado = "IA";
             String texto = tarRespuesta.getText();
-            texto = texto.replaceAll("\\R", "/&/");        // Sustituye saltos de línea por /&$/
+            texto = texto.replaceAll("\\R", "/&/");        // Sustituye saltos de línea por /&/
             d.setRespPregunta(numPregActual, texto);
             d.setTipoPreg(numPregActual, seleccionado);
             d.setComandosPreg(numPregActual, tflComandosPrg.getText());
@@ -305,8 +295,8 @@ public class Fichas2 {
                 texto = texto.replace("/&/", System.lineSeparator());    // Coloca saltos de línea
                 tarRespuesta.setText(texto);                                    // Establece la respuesta en el JTextArea
                 tflComandosPrg.setText(d.getComandosPreg(numPregActual));       // Establece Comandos Pregunta
-            } else if (tipo.equals("Sentencias")) {
-                rbtDifResp.setSelected(true); // Selecciona el botón de radio "Diferente"
+            } else if (tipo.equals("IA")) {
+                rbtDifResp.setSelected(true); // Selecciona el botón de radio "Diferente IA"
                 rbtTxtLibre.setSelected(true);
                 rbtRespExacta.setEnabled(true);
                 rbtDifResp.setEnabled(true);

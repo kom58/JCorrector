@@ -12,7 +12,7 @@ import java.util.Objects;
 public class MetodosLib {
 
     public String versionCrr() {
-        return "0.1.13";
+        return "0.1.14";
     }
 
     public String fechaActual() {
@@ -185,7 +185,7 @@ public class MetodosLib {
                         break;
                     case 13:
                         dt.setChatGptAPI(linea);
-                        System.out.println(dt.getChatGptAPI());
+                        //System.out.println(dt.getChatGptAPI());
                     // */
                 }
             }
@@ -225,7 +225,7 @@ public class MetodosLib {
                 tab = tab + dt.getCarpetaFichas() + "\n";
                 tab = tab + dt.getAlSolucionarFicha() + "\n";
                 tab = tab + dt.getInicioAnonimo() + "\n";
-
+                tab = tab + dt.getChatGptAPI() + "\n";
                  */
 
             EncripDecrip ed = new EncripDecrip();
@@ -240,6 +240,7 @@ public class MetodosLib {
             tab = tab + ed.encripLin(dt.getCarpetaFichas(), clave) + "\n";
             tab = tab + ed.encripLin(dt.getAlSolucionarFicha(), clave) + "\n";
             tab = tab + ed.encripLin("" + dt.getInicioAnonimo(), clave) + "\n";
+            tab = tab + dt.getChatGptAPI() + "\n";
             // */
 
             f.write(tab);
@@ -799,6 +800,8 @@ public class MetodosLib {
 
         Datos d = new Datos();
         Sentencias s = new Sentencias();
+        ChatGPT chg = new ChatGPT();
+
         String nombreInforme = "";
         if (d.getEnvioInformeFch().equals("")) {
             nombreInforme = d.getInforme();
@@ -809,6 +812,7 @@ public class MetodosLib {
 
         StringBuilder txt = new StringBuilder();
         int aciertos = 0;
+        int preguntasIA = 0;
 
         try {
 
@@ -828,16 +832,42 @@ public class MetodosLib {
             } else {
                 for (int i = 1; i <= (Integer.parseInt(d.getNumeroPreguntasFch())); i++) {
 
-                    txt.append("Respuesta ").append(i).append(" ");
+                                                                        // Corrección por IA
+                    if (d.getTipoPreg(i).equals("IA")) {
+                        preguntasIA++;
+                        txt.append("[[[ Corrección por IA ]]]\n");
+                        String ttr = d.getRespUsuario(i).replace("/&/", System.lineSeparator());
+                        String ttp = d.getRespPregunta(i).replace("/&/", System.lineSeparator());
+                        txt.append("Responde : \n´´").append(ttr).append("´´\n\n");
+                        //txt.append("Corrección IA : \n");
 
+                        String respuesta = chg.preguntar(
+
+                        "Actúa como profesor.\n" +
+                                "\n" +
+                                "        Evalúa de 0 a 10 la respuesta.\n" +
+                                "\n" +
+                                "        Explica brevemente los errores encontrados.\n" +
+                                "\n" +
+                                "        La explicación no debe superar las 200 palabras.\n" +
+                                " PREGUNTA : " + ttp + "\n" +
+                                "\n" +
+                                " RESPUESTA : " + ttr + "\n"
+                        );
+
+                        txt.append(respuesta).append("\n");
+                        txt.append("======== Fin IA ========\n\n");
+                    }
                                                                         // Analiza respuestas de texto Exactas
-                    if (d.getTipoPreg(i).equals("Exacta")){
+                    else if (d.getTipoPreg(i).equals("Exacta")){
                         if (s.analizaRespExacta(d.getRespPregunta(i),d.getRespUsuario(i), d.getComandosPreg(i))) {
+                            txt.append("Respuesta ").append(i).append(" ");
                             txt.append(" está bien : ")
                                     .append(d.getRespUsuario(i))
                                     .append("\n\n");
                             aciertos++;
                         } else {
+                            txt.append("Respuesta ").append(i).append(" ");
                             txt.append(" es INCORRECTA.\nContestó : ")
                                     .append(d.getRespUsuario(i)).append("\n")
                                     .append("La respuesta correcta es : ")
@@ -846,11 +876,13 @@ public class MetodosLib {
                     }
                                                                         // Analiza VF SN 123 ABC
                    else if (Objects.equals(d.getRespPregunta(i), d.getRespUsuario(i))) {
+                        txt.append("Respuesta ").append(i).append(" ");
                         txt.append(" está bien : ")
                             .append(d.getRespUsuario(i))
                             .append("\n\n");
                         aciertos++;
                     } else {
+                        txt.append("Respuesta ").append(i).append(" ");
                         txt.append(" es INCORRECTA.\nContestó : ")
                             .append(d.getRespUsuario(i)).append("\n")
                             .append("La respuesta correcta es : ")
@@ -858,11 +890,14 @@ public class MetodosLib {
                     }
                 }
 
-                                                                        // Analiza respuestas de texto Sentencias
             }
 
             txt.append("\nTOTAL : ").append(aciertos).append(" respuestas correctas de ");
-            txt.append(d.getNumeroPreguntasFch()).append(" preguntas\n");
+            int x = Integer.parseInt(d.getNumeroPreguntasFch()) - preguntasIA ;
+            txt.append(x).append(" preguntas\n");
+            if  (preguntasIA > 0) {
+                txt.append("Preguntas corregidas por la IA : ").append(preguntasIA).append("\n");
+            }
             txt.append("        =====================================\n\n");
 
             f.write(txt.toString());
