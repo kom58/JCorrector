@@ -16,7 +16,7 @@ public class Correc {
     private JButton btnAyudaFch;
     private JButton button10;
     private JButton btnAyuda;
-    private JButton button12;
+    private JButton btnBloc;
     private JButton btnOpciones;
     private JButton btnInternet;
     private JLabel lblUsuarioAct;
@@ -45,6 +45,12 @@ public class Correc {
         abrirFichaArranque();
 
         btnSalir.addActionListener(e -> System.exit(0));
+
+        btnBloc.addActionListener(e -> {
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panPrincipal);
+            frame.dispose();                        // Cierra Correc
+            new BlocDeNotas().setVisible(true);     // Abre Bloc
+        });
 
         btnInicio.addActionListener(e -> {
 
